@@ -1,0 +1,3917 @@
+{
+  "pins": {
+    "admin": "1234",
+    "cajero": "0000"
+  },
+  "sucursales": [
+    {
+      "id": 1,
+      "nombre": "Sucursal Principal",
+      "ciudad": "",
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Taco de birria",
+          "precio": 45,
+          "emoji": "🌮",
+          "invId": 1
+        },
+        {
+          "id": 2,
+          "nombre": "Birria +1",
+          "precio": 15,
+          "emoji": "➕",
+          "invId": 1
+        },
+        {
+          "id": 3,
+          "nombre": "Taco al pastor",
+          "precio": 35,
+          "emoji": "🌮",
+          "invId": 3
+        },
+        {
+          "id": 4,
+          "nombre": "Pastor +1",
+          "precio": 15,
+          "emoji": "➕",
+          "invId": 3
+        },
+        {
+          "id": 5,
+          "nombre": "Birriamen",
+          "precio": 40,
+          "emoji": "🍜",
+          "invId": 4
+        },
+        {
+          "id": 6,
+          "nombre": "Gaseosa",
+          "precio": 10,
+          "emoji": "🥤",
+          "invId": 5
+        },
+        {
+          "id": 7,
+          "nombre": "Fresco natural",
+          "precio": 10,
+          "emoji": "🍵",
+          "invId": 7
+        },
+        {
+          "id": 8,
+          "nombre": "Jarrito",
+          "precio": 20,
+          "emoji": "🫙",
+          "invId": 6
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Carne de birria (kg)",
+          "stock": 1,
+          "min": 2
+        },
+        {
+          "id": 2,
+          "nombre": "Tortillas (paquetes)",
+          "stock": 8,
+          "min": 2
+        },
+        {
+          "id": 3,
+          "nombre": "Carne al pastor (kg)",
+          "stock": 2,
+          "min": 2
+        },
+        {
+          "id": 4,
+          "nombre": "Birriamen (porciones)",
+          "stock": 5,
+          "min": 2
+        },
+        {
+          "id": 5,
+          "nombre": "Gaseosas (unidades)",
+          "stock": 12,
+          "min": 2
+        },
+        {
+          "id": 6,
+          "nombre": "Jarritos (unidades)",
+          "stock": 6,
+          "min": 2
+        },
+        {
+          "id": 7,
+          "nombre": "Frescos naturales",
+          "stock": 8,
+          "min": 2
+        }
+      ],
+      "mesas": [
+        {
+          "id": 1,
+          "nombre": "Mesa 1",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 2,
+          "nombre": "Mesa 2",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 3,
+          "nombre": "Mesa 3",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 4,
+          "nombre": "Mesa 4",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 5,
+          "nombre": "Mesa 5",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 6,
+          "nombre": "Mesa 6",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 7,
+          "nombre": "Mesa 7",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 8,
+          "nombre": "Mesa 8",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        }
+      ],
+      "transacciones": [
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #3",
+          "total": 60,
+          "hora": "04:35 p. m.",
+          "fecha": "6/5/2026",
+          "ts": 1778106915297,
+          "detalle": "Ticket #3",
+          "orden": [
+            {
+              "id": 1,
+              "nombre": "Taco de birria",
+              "precio": 45,
+              "qty": 1
+            },
+            {
+              "id": 2,
+              "nombre": "Birria +1",
+              "precio": 15,
+              "qty": 1
+            }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #2",
+          "total": 50,
+          "hora": "02:25 a. m.",
+          "fecha": "5/5/2026",
+          "ts": 1777969536531,
+          "detalle": "Ticket #2",
+          "orden": [
+            {
+              "id": 3,
+              "nombre": "Taco al pastor",
+              "precio": 35,
+              "qty": 1
+            },
+            {
+              "id": 4,
+              "nombre": "Pastor +1",
+              "precio": 15,
+              "qty": 1
+            }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #1",
+          "total": 60,
+          "hora": "02:25 a. m.",
+          "fecha": "5/5/2026",
+          "ts": 1777969530401,
+          "detalle": "Ticket #1",
+          "orden": [
+            {
+              "id": 1,
+              "nombre": "Taco de birria",
+              "precio": 45,
+              "qty": 1
+            },
+            {
+              "id": 2,
+              "nombre": "Birria +1",
+              "precio": 15,
+              "qty": 1
+            }
+          ],
+          "mostrador": true
+        }
+      ],
+      "ventas": {
+        "Taco de birria": 2,
+        "Birria +1": 2,
+        "Taco al pastor": 1,
+        "Pastor +1": 1
+      },
+      "_nextMenuId": 9,
+      "_nextInvId": 8,
+      "_nextMesaId": 9
+    }
+  ],
+  "_nextSucId": 2,
+  "rubros": {
+    "taqueria": {
+      "slug": "taqueria",
+      "nombre": "Taquería",
+      "icono": "🌮",
+      "descripcion": "Restaurante con mesas y mostrador",
+      "color": "#365322",
+      "colorDark": "#243718",
+      "colorLight": "#4a6b30",
+      "colorCream": "#FDF8D0",
+      "tipo": "mesas",
+      "tabs": [
+        "mesas",
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Taco de birria",
+          "precio": 45,
+          "emoji": "🌮",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Taco al pastor",
+          "precio": 35,
+          "emoji": "🌮",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Quesadilla",
+          "precio": 30,
+          "emoji": "🫓",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Birriamen",
+          "precio": 65,
+          "emoji": "🍜",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Refresco",
+          "precio": 15,
+          "emoji": "🥤",
+          "invId": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Agua de horchata",
+          "precio": 12,
+          "emoji": "🥛",
+          "invId": 5,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Carne birria",
+          "stock": 5,
+          "min": 2,
+          "unidad": "kg"
+        },
+        {
+          "id": 2,
+          "nombre": "Carne pastor",
+          "stock": 4,
+          "min": 2,
+          "unidad": "kg"
+        },
+        {
+          "id": 3,
+          "nombre": "Tortillas",
+          "stock": 8,
+          "min": 3,
+          "unidad": "paquete"
+        },
+        {
+          "id": 4,
+          "nombre": "Refrescos",
+          "stock": 24,
+          "min": 6,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Horchata",
+          "stock": 8,
+          "min": 2,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [
+        {
+          "id": 1,
+          "nombre": "Mesa 1",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 2,
+          "nombre": "Mesa 2",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 3,
+          "nombre": "Mesa 3",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 4,
+          "nombre": "Mesa 4",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 5,
+          "nombre": "Mesa 5",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 6,
+          "nombre": "Mesa 6",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 7,
+          "nombre": "Mesa 7",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 8,
+          "nombre": "Mesa 8",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        }
+      ],
+      "transacciones": [
+        {
+          "mesaId": 3,
+          "mesaNombre": "Mesa 3",
+          "total": 235,
+          "hora": "12:30 p. m.",
+          "fecha": "7/5/2026",
+          "ts": 1778178636531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 3, "unidad": "u" },
+            { "id": 2, "nombre": "Taco al pastor", "precio": 35, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 2, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #10",
+          "total": 105,
+          "hora": "09:15 a. m.",
+          "fecha": "7/5/2026",
+          "ts": 1778166936531,
+          "detalle": "Ticket #10",
+          "orden": [
+            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 1,
+          "mesaNombre": "Mesa 1",
+          "total": 160,
+          "hora": "07:30 p. m.",
+          "fecha": "6/5/2026",
+          "ts": 1778117436531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 4, "nombre": "Birriamen", "precio": 65, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 2, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #9",
+          "total": 60,
+          "hora": "05:57 p. m.",
+          "fecha": "6/5/2026",
+          "ts": 1778111827169,
+          "detalle": "Ticket #9",
+          "orden": [
+            { "id": 3, "nombre": "Quesadilla", "precio": 30, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #8",
+          "total": 102,
+          "hora": "01:45 p. m.",
+          "fecha": "6/5/2026",
+          "ts": 1778096736531,
+          "detalle": "Ticket #8",
+          "orden": [
+            { "id": 3, "nombre": "Quesadilla", "precio": 30, "qty": 3, "unidad": "u" },
+            { "id": 6, "nombre": "Agua de horchata", "precio": 12, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 2,
+          "mesaNombre": "Mesa 2",
+          "total": 330,
+          "hora": "08:00 p. m.",
+          "fecha": "5/5/2026",
+          "ts": 1778032836531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 4, "unidad": "u" },
+            { "id": 2, "nombre": "Taco al pastor", "precio": 35, "qty": 3, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 3, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 5,
+          "mesaNombre": "Mesa 5",
+          "total": 205,
+          "hora": "02:30 p. m.",
+          "fecha": "5/5/2026",
+          "ts": 1778013036531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 3, "nombre": "Quesadilla", "precio": 30, "qty": 2, "unidad": "u" },
+            { "id": 4, "nombre": "Birriamen", "precio": 65, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 1, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #7",
+          "total": 114,
+          "hora": "11:00 a. m.",
+          "fecha": "5/5/2026",
+          "ts": 1778000436531,
+          "detalle": "Ticket #7",
+          "orden": [
+            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 2, "unidad": "u" },
+            { "id": 6, "nombre": "Agua de horchata", "precio": 12, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 4,
+          "mesaNombre": "Mesa 4",
+          "total": 154,
+          "hora": "06:45 p. m.",
+          "fecha": "4/5/2026",
+          "ts": 1777941936531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 4, "nombre": "Birriamen", "precio": 65, "qty": 2, "unidad": "u" },
+            { "id": 6, "nombre": "Agua de horchata", "precio": 12, "qty": 2, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #6",
+          "total": 150,
+          "hora": "01:00 p. m.",
+          "fecha": "4/5/2026",
+          "ts": 1777921236531,
+          "detalle": "Ticket #6",
+          "orden": [
+            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 3, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 2,
+          "mesaNombre": "Mesa 2",
+          "total": 120,
+          "hora": "04:30 p. m.",
+          "fecha": "3/5/2026",
+          "ts": 1777847436531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 3, "nombre": "Quesadilla", "precio": 30, "qty": 3, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 2, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #5",
+          "total": 280,
+          "hora": "12:00 p. m.",
+          "fecha": "3/5/2026",
+          "ts": 1777831236531,
+          "detalle": "Ticket #5",
+          "orden": [
+            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 4, "unidad": "u" },
+            { "id": 2, "nombre": "Taco al pastor", "precio": 35, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #4",
+          "total": 145,
+          "hora": "02:00 p. m.",
+          "fecha": "2/5/2026",
+          "ts": 1777752036531,
+          "detalle": "Ticket #4",
+          "orden": [
+            { "id": 4, "nombre": "Birriamen", "precio": 65, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 3,
+          "mesaNombre": "Mesa 3",
+          "total": 295,
+          "hora": "07:00 p. m.",
+          "fecha": "1/5/2026",
+          "ts": 1777683636531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 4, "unidad": "u" },
+            { "id": 2, "nombre": "Taco al pastor", "precio": 35, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 3, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #3",
+          "total": 72,
+          "hora": "10:30 a. m.",
+          "fecha": "1/5/2026",
+          "ts": 1777653036531,
+          "detalle": "Ticket #3",
+          "orden": [
+            { "id": 3, "nombre": "Quesadilla", "precio": 30, "qty": 2, "unidad": "u" },
+            { "id": 6, "nombre": "Agua de horchata", "precio": 12, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #2",
+          "total": 230,
+          "hora": "01:30 p. m.",
+          "fecha": "30/4/2026",
+          "ts": 1777577436531,
+          "detalle": "Ticket #2",
+          "orden": [
+            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 3, "unidad": "u" },
+            { "id": 4, "nombre": "Birriamen", "precio": 65, "qty": 1, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 1,
+          "mesaNombre": "Mesa 1",
+          "total": 230,
+          "hora": "06:00 p. m.",
+          "fecha": "28/4/2026",
+          "ts": 1777420836531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 4, "nombre": "Birriamen", "precio": 65, "qty": 2, "unidad": "u" },
+            { "id": 2, "nombre": "Taco al pastor", "precio": 35, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 2, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #1",
+          "total": 114,
+          "hora": "11:45 a. m.",
+          "fecha": "25/4/2026",
+          "ts": 1777139136531,
+          "detalle": "Ticket #1",
+          "orden": [
+            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 2, "unidad": "u" },
+            { "id": 6, "nombre": "Agua de horchata", "precio": 12, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 5,
+          "mesaNombre": "Mesa 5",
+          "total": 270,
+          "hora": "07:30 p. m.",
+          "fecha": "20/4/2026",
+          "ts": 1776735036531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 3, "unidad": "u" },
+            { "id": 2, "nombre": "Taco al pastor", "precio": 35, "qty": 3, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 2, "unidad": "u" }
+          ]
+        }
+      ],
+      "ventas": {
+        "Taco de birria": 30,
+        "Taco al pastor": 14,
+        "Quesadilla": 12,
+        "Birriamen": 11,
+        "Refresco": 24,
+        "Agua de horchata": 8
+      },
+      "_nextMenuId": 7,
+      "_nextInvId": 6,
+      "_nextMesaId": 9
+    },
+    "cafeteria": {
+      "slug": "cafeteria",
+      "nombre": "Cafetería",
+      "icono": "☕",
+      "descripcion": "Café y postres con mesas",
+      "color": "#5D3A1F",
+      "colorDark": "#3a2412",
+      "colorLight": "#7a5030",
+      "colorCream": "#f5e8d0",
+      "tipo": "mesas",
+      "tabs": [
+        "mesas",
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Americano",
+          "precio": 25,
+          "emoji": "☕",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Cappuccino",
+          "precio": 35,
+          "emoji": "☕",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Latte",
+          "precio": 40,
+          "emoji": "🥛",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Pastel de chocolate",
+          "precio": 45,
+          "emoji": "🎂",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Croissant",
+          "precio": 25,
+          "emoji": "🥐",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Cheesecake",
+          "precio": 50,
+          "emoji": "🍰",
+          "invId": 4,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Café molido",
+          "stock": 3,
+          "min": 1,
+          "unidad": "kg"
+        },
+        {
+          "id": 2,
+          "nombre": "Pastel chocolate",
+          "stock": 12,
+          "min": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Croissants",
+          "stock": 20,
+          "min": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Cheesecakes",
+          "stock": 8,
+          "min": 2,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [
+        {
+          "id": 1,
+          "nombre": "Mesa 1",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 2,
+          "nombre": "Mesa 2",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 3,
+          "nombre": "Mesa 3",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 4,
+          "nombre": "Mesa 4",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 5,
+          "nombre": "Mesa 5",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 6,
+          "nombre": "Mesa 6",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 7,
+          "nombre": "Mesa 7",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 8,
+          "nombre": "Mesa 8",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 9,
+          "nombre": "Mesa 9",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 10,
+          "nombre": "Mesa 10",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        }
+      ],
+      "transacciones": [
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #6",
+          "total": 100,
+          "hora": "10:00 a. m.",
+          "fecha": "7/5/2026",
+          "ts": 1778169636531,
+          "detalle": "Ticket #6",
+          "orden": [
+            { "id": 1, "nombre": "Americano", "precio": 25, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Croissant", "precio": 25, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 3,
+          "mesaNombre": "Mesa 3",
+          "total": 130,
+          "hora": "04:00 p. m.",
+          "fecha": "6/5/2026",
+          "ts": 1778104836531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 3, "nombre": "Latte", "precio": 40, "qty": 2, "unidad": "u" },
+            { "id": 6, "nombre": "Cheesecake", "precio": 50, "qty": 1, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #5",
+          "total": 120,
+          "hora": "09:30 a. m.",
+          "fecha": "6/5/2026",
+          "ts": 1778081436531,
+          "detalle": "Ticket #5",
+          "orden": [
+            { "id": 2, "nombre": "Cappuccino", "precio": 35, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Croissant", "precio": 25, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 2,
+          "mesaNombre": "Mesa 2",
+          "total": 165,
+          "hora": "03:30 p. m.",
+          "fecha": "5/5/2026",
+          "ts": 1778016636531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 1, "nombre": "Americano", "precio": 25, "qty": 3, "unidad": "u" },
+            { "id": 4, "nombre": "Pastel de chocolate", "precio": 45, "qty": 2, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #4",
+          "total": 85,
+          "hora": "08:30 a. m.",
+          "fecha": "5/5/2026",
+          "ts": 1777991436531,
+          "detalle": "Ticket #4",
+          "orden": [
+            { "id": 1, "nombre": "Americano", "precio": 25, "qty": 1, "unidad": "u" },
+            { "id": 2, "nombre": "Cappuccino", "precio": 35, "qty": 1, "unidad": "u" },
+            { "id": 5, "nombre": "Croissant", "precio": 25, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 1,
+          "mesaNombre": "Mesa 1",
+          "total": 180,
+          "hora": "11:00 a. m.",
+          "fecha": "4/5/2026",
+          "ts": 1777914036531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 3, "nombre": "Latte", "precio": 40, "qty": 2, "unidad": "u" },
+            { "id": 6, "nombre": "Cheesecake", "precio": 50, "qty": 2, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #3",
+          "total": 130,
+          "hora": "04:00 p. m.",
+          "fecha": "3/5/2026",
+          "ts": 1777845636531,
+          "detalle": "Ticket #3",
+          "orden": [
+            { "id": 2, "nombre": "Cappuccino", "precio": 35, "qty": 3, "unidad": "u" },
+            { "id": 5, "nombre": "Croissant", "precio": 25, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 4,
+          "mesaNombre": "Mesa 4",
+          "total": 120,
+          "hora": "09:00 a. m.",
+          "fecha": "2/5/2026",
+          "ts": 1777734036531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 1, "nombre": "Americano", "precio": 25, "qty": 2, "unidad": "u" },
+            { "id": 4, "nombre": "Pastel de chocolate", "precio": 45, "qty": 1, "unidad": "u" },
+            { "id": 5, "nombre": "Croissant", "precio": 25, "qty": 1, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #2",
+          "total": 90,
+          "hora": "02:00 p. m.",
+          "fecha": "1/5/2026",
+          "ts": 1777665636531,
+          "detalle": "Ticket #2",
+          "orden": [
+            { "id": 3, "nombre": "Latte", "precio": 40, "qty": 1, "unidad": "u" },
+            { "id": 6, "nombre": "Cheesecake", "precio": 50, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 2,
+          "mesaNombre": "Mesa 2",
+          "total": 160,
+          "hora": "10:30 a. m.",
+          "fecha": "30/4/2026",
+          "ts": 1777566636531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 2, "nombre": "Cappuccino", "precio": 35, "qty": 2, "unidad": "u" },
+            { "id": 4, "nombre": "Pastel de chocolate", "precio": 45, "qty": 2, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #1",
+          "total": 125,
+          "hora": "03:00 p. m.",
+          "fecha": "28/4/2026",
+          "ts": 1777410036531,
+          "detalle": "Ticket #1",
+          "orden": [
+            { "id": 1, "nombre": "Americano", "precio": 25, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Croissant", "precio": 25, "qty": 3, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 3,
+          "mesaNombre": "Mesa 3",
+          "total": 215,
+          "hora": "11:00 a. m.",
+          "fecha": "25/4/2026",
+          "ts": 1777136436531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 3, "nombre": "Latte", "precio": 40, "qty": 3, "unidad": "u" },
+            { "id": 6, "nombre": "Cheesecake", "precio": 50, "qty": 1, "unidad": "u" },
+            { "id": 4, "nombre": "Pastel de chocolate", "precio": 45, "qty": 1, "unidad": "u" }
+          ]
+        }
+      ],
+      "ventas": {
+        "Americano": 10,
+        "Cappuccino": 8,
+        "Latte": 8,
+        "Pastel de chocolate": 6,
+        "Croissant": 10,
+        "Cheesecake": 5
+      },
+      "_nextMenuId": 7,
+      "_nextInvId": 5,
+      "_nextMesaId": 11
+    },
+    "pizzeria": {
+      "slug": "pizzeria",
+      "nombre": "Pizzería",
+      "icono": "🍕",
+      "descripcion": "Pizzas y pasta con mesas",
+      "color": "#8B2418",
+      "colorDark": "#5a1610",
+      "colorLight": "#a83a2c",
+      "colorCream": "#fbe8c8",
+      "tipo": "mesas",
+      "tabs": [
+        "mesas",
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Pizza Margherita",
+          "precio": 120,
+          "emoji": "🍕",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Pizza Pepperoni",
+          "precio": 145,
+          "emoji": "🍕",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Pizza Hawaiana",
+          "precio": 135,
+          "emoji": "🍕",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Pasta Carbonara",
+          "precio": 95,
+          "emoji": "🍝",
+          "invId": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Refresco 500ml",
+          "precio": 20,
+          "emoji": "🥤",
+          "invId": 5,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Masa pizza",
+          "stock": 15,
+          "min": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Pepperoni",
+          "stock": 2,
+          "min": 1,
+          "unidad": "kg"
+        },
+        {
+          "id": 3,
+          "nombre": "Piña (lata)",
+          "stock": 10,
+          "min": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Pasta seca",
+          "stock": 0,
+          "min": 1,
+          "unidad": "kg"
+        },
+        {
+          "id": 5,
+          "nombre": "Refrescos",
+          "stock": 36,
+          "min": 12,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [
+        {
+          "id": 1,
+          "nombre": "Mesa 1",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 2,
+          "nombre": "Mesa 2",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 3,
+          "nombre": "Mesa 3",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 4,
+          "nombre": "Mesa 4",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 5,
+          "nombre": "Mesa 5",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 6,
+          "nombre": "Mesa 6",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 7,
+          "nombre": "Mesa 7",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 8,
+          "nombre": "Mesa 8",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 9,
+          "nombre": "Mesa 9",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 10,
+          "nombre": "Mesa 10",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 11,
+          "nombre": "Mesa 11",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 12,
+          "nombre": "Mesa 12",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        }
+      ],
+      "transacciones": [
+        {
+          "mesaId": 2,
+          "mesaNombre": "Mesa 2",
+          "total": 320,
+          "hora": "08:00 p. m.",
+          "fecha": "7/5/2026",
+          "ts": 1778205636531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 2, "nombre": "Pizza Pepperoni", "precio": 145, "qty": 1, "unidad": "u" },
+            { "id": 3, "nombre": "Pizza Hawaiana", "precio": 135, "qty": 1, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 2, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #5",
+          "total": 160,
+          "hora": "01:30 p. m.",
+          "fecha": "7/5/2026",
+          "ts": 1778182236531,
+          "detalle": "Ticket #5",
+          "orden": [
+            { "id": 1, "nombre": "Pizza Margherita", "precio": 120, "qty": 1, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #4",
+          "total": 285,
+          "hora": "11:13 p. m.",
+          "fecha": "6/5/2026",
+          "ts": 1778130800845,
+          "detalle": "Ticket #4",
+          "orden": [
+            { "id": 4, "nombre": "Pasta Carbonara", "precio": 95, "qty": 3, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 4,
+          "mesaNombre": "Mesa 4",
+          "total": 445,
+          "hora": "07:00 p. m.",
+          "fecha": "6/5/2026",
+          "ts": 1778115636531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 2, "nombre": "Pizza Pepperoni", "precio": 145, "qty": 2, "unidad": "u" },
+            { "id": 4, "nombre": "Pasta Carbonara", "precio": 95, "qty": 1, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 3, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 1,
+          "mesaNombre": "Mesa 1",
+          "total": 280,
+          "hora": "09:00 p. m.",
+          "fecha": "5/5/2026",
+          "ts": 1778036436531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 1, "nombre": "Pizza Margherita", "precio": 120, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 2, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #3",
+          "total": 210,
+          "hora": "12:00 p. m.",
+          "fecha": "5/5/2026",
+          "ts": 1778004036531,
+          "detalle": "Ticket #3",
+          "orden": [
+            { "id": 4, "nombre": "Pasta Carbonara", "precio": 95, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 3,
+          "mesaNombre": "Mesa 3",
+          "total": 415,
+          "hora": "08:00 p. m.",
+          "fecha": "4/5/2026",
+          "ts": 1777946436531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 2, "nombre": "Pizza Pepperoni", "precio": 145, "qty": 1, "unidad": "u" },
+            { "id": 3, "nombre": "Pizza Hawaiana", "precio": 135, "qty": 1, "unidad": "u" },
+            { "id": 4, "nombre": "Pasta Carbonara", "precio": 95, "qty": 1, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 2, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #2",
+          "total": 140,
+          "hora": "07:30 p. m.",
+          "fecha": "3/5/2026",
+          "ts": 1777858236531,
+          "detalle": "Ticket #2",
+          "orden": [
+            { "id": 1, "nombre": "Pizza Margherita", "precio": 120, "qty": 1, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 2,
+          "mesaNombre": "Mesa 2",
+          "total": 330,
+          "hora": "08:00 p. m.",
+          "fecha": "2/5/2026",
+          "ts": 1777773636531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 2, "nombre": "Pizza Pepperoni", "precio": 145, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 2, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 1,
+          "mesaNombre": "Mesa 1",
+          "total": 365,
+          "hora": "08:30 p. m.",
+          "fecha": "1/5/2026",
+          "ts": 1777689036531,
+          "detalle": "Cuenta completa",
+          "orden": [
+            { "id": 3, "nombre": "Pizza Hawaiana", "precio": 135, "qty": 1, "unidad": "u" },
+            { "id": 4, "nombre": "Pasta Carbonara", "precio": 95, "qty": 2, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 2, "unidad": "u" }
+          ]
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #1",
+          "total": 260,
+          "hora": "01:30 p. m.",
+          "fecha": "30/4/2026",
+          "ts": 1777577436531,
+          "detalle": "Ticket #1",
+          "orden": [
+            { "id": 2, "nombre": "Pizza Pepperoni", "precio": 145, "qty": 1, "unidad": "u" },
+            { "id": 4, "nombre": "Pasta Carbonara", "precio": 95, "qty": 1, "unidad": "u" },
+            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        }
+      ],
+      "ventas": {
+        "Pizza Margherita": 4,
+        "Pizza Pepperoni": 7,
+        "Pizza Hawaiana": 3,
+        "Pasta Carbonara": 10,
+        "Refresco 500ml": 18
+      },
+      "_nextMenuId": 6,
+      "_nextInvId": 6,
+      "_nextMesaId": 13
+    },
+    "pupuseria": {
+      "slug": "pupuseria",
+      "nombre": "Pupusería",
+      "icono": "🫓",
+      "descripcion": "Pupusas y comida típica con mesas",
+      "color": "#1F5F4A",
+      "colorDark": "#0e3a2c",
+      "colorLight": "#2e7a60",
+      "colorCream": "#fdf3d8",
+      "tipo": "mesas",
+      "tabs": [
+        "mesas",
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Pupusa de chicharrón",
+          "precio": 12,
+          "emoji": "🫓",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Pupusa de queso",
+          "precio": 10,
+          "emoji": "🫓",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Pupusa revuelta",
+          "precio": 14,
+          "emoji": "🫓",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Atol de elote",
+          "precio": 15,
+          "emoji": "🥛",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Horchata",
+          "precio": 12,
+          "emoji": "🥛",
+          "invId": 3,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Masa de maíz",
+          "stock": 10,
+          "min": 3,
+          "unidad": "kg"
+        },
+        {
+          "id": 2,
+          "nombre": "Elote dulce",
+          "stock": 20,
+          "min": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Horchata",
+          "stock": 8,
+          "min": 2,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [
+        {
+          "id": 1,
+          "nombre": "Mesa 1",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 2,
+          "nombre": "Mesa 2",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 3,
+          "nombre": "Mesa 3",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 4,
+          "nombre": "Mesa 4",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 5,
+          "nombre": "Mesa 5",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 6,
+          "nombre": "Mesa 6",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 7,
+          "nombre": "Mesa 7",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 8,
+          "nombre": "Mesa 8",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        }
+      ],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 6,
+      "_nextInvId": 4,
+      "_nextMesaId": 9
+    },
+    "marisqueria": {
+      "slug": "marisqueria",
+      "nombre": "Marisquería",
+      "icono": "🦐",
+      "descripcion": "Mariscos frescos con mesas",
+      "color": "#1F4A6B",
+      "colorDark": "#0e2a40",
+      "colorLight": "#2e6090",
+      "colorCream": "#f0eddc",
+      "tipo": "mesas",
+      "tabs": [
+        "mesas",
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Cóctel de camarón",
+          "precio": 95,
+          "emoji": "🦐",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Ceviche mixto",
+          "precio": 110,
+          "emoji": "🐟",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Camarón al ajillo",
+          "precio": 130,
+          "emoji": "🦐",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Filete de pescado",
+          "precio": 120,
+          "emoji": "🐟",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Cerveza",
+          "precio": 30,
+          "emoji": "🍺",
+          "invId": 3,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Camarón fresco",
+          "stock": 2,
+          "min": 1,
+          "unidad": "kg"
+        },
+        {
+          "id": 2,
+          "nombre": "Filete pescado",
+          "stock": 3,
+          "min": 1,
+          "unidad": "kg"
+        },
+        {
+          "id": 3,
+          "nombre": "Cervezas",
+          "stock": 24,
+          "min": 6,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [
+        {
+          "id": 1,
+          "nombre": "Mesa 1",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 2,
+          "nombre": "Mesa 2",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 3,
+          "nombre": "Mesa 3",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 4,
+          "nombre": "Mesa 4",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 5,
+          "nombre": "Mesa 5",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 6,
+          "nombre": "Mesa 6",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 7,
+          "nombre": "Mesa 7",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 8,
+          "nombre": "Mesa 8",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 9,
+          "nombre": "Mesa 9",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 10,
+          "nombre": "Mesa 10",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        }
+      ],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 6,
+      "_nextInvId": 4,
+      "_nextMesaId": 11
+    },
+    "creperia": {
+      "slug": "creperia",
+      "nombre": "Crepería",
+      "icono": "🥞",
+      "descripcion": "Crepas dulces y saladas con mesas",
+      "color": "#7A4F1F",
+      "colorDark": "#4a3012",
+      "colorLight": "#9a6a35",
+      "colorCream": "#fff5d8",
+      "tipo": "mesas",
+      "tabs": [
+        "mesas",
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Crepa Nutella",
+          "precio": 55,
+          "emoji": "🥞",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Crepa jamón queso",
+          "precio": 60,
+          "emoji": "🥞",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Crepa frutas",
+          "precio": 65,
+          "emoji": "🍓",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Jugo natural",
+          "precio": 25,
+          "emoji": "🥤",
+          "invId": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Batido fresa",
+          "precio": 40,
+          "emoji": "🥤",
+          "invId": 5,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Nutella",
+          "stock": 5,
+          "min": 1,
+          "unidad": "kg"
+        },
+        {
+          "id": 2,
+          "nombre": "Jamón/queso",
+          "stock": 2,
+          "min": 1,
+          "unidad": "kg"
+        },
+        {
+          "id": 3,
+          "nombre": "Mix frutas",
+          "stock": 3,
+          "min": 1,
+          "unidad": "kg"
+        },
+        {
+          "id": 4,
+          "nombre": "Jugos",
+          "stock": 12,
+          "min": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Fresa congelada",
+          "stock": 2,
+          "min": 1,
+          "unidad": "kg"
+        }
+      ],
+      "mesas": [
+        {
+          "id": 1,
+          "nombre": "Mesa 1",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 2,
+          "nombre": "Mesa 2",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 3,
+          "nombre": "Mesa 3",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 4,
+          "nombre": "Mesa 4",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 5,
+          "nombre": "Mesa 5",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 6,
+          "nombre": "Mesa 6",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 7,
+          "nombre": "Mesa 7",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        },
+        {
+          "id": 8,
+          "nombre": "Mesa 8",
+          "estado": "libre",
+          "orden": [],
+          "personas": 2,
+          "cobrado": 0
+        }
+      ],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 6,
+      "_nextInvId": 6,
+      "_nextMesaId": 9
+    },
+    "heladeria": {
+      "slug": "heladeria",
+      "nombre": "Heladería",
+      "icono": "🍦",
+      "descripcion": "Helados y paletas para llevar",
+      "color": "#A8508A",
+      "colorDark": "#6b2f5a",
+      "colorLight": "#c070a8",
+      "colorCream": "#fbeaf2",
+      "tipo": "mostrador",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Bola de helado",
+          "precio": 18,
+          "emoji": "🍦",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Copa 2 bolas",
+          "precio": 30,
+          "emoji": "🍨",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Paleta cremosa",
+          "precio": 20,
+          "emoji": "🍡",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Malteada",
+          "precio": 45,
+          "emoji": "🥤",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Sundae",
+          "precio": 55,
+          "emoji": "🍧",
+          "invId": 1,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Helado (litro)",
+          "stock": 15,
+          "min": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Paletas",
+          "stock": 40,
+          "min": 10,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Leche (litro)",
+          "stock": 8,
+          "min": 2,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #7",
+          "total": 80,
+          "hora": "03:00 p. m.",
+          "fecha": "7/5/2026",
+          "ts": 1778187636531,
+          "detalle": "Ticket #7",
+          "orden": [
+            { "id": 2, "nombre": "Copa 2 bolas", "precio": 30, "qty": 2, "unidad": "u" },
+            { "id": 3, "nombre": "Paleta cremosa", "precio": 20, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #6",
+          "total": 81,
+          "hora": "04:30 p. m.",
+          "fecha": "6/5/2026",
+          "ts": 1778106636531,
+          "detalle": "Ticket #6",
+          "orden": [
+            { "id": 4, "nombre": "Malteada", "precio": 45, "qty": 1, "unidad": "u" },
+            { "id": 1, "nombre": "Bola de helado", "precio": 18, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #5",
+          "total": 85,
+          "hora": "02:00 p. m.",
+          "fecha": "5/5/2026",
+          "ts": 1778011236531,
+          "detalle": "Ticket #5",
+          "orden": [
+            { "id": 5, "nombre": "Sundae", "precio": 55, "qty": 1, "unidad": "u" },
+            { "id": 2, "nombre": "Copa 2 bolas", "precio": 30, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #4",
+          "total": 94,
+          "hora": "05:00 p. m.",
+          "fecha": "4/5/2026",
+          "ts": 1777935636531,
+          "detalle": "Ticket #4",
+          "orden": [
+            { "id": 1, "nombre": "Bola de helado", "precio": 18, "qty": 3, "unidad": "u" },
+            { "id": 3, "nombre": "Paleta cremosa", "precio": 20, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #3",
+          "total": 105,
+          "hora": "03:30 p. m.",
+          "fecha": "3/5/2026",
+          "ts": 1777843836531,
+          "detalle": "Ticket #3",
+          "orden": [
+            { "id": 2, "nombre": "Copa 2 bolas", "precio": 30, "qty": 2, "unidad": "u" },
+            { "id": 4, "nombre": "Malteada", "precio": 45, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #2",
+          "total": 110,
+          "hora": "04:00 p. m.",
+          "fecha": "1/5/2026",
+          "ts": 1777672836531,
+          "detalle": "Ticket #2",
+          "orden": [
+            { "id": 5, "nombre": "Sundae", "precio": 55, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #1",
+          "total": 88,
+          "hora": "12:30 p. m.",
+          "fecha": "28/4/2026",
+          "ts": 1777401036531,
+          "detalle": "Ticket #1",
+          "orden": [
+            { "id": 2, "nombre": "Copa 2 bolas", "precio": 30, "qty": 1, "unidad": "u" },
+            { "id": 3, "nombre": "Paleta cremosa", "precio": 20, "qty": 2, "unidad": "u" },
+            { "id": 1, "nombre": "Bola de helado", "precio": 18, "qty": 1, "unidad": "u" }
+          ],
+          "mostrador": true
+        }
+      ],
+      "ventas": {
+        "Bola de helado": 6,
+        "Copa 2 bolas": 6,
+        "Paleta cremosa": 5,
+        "Malteada": 2,
+        "Sundae": 3
+      },
+      "_nextMenuId": 6,
+      "_nextInvId": 4,
+      "_nextMesaId": 1
+    },
+    "dulceria": {
+      "slug": "dulceria",
+      "nombre": "Dulcería",
+      "icono": "🍬",
+      "descripcion": "Dulces, chocolates y golosinas",
+      "color": "#C4445A",
+      "colorDark": "#7a2a3a",
+      "colorLight": "#d86070",
+      "colorCream": "#fde8ee",
+      "tipo": "mostrador",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Dulce de tamarindo",
+          "precio": 5,
+          "emoji": "🍬",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Chocolate relleno",
+          "precio": 12,
+          "emoji": "🍫",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Gomitas surtidas",
+          "precio": 8,
+          "emoji": "🍡",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Paleta de mango",
+          "precio": 10,
+          "emoji": "🍭",
+          "invId": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Bolsa mix (100g)",
+          "precio": 20,
+          "emoji": "🛍️",
+          "invId": 5,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Tamarindos",
+          "stock": 100,
+          "min": 20,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Chocolates",
+          "stock": 50,
+          "min": 10,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Gomitas (kg)",
+          "stock": 5,
+          "min": 1,
+          "unidad": "kg"
+        },
+        {
+          "id": 4,
+          "nombre": "Paletas mango",
+          "stock": 60,
+          "min": 15,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Surtido dulces",
+          "stock": 3,
+          "min": 1,
+          "unidad": "kg"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 6,
+      "_nextInvId": 6,
+      "_nextMesaId": 1
+    },
+    "panaderia": {
+      "slug": "panaderia",
+      "nombre": "Panadería",
+      "icono": "🥖",
+      "descripcion": "Pan artesanal, pasteles y repostería",
+      "color": "#6B4423",
+      "colorDark": "#42290f",
+      "colorLight": "#8a5c35",
+      "colorCream": "#fcedd0",
+      "tipo": "mostrador",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Baguette",
+          "precio": 15,
+          "emoji": "🥖",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Pan dulce (pieza)",
+          "precio": 5,
+          "emoji": "🥐",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Cuernito",
+          "precio": 10,
+          "emoji": "🥐",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Pastel chocolate",
+          "precio": 80,
+          "emoji": "🎂",
+          "invId": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Galletas (bolsa)",
+          "precio": 20,
+          "emoji": "🍪",
+          "invId": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Rosca de reyes",
+          "precio": 120,
+          "emoji": "🍩",
+          "invId": 6,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Baguettes",
+          "stock": 20,
+          "min": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Pan dulce",
+          "stock": 60,
+          "min": 15,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Cuernitos",
+          "stock": 30,
+          "min": 8,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Pasteles",
+          "stock": 5,
+          "min": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Galletas bolsa",
+          "stock": 25,
+          "min": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Roscas",
+          "stock": 4,
+          "min": 1,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #8",
+          "total": 70,
+          "hora": "09:00 a. m.",
+          "fecha": "7/5/2026",
+          "ts": 1778166036531,
+          "detalle": "Ticket #8",
+          "orden": [
+            { "id": 1, "nombre": "Baguette", "precio": 15, "qty": 2, "unidad": "u" },
+            { "id": 2, "nombre": "Pan dulce (pieza)", "precio": 5, "qty": 4, "unidad": "u" },
+            { "id": 3, "nombre": "Cuernito", "precio": 10, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #7",
+          "total": 120,
+          "hora": "10:00 a. m.",
+          "fecha": "6/5/2026",
+          "ts": 1778083236531,
+          "detalle": "Ticket #7",
+          "orden": [
+            { "id": 4, "nombre": "Pastel chocolate", "precio": 80, "qty": 1, "unidad": "u" },
+            { "id": 5, "nombre": "Galletas (bolsa)", "precio": 20, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #6",
+          "total": 85,
+          "hora": "08:30 a. m.",
+          "fecha": "5/5/2026",
+          "ts": 1777991536531,
+          "detalle": "Ticket #6",
+          "orden": [
+            { "id": 1, "nombre": "Baguette", "precio": 15, "qty": 3, "unidad": "u" },
+            { "id": 3, "nombre": "Cuernito", "precio": 10, "qty": 4, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #5",
+          "total": 60,
+          "hora": "09:30 a. m.",
+          "fecha": "4/5/2026",
+          "ts": 1777908636531,
+          "detalle": "Ticket #5",
+          "orden": [
+            { "id": 2, "nombre": "Pan dulce (pieza)", "precio": 5, "qty": 6, "unidad": "u" },
+            { "id": 3, "nombre": "Cuernito", "precio": 10, "qty": 3, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #4",
+          "total": 150,
+          "hora": "11:00 a. m.",
+          "fecha": "3/5/2026",
+          "ts": 1777827636531,
+          "detalle": "Ticket #4",
+          "orden": [
+            { "id": 6, "nombre": "Rosca de reyes", "precio": 120, "qty": 1, "unidad": "u" },
+            { "id": 1, "nombre": "Baguette", "precio": 15, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #3",
+          "total": 115,
+          "hora": "09:00 a. m.",
+          "fecha": "2/5/2026",
+          "ts": 1777734096531,
+          "detalle": "Ticket #3",
+          "orden": [
+            { "id": 4, "nombre": "Pastel chocolate", "precio": 80, "qty": 1, "unidad": "u" },
+            { "id": 5, "nombre": "Galletas (bolsa)", "precio": 20, "qty": 1, "unidad": "u" },
+            { "id": 2, "nombre": "Pan dulce (pieza)", "precio": 5, "qty": 3, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #2",
+          "total": 80,
+          "hora": "08:00 a. m.",
+          "fecha": "1/5/2026",
+          "ts": 1777644036531,
+          "detalle": "Ticket #2",
+          "orden": [
+            { "id": 1, "nombre": "Baguette", "precio": 15, "qty": 4, "unidad": "u" },
+            { "id": 3, "nombre": "Cuernito", "precio": 10, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #1",
+          "total": 85,
+          "hora": "10:00 a. m.",
+          "fecha": "30/4/2026",
+          "ts": 1777564836531,
+          "detalle": "Ticket #1",
+          "orden": [
+            { "id": 5, "nombre": "Galletas (bolsa)", "precio": 20, "qty": 2, "unidad": "u" },
+            { "id": 2, "nombre": "Pan dulce (pieza)", "precio": 5, "qty": 5, "unidad": "u" },
+            { "id": 3, "nombre": "Cuernito", "precio": 10, "qty": 2, "unidad": "u" }
+          ],
+          "mostrador": true
+        }
+      ],
+      "ventas": {
+        "Baguette": 11,
+        "Pan dulce (pieza)": 18,
+        "Cuernito": 13,
+        "Pastel chocolate": 2,
+        "Galletas (bolsa)": 5,
+        "Rosca de reyes": 1
+      },
+      "_nextMenuId": 7,
+      "_nextInvId": 7,
+      "_nextMesaId": 1
+    },
+    "libreria": {
+      "slug": "libreria",
+      "nombre": "Librería",
+      "icono": "📚",
+      "descripcion": "Libros, útiles y papelería fina",
+      "color": "#284B6E",
+      "colorDark": "#152d44",
+      "colorLight": "#3a6090",
+      "colorCream": "#f0e8d8",
+      "tipo": "mostrador",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Cuaderno universitario",
+          "precio": 25,
+          "emoji": "📓",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Bolígrafo azul",
+          "precio": 5,
+          "emoji": "🖊️",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Lápiz HB",
+          "precio": 3,
+          "emoji": "✏️",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Block de hojas",
+          "precio": 15,
+          "emoji": "📄",
+          "invId": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Pegamento",
+          "precio": 12,
+          "emoji": "🔑",
+          "invId": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Mochila básica",
+          "precio": 150,
+          "emoji": "🎒",
+          "invId": 6,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Cuadernos univ.",
+          "stock": 40,
+          "min": 10,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Bolígrafos",
+          "stock": 100,
+          "min": 20,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Lápices",
+          "stock": 80,
+          "min": 20,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Blocks hojas",
+          "stock": 25,
+          "min": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Pegamentos",
+          "stock": 30,
+          "min": 8,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Mochilas",
+          "stock": 10,
+          "min": 3,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 7,
+      "_nextInvId": 7,
+      "_nextMesaId": 1
+    },
+    "floreria": {
+      "slug": "floreria",
+      "nombre": "Florería",
+      "icono": "🌷",
+      "descripcion": "Flores naturales y arreglos florales",
+      "color": "#7A3A60",
+      "colorDark": "#4a2038",
+      "colorLight": "#9a5080",
+      "colorCream": "#fbecf2",
+      "tipo": "mostrador",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Ramo de rosas (12)",
+          "precio": 150,
+          "emoji": "🌹",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Girasoles (5)",
+          "precio": 80,
+          "emoji": "🌻",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Arreglo especial",
+          "precio": 250,
+          "emoji": "💐",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Orquídea en maceta",
+          "precio": 180,
+          "emoji": "🌸",
+          "invId": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Tulipanes (6)",
+          "precio": 120,
+          "emoji": "🌷",
+          "invId": 5,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Rosas rojas",
+          "stock": 60,
+          "min": 12,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Girasoles",
+          "stock": 30,
+          "min": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Mix flores",
+          "stock": 5,
+          "min": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Orquídeas",
+          "stock": 8,
+          "min": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Tulipanes",
+          "stock": 36,
+          "min": 6,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 6,
+      "_nextInvId": 6,
+      "_nextMesaId": 1
+    },
+    "boutique": {
+      "slug": "boutique",
+      "nombre": "Boutique ropa",
+      "icono": "👗",
+      "descripcion": "Ropa y accesorios de moda",
+      "color": "#2A2F4A",
+      "colorDark": "#15192d",
+      "colorLight": "#404868",
+      "colorCream": "#f5ecd8",
+      "tipo": "mostrador",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Blusa casual",
+          "precio": 180,
+          "emoji": "👚",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Pantalón jeans",
+          "precio": 320,
+          "emoji": "👖",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Vestido floral",
+          "precio": 280,
+          "emoji": "👗",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Cinturón cuero",
+          "precio": 95,
+          "emoji": "👜",
+          "invId": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Bufanda",
+          "precio": 75,
+          "emoji": "🧣",
+          "invId": 5,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Blusas casual",
+          "stock": 20,
+          "min": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Pantalones",
+          "stock": 15,
+          "min": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Vestidos",
+          "stock": 12,
+          "min": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Cinturones",
+          "stock": 10,
+          "min": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Bufandas",
+          "stock": 15,
+          "min": 3,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 6,
+      "_nextInvId": 6,
+      "_nextMesaId": 1
+    },
+    "papeleria": {
+      "slug": "papeleria",
+      "nombre": "Papelería",
+      "icono": "✏️",
+      "descripcion": "Útiles escolares e impresiones",
+      "color": "#3A6E5C",
+      "colorDark": "#1f4234",
+      "colorLight": "#508c78",
+      "colorCream": "#fbf6e0",
+      "tipo": "mostrador",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Fotocopia (c/u)",
+          "precio": 0.5,
+          "emoji": "📄",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Impresión color",
+          "precio": 3,
+          "emoji": "🖨️",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Folder Manila",
+          "precio": 5,
+          "emoji": "📁",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Caja crayones 24",
+          "precio": 30,
+          "emoji": "🖍️",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Regla 30cm",
+          "precio": 8,
+          "emoji": "📏",
+          "invId": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Tijeras",
+          "precio": 15,
+          "emoji": "✂️",
+          "invId": 5,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Papel bond (resma)",
+          "stock": 10,
+          "min": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Folders manila",
+          "stock": 50,
+          "min": 10,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Crayones 24",
+          "stock": 20,
+          "min": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Reglas 30cm",
+          "stock": 30,
+          "min": 8,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Tijeras",
+          "stock": 15,
+          "min": 4,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 7,
+      "_nextInvId": 6,
+      "_nextMesaId": 1
+    },
+    "farmacia": {
+      "slug": "farmacia",
+      "nombre": "Farmacia",
+      "icono": "💊",
+      "descripcion": "Medicamentos y artículos de salud",
+      "color": "#1F6E5A",
+      "colorDark": "#0e4234",
+      "colorLight": "#2e8c70",
+      "colorCream": "#eaf4f0",
+      "tipo": "mostrador",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Paracetamol 500mg (cja)",
+          "precio": 25,
+          "emoji": "💊",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Ibuprofeno 400mg (cja)",
+          "precio": 30,
+          "emoji": "💊",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Alcohol 250ml",
+          "precio": 15,
+          "emoji": "🧴",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Curitas (caja)",
+          "precio": 20,
+          "emoji": "🩹",
+          "invId": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Termómetro digital",
+          "precio": 80,
+          "emoji": "🌡️",
+          "invId": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Vitamina C (30 tabs)",
+          "precio": 35,
+          "emoji": "🍊",
+          "invId": 6,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Paracetamol 500mg",
+          "stock": 30,
+          "min": 8,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Ibuprofeno 400mg",
+          "stock": 25,
+          "min": 6,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Alcohol 250ml",
+          "stock": 20,
+          "min": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Curitas (caja)",
+          "stock": 15,
+          "min": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Termómetros",
+          "stock": 8,
+          "min": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Vitamina C",
+          "stock": 20,
+          "min": 5,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 7,
+      "_nextInvId": 7,
+      "_nextMesaId": 1
+    },
+    "abarrotes": {
+      "slug": "abarrotes",
+      "nombre": "Tienda abarrotes",
+      "icono": "🛒",
+      "descripcion": "Abarrotes, granos y productos básicos",
+      "color": "#8B5A2B",
+      "colorDark": "#5a3818",
+      "colorLight": "#a87040",
+      "colorCream": "#fdeed0",
+      "tipo": "mostrador",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Arroz (lb)",
+          "precio": 4,
+          "emoji": "🍚",
+          "invId": 1,
+          "unidad": "lb"
+        },
+        {
+          "id": 2,
+          "nombre": "Frijol negro (lb)",
+          "precio": 5,
+          "emoji": "🫘",
+          "invId": 2,
+          "unidad": "lb"
+        },
+        {
+          "id": 3,
+          "nombre": "Aceite 1L",
+          "precio": 35,
+          "emoji": "🫙",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Azúcar (lb)",
+          "precio": 3,
+          "emoji": "🍬",
+          "invId": 4,
+          "unidad": "lb"
+        },
+        {
+          "id": 5,
+          "nombre": "Sal (lb)",
+          "precio": 2,
+          "emoji": "🧂",
+          "invId": 5,
+          "unidad": "lb"
+        },
+        {
+          "id": 6,
+          "nombre": "Fideos (bolsa)",
+          "precio": 8,
+          "emoji": "🍜",
+          "invId": 6,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Arroz",
+          "stock": 50,
+          "min": 10,
+          "unidad": "lb"
+        },
+        {
+          "id": 2,
+          "nombre": "Frijol",
+          "stock": 40,
+          "min": 8,
+          "unidad": "lb"
+        },
+        {
+          "id": 3,
+          "nombre": "Aceite 1L",
+          "stock": 15,
+          "min": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Azúcar",
+          "stock": 60,
+          "min": 15,
+          "unidad": "lb"
+        },
+        {
+          "id": 5,
+          "nombre": "Sal",
+          "stock": 30,
+          "min": 8,
+          "unidad": "lb"
+        },
+        {
+          "id": 6,
+          "nombre": "Fideos",
+          "stock": 24,
+          "min": 6,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 7,
+      "_nextInvId": 7,
+      "_nextMesaId": 1
+    },
+    "minimarket": {
+      "slug": "minimarket",
+      "nombre": "Mini market",
+      "icono": "🏪",
+      "descripcion": "Conveniencia rápida todo el día",
+      "color": "#2C5F8B",
+      "colorDark": "#163a5a",
+      "colorLight": "#4078aa",
+      "colorCream": "#f0eedd",
+      "tipo": "mostrador",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Refresco 600ml",
+          "precio": 18,
+          "emoji": "🥤",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Agua 1.5L",
+          "precio": 12,
+          "emoji": "💧",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Pan tajado",
+          "precio": 22,
+          "emoji": "🍞",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Papas fritas",
+          "precio": 15,
+          "emoji": "🥔",
+          "invId": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Chocolate 40g",
+          "precio": 10,
+          "emoji": "🍫",
+          "invId": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Leche 1L",
+          "precio": 25,
+          "emoji": "🥛",
+          "invId": 6,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Refrescos 600ml",
+          "stock": 48,
+          "min": 12,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Agua 1.5L",
+          "stock": 24,
+          "min": 6,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Pan tajado",
+          "stock": 10,
+          "min": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Papas fritas",
+          "stock": 30,
+          "min": 8,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Chocolates",
+          "stock": 40,
+          "min": 10,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Leche 1L",
+          "stock": 15,
+          "min": 4,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 7,
+      "_nextInvId": 7,
+      "_nextMesaId": 1
+    },
+    "ferreteria": {
+      "slug": "ferreteria",
+      "nombre": "Ferretería",
+      "icono": "🔧",
+      "descripcion": "Materiales, herramientas y suministros",
+      "color": "#5A4A38",
+      "colorDark": "#2f261c",
+      "colorLight": "#786050",
+      "colorCream": "#f5e8c8",
+      "tipo": "mostrador",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Martillo",
+          "precio": 80,
+          "emoji": "🔨",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Tornillos (bolsa)",
+          "precio": 25,
+          "emoji": "🔩",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Cinta aislante",
+          "precio": 15,
+          "emoji": "🖊️",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Foco LED 9W",
+          "precio": 40,
+          "emoji": "💡",
+          "invId": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Brocas (juego)",
+          "precio": 90,
+          "emoji": "🔧",
+          "invId": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Pintura 1 galón",
+          "precio": 180,
+          "emoji": "🪣",
+          "invId": 6,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Martillos",
+          "stock": 8,
+          "min": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Tornillos (bolsas)",
+          "stock": 20,
+          "min": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Cinta aislante",
+          "stock": 25,
+          "min": 6,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Focos LED 9W",
+          "stock": 30,
+          "min": 8,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Brocas (juego)",
+          "stock": 10,
+          "min": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Pintura galón",
+          "stock": 12,
+          "min": 3,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 7,
+      "_nextInvId": 7,
+      "_nextMesaId": 1
+    },
+    "polleria": {
+      "slug": "polleria",
+      "nombre": "Pollería",
+      "icono": "🍗",
+      "descripcion": "Pollo al carbón y piezas por unidad",
+      "color": "#A85A1F",
+      "colorDark": "#6b3812",
+      "colorLight": "#c87030",
+      "colorCream": "#fdf0d8",
+      "tipo": "mostrador",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Pollo entero asado",
+          "precio": 120,
+          "emoji": "🍗",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Medio pollo",
+          "precio": 65,
+          "emoji": "🍗",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Cuarto de pollo",
+          "precio": 35,
+          "emoji": "🍗",
+          "invId": 1,
+          "unidad": "u"
+        },
+        {
+          "id": 4,
+          "nombre": "Pechuga fileteada",
+          "precio": 45,
+          "emoji": "🍖",
+          "invId": 2,
+          "unidad": "u"
+        },
+        {
+          "id": 5,
+          "nombre": "Tortillas (3 uds)",
+          "precio": 10,
+          "emoji": "🫓",
+          "invId": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Refresco",
+          "precio": 15,
+          "emoji": "🥤",
+          "invId": 4,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Pollos enteros",
+          "stock": 15,
+          "min": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 2,
+          "nombre": "Pechugas",
+          "stock": 10,
+          "min": 3,
+          "unidad": "u"
+        },
+        {
+          "id": 3,
+          "nombre": "Tortillas",
+          "stock": 8,
+          "min": 2,
+          "unidad": "paquete"
+        },
+        {
+          "id": 4,
+          "nombre": "Refrescos",
+          "stock": 24,
+          "min": 6,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 7,
+      "_nextInvId": 5,
+      "_nextMesaId": 1
+    },
+    "carniceria": {
+      "slug": "carniceria",
+      "nombre": "Carnicería",
+      "icono": "🥩",
+      "descripcion": "Venta de carnes por libra y corte",
+      "color": "#7A1515",
+      "colorDark": "#4a0a0a",
+      "colorLight": "#a83a2c",
+      "colorCream": "#fdf3e8",
+      "tipo": "peso",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Lomo de res",
+          "precio": 35,
+          "emoji": "🥩",
+          "invId": 1,
+          "unidad": "lb"
+        },
+        {
+          "id": 2,
+          "nombre": "Bistec de res",
+          "precio": 30,
+          "emoji": "🥩",
+          "invId": 2,
+          "unidad": "lb"
+        },
+        {
+          "id": 3,
+          "nombre": "Costilla de cerdo",
+          "precio": 28,
+          "emoji": "🍖",
+          "invId": 3,
+          "unidad": "lb"
+        },
+        {
+          "id": 4,
+          "nombre": "Pechuga de pollo",
+          "precio": 18,
+          "emoji": "🍗",
+          "invId": 4,
+          "unidad": "lb"
+        },
+        {
+          "id": 5,
+          "nombre": "Chorizo",
+          "precio": 22,
+          "emoji": "🌭",
+          "invId": 5,
+          "unidad": "lb"
+        },
+        {
+          "id": 6,
+          "nombre": "Res molida",
+          "precio": 25,
+          "emoji": "🥩",
+          "invId": 6,
+          "unidad": "lb"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Lomo de res",
+          "stock": 20,
+          "min": 5,
+          "unidad": "lb"
+        },
+        {
+          "id": 2,
+          "nombre": "Bistec de res",
+          "stock": 15,
+          "min": 4,
+          "unidad": "lb"
+        },
+        {
+          "id": 3,
+          "nombre": "Costilla cerdo",
+          "stock": 18,
+          "min": 4,
+          "unidad": "lb"
+        },
+        {
+          "id": 4,
+          "nombre": "Pechuga pollo",
+          "stock": 25,
+          "min": 6,
+          "unidad": "lb"
+        },
+        {
+          "id": 5,
+          "nombre": "Chorizo",
+          "stock": 10,
+          "min": 2,
+          "unidad": "lb"
+        },
+        {
+          "id": 6,
+          "nombre": "Res molida",
+          "stock": 12,
+          "min": 3,
+          "unidad": "lb"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 7,
+      "_nextInvId": 7,
+      "_nextMesaId": 1
+    },
+    "verduleria": {
+      "slug": "verduleria",
+      "nombre": "Verdulería",
+      "icono": "🥬",
+      "descripcion": "Frutas y verduras por libra o unidad",
+      "color": "#2D5016",
+      "colorDark": "#1a3009",
+      "colorLight": "#426824",
+      "colorCream": "#f0e8c8",
+      "tipo": "peso",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Tomate",
+          "precio": 4,
+          "emoji": "🍅",
+          "invId": 1,
+          "unidad": "lb"
+        },
+        {
+          "id": 2,
+          "nombre": "Cebolla",
+          "precio": 3,
+          "emoji": "🧅",
+          "invId": 2,
+          "unidad": "lb"
+        },
+        {
+          "id": 3,
+          "nombre": "Papa",
+          "precio": 2.5,
+          "emoji": "🥔",
+          "invId": 3,
+          "unidad": "lb"
+        },
+        {
+          "id": 4,
+          "nombre": "Zanahoria",
+          "precio": 3,
+          "emoji": "🥕",
+          "invId": 4,
+          "unidad": "lb"
+        },
+        {
+          "id": 5,
+          "nombre": "Lechuga",
+          "precio": 8,
+          "emoji": "🥬",
+          "invId": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Aguacate",
+          "precio": 12,
+          "emoji": "🥑",
+          "invId": 6,
+          "unidad": "u"
+        },
+        {
+          "id": 7,
+          "nombre": "Limón",
+          "precio": 10,
+          "emoji": "🍋",
+          "invId": 7,
+          "unidad": "docena"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Tomate",
+          "stock": 18,
+          "min": 8,
+          "unidad": "lb"
+        },
+        {
+          "id": 2,
+          "nombre": "Cebolla",
+          "stock": 30,
+          "min": 6,
+          "unidad": "lb"
+        },
+        {
+          "id": 3,
+          "nombre": "Papa",
+          "stock": 50,
+          "min": 12,
+          "unidad": "lb"
+        },
+        {
+          "id": 4,
+          "nombre": "Zanahoria",
+          "stock": 20,
+          "min": 5,
+          "unidad": "lb"
+        },
+        {
+          "id": 5,
+          "nombre": "Lechuga",
+          "stock": 15,
+          "min": 4,
+          "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "Aguacate",
+          "stock": 14,
+          "min": 5,
+          "unidad": "u"
+        },
+        {
+          "id": 7,
+          "nombre": "Limón",
+          "stock": 10,
+          "min": 2,
+          "unidad": "docena"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #2",
+          "total": 105,
+          "hora": "05:48 p. m.",
+          "fecha": "6/5/2026",
+          "ts": 1778111338005,
+          "detalle": "Ticket #1",
+          "orden": [
+            {
+              "id": 1,
+              "nombre": "Tomate",
+              "precio": 4,
+              "qty": 6,
+              "unidad": "lb",
+              "_pesoLine": true
+            },
+            {
+              "id": 2,
+              "nombre": "Cebolla",
+              "precio": 3,
+              "qty": 15,
+              "unidad": "lb",
+              "_pesoLine": true
+            },
+            {
+              "id": 6,
+              "nombre": "Aguacate",
+              "precio": 12,
+              "qty": 3,
+              "unidad": "u",
+              "_pesoLine": true
+            }
+          ],
+          "mostrador": true
+        },
+        {
+          "mesaId": 0,
+          "mesaNombre": "Mostrador · Ticket #1",
+          "total": 105,
+          "hora": "05:48 p. m.",
+          "fecha": "6/5/2026",
+          "ts": 1778111337971,
+          "detalle": "Ticket #1",
+          "orden": [
+            {
+              "id": 1,
+              "nombre": "Tomate",
+              "precio": 4,
+              "qty": 6,
+              "unidad": "lb",
+              "_pesoLine": true
+            },
+            {
+              "id": 2,
+              "nombre": "Cebolla",
+              "precio": 3,
+              "qty": 15,
+              "unidad": "lb",
+              "_pesoLine": true
+            },
+            {
+              "id": 6,
+              "nombre": "Aguacate",
+              "precio": 12,
+              "qty": 3,
+              "unidad": "u",
+              "_pesoLine": true
+            }
+          ],
+          "mostrador": true
+        }
+      ],
+      "ventas": {
+        "Tomate": 12,
+        "Cebolla": 30,
+        "Aguacate": 6
+      },
+      "_nextMenuId": 8,
+      "_nextInvId": 8,
+      "_nextMesaId": 1
+    },
+    "tortilleria": {
+      "slug": "tortilleria",
+      "nombre": "Tortillería",
+      "icono": "🌽",
+      "descripcion": "Tortillas y masa al peso",
+      "color": "#A07A15",
+      "colorDark": "#6b4f0a",
+      "colorLight": "#c09030",
+      "colorCream": "#fdf5d0",
+      "tipo": "peso",
+      "tabs": [
+        "mostrador",
+        "caja",
+        "inventario",
+        "menu",
+        "reportes",
+        "admin"
+      ],
+      "menu": [
+        {
+          "id": 1,
+          "nombre": "Tortilla de maíz",
+          "precio": 5,
+          "emoji": "🫓",
+          "invId": 1,
+          "unidad": "docena"
+        },
+        {
+          "id": 2,
+          "nombre": "Tortilla de harina",
+          "precio": 8,
+          "emoji": "🫓",
+          "invId": 2,
+          "unidad": "docena"
+        },
+        {
+          "id": 3,
+          "nombre": "Masa preparada",
+          "precio": 4,
+          "emoji": "🌽",
+          "invId": 3,
+          "unidad": "lb"
+        },
+        {
+          "id": 4,
+          "nombre": "Tamales (c/u)",
+          "precio": 15,
+          "emoji": "🫔",
+          "invId": 4,
+          "unidad": "u"
+        }
+      ],
+      "inventario": [
+        {
+          "id": 1,
+          "nombre": "Tortilla maíz",
+          "stock": 20,
+          "min": 5,
+          "unidad": "docena"
+        },
+        {
+          "id": 2,
+          "nombre": "Tortilla harina",
+          "stock": 15,
+          "min": 4,
+          "unidad": "docena"
+        },
+        {
+          "id": 3,
+          "nombre": "Masa (lb)",
+          "stock": 40,
+          "min": 10,
+          "unidad": "lb"
+        },
+        {
+          "id": 4,
+          "nombre": "Tamales",
+          "stock": 30,
+          "min": 8,
+          "unidad": "u"
+        }
+      ],
+      "mesas": [],
+      "transacciones": [],
+      "ventas": {},
+      "_nextMenuId": 5,
+      "_nextInvId": 5,
+      "_nextMesaId": 1
+    }
+  }
+}
