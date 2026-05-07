@@ -1,0 +1,240 @@
+/* seeds/themes.css — Paletas por rubro para la Demo Version
+   Funciona sobreescribiendo las CSS vars del template según body[data-rubro]
+   El resto del CSS (que consume --brand-green*, --brand-cream*) no necesita cambios. */
+
+/* ─── TIPO: mesas ─────────────────────────────────────────────────────────── */
+
+body[data-rubro="taqueria"] {
+  --brand-green:    #365322;
+  --brand-green-dk: #243718;
+  --brand-green-lt: #4a6b30;
+  --brand-cream:    #FDF8D0;
+  --brand-cream-dk: #e8e0a0;
+  --brand-cream-lt: #fffde8;
+  --bg:             #f5f0d8;
+  --surface2:       #e8e0c0;
+}
+
+body[data-rubro="cafeteria"] {
+  --brand-green:    #5D3A1F;
+  --brand-green-dk: #3a2412;
+  --brand-green-lt: #7a5030;
+  --brand-cream:    #f5e8d0;
+  --brand-cream-dk: #ddd0b0;
+  --brand-cream-lt: #fdf5e8;
+  --bg:             #f8f0e0;
+  --surface2:       #ecdcc0;
+}
+
+body[data-rubro="pizzeria"] {
+  --brand-green:    #8B2418;
+  --brand-green-dk: #5a1610;
+  --brand-green-lt: #a83a2c;
+  --brand-cream:    #fbe8c8;
+  --brand-cream-dk: #e4d0a8;
+  --brand-cream-lt: #fff5e0;
+  --bg:             #faf0e0;
+  --surface2:       #f0ddc0;
+}
+
+body[data-rubro="pupuseria"] {
+  --brand-green:    #1F5F4A;
+  --brand-green-dk: #0e3a2c;
+  --brand-green-lt: #2e7a60;
+  --brand-cream:    #fdf3d8;
+  --brand-cream-dk: #e0d8b8;
+  --brand-cream-lt: #fffae8;
+  --bg:             #f5f0e0;
+  --surface2:       #e8e8c8;
+}
+
+body[data-rubro="marisqueria"] {
+  --brand-green:    #1F4A6B;
+  --brand-green-dk: #0e2a40;
+  --brand-green-lt: #2e6090;
+  --brand-cream:    #f0eddc;
+  --brand-cream-dk: #d8d8c0;
+  --brand-cream-lt: #f8f5e8;
+  --bg:             #eef5f8;
+  --surface2:       #d8e8f0;
+}
+
+body[data-rubro="creperia"] {
+  --brand-green:    #7A4F1F;
+  --brand-green-dk: #4a3012;
+  --brand-green-lt: #9a6a35;
+  --brand-cream:    #fff5d8;
+  --brand-cream-dk: #e8d8a8;
+  --brand-cream-lt: #fffaec;
+  --bg:             #faf5e8;
+  --surface2:       #f0e8c8;
+}
+
+/* ─── TIPO: mostrador ──────────────────────────────────────────────────────── */
+
+body[data-rubro="heladeria"] {
+  --brand-green:    #A8508A;
+  --brand-green-dk: #6b2f5a;
+  --brand-green-lt: #c070a8;
+  --brand-cream:    #fbeaf2;
+  --brand-cream-dk: #e8d0e0;
+  --brand-cream-lt: #fff0f8;
+  --bg:             #f8f0f5;
+  --surface2:       #f0d8ec;
+}
+
+body[data-rubro="dulceria"] {
+  --brand-green:    #C4445A;
+  --brand-green-dk: #7a2a3a;
+  --brand-green-lt: #d86070;
+  --brand-cream:    #fde8ee;
+  --brand-cream-dk: #e8d0d8;
+  --brand-cream-lt: #fff0f4;
+  --bg:             #f8f0f2;
+  --surface2:       #f0d8e0;
+}
+
+body[data-rubro="panaderia"] {
+  --brand-green:    #6B4423;
+  --brand-green-dk: #42290f;
+  --brand-green-lt: #8a5c35;
+  --brand-cream:    #fcedd0;
+  --brand-cream-dk: #e0d0a8;
+  --brand-cream-lt: #fff8e8;
+  --bg:             #faf5e8;
+  --surface2:       #f0e8c8;
+}
+
+body[data-rubro="libreria"] {
+  --brand-green:    #284B6E;
+  --brand-green-dk: #152d44;
+  --brand-green-lt: #3a6090;
+  --brand-cream:    #f0e8d8;
+  --brand-cream-dk: #d8d0c0;
+  --brand-cream-lt: #f8f4ec;
+  --bg:             #f0f4f8;
+  --surface2:       #d8e0ec;
+}
+
+body[data-rubro="floreria"] {
+  --brand-green:    #7A3A60;
+  --brand-green-dk: #4a2038;
+  --brand-green-lt: #9a5080;
+  --brand-cream:    #fbecf2;
+  --brand-cream-dk: #e8d0e0;
+  --brand-cream-lt: #fff4f8;
+  --bg:             #f8f0f5;
+  --surface2:       #f0d8ec;
+}
+
+body[data-rubro="boutique"] {
+  --brand-green:    #2A2F4A;
+  --brand-green-dk: #15192d;
+  --brand-green-lt: #404868;
+  --brand-cream:    #f5ecd8;
+  --brand-cream-dk: #d8d0c0;
+  --brand-cream-lt: #fdf8f0;
+  --bg:             #f0f2f8;
+  --surface2:       #d8dced;
+}
+
+body[data-rubro="papeleria"] {
+  --brand-green:    #3A6E5C;
+  --brand-green-dk: #1f4234;
+  --brand-green-lt: #508c78;
+  --brand-cream:    #fbf6e0;
+  --brand-cream-dk: #d8e0c8;
+  --brand-cream-lt: #fffde8;
+  --bg:             #f0f8f4;
+  --surface2:       #d8ece4;
+}
+
+body[data-rubro="farmacia"] {
+  --brand-green:    #1F6E5A;
+  --brand-green-dk: #0e4234;
+  --brand-green-lt: #2e8c70;
+  --brand-cream:    #eaf4f0;
+  --brand-cream-dk: #c8dcd8;
+  --brand-cream-lt: #f4faf8;
+  --bg:             #eef8f4;
+  --surface2:       #d0eae4;
+}
+
+body[data-rubro="abarrotes"] {
+  --brand-green:    #8B5A2B;
+  --brand-green-dk: #5a3818;
+  --brand-green-lt: #a87040;
+  --brand-cream:    #fdeed0;
+  --brand-cream-dk: #e0d0a8;
+  --brand-cream-lt: #fff8e8;
+  --bg:             #f8f0e0;
+  --surface2:       #ecd8c0;
+}
+
+body[data-rubro="minimarket"] {
+  --brand-green:    #2C5F8B;
+  --brand-green-dk: #163a5a;
+  --brand-green-lt: #4078aa;
+  --brand-cream:    #f0eedd;
+  --brand-cream-dk: #d8d8c0;
+  --brand-cream-lt: #f8f6ec;
+  --bg:             #eef4f8;
+  --surface2:       #d0e0ec;
+}
+
+body[data-rubro="ferreteria"] {
+  --brand-green:    #5A4A38;
+  --brand-green-dk: #2f261c;
+  --brand-green-lt: #786050;
+  --brand-cream:    #f5e8c8;
+  --brand-cream-dk: #d8d0a8;
+  --brand-cream-lt: #fdf5e0;
+  --bg:             #f5f0e8;
+  --surface2:       #e8e0c8;
+}
+
+body[data-rubro="polleria"] {
+  --brand-green:    #A85A1F;
+  --brand-green-dk: #6b3812;
+  --brand-green-lt: #c87030;
+  --brand-cream:    #fdf0d8;
+  --brand-cream-dk: #e0d0a8;
+  --brand-cream-lt: #fff8ec;
+  --bg:             #faf4e8;
+  --surface2:       #f0e4c8;
+}
+
+/* ─── TIPO: peso ──────────────────────────────────────────────────────────── */
+
+body[data-rubro="carniceria"] {
+  --brand-green:    #7A1515;
+  --brand-green-dk: #4a0a0a;
+  --brand-green-lt: #a83a2c;
+  --brand-cream:    #fdf3e8;
+  --brand-cream-dk: #e8d8c0;
+  --brand-cream-lt: #fff8f4;
+  --bg:             #f8f0ec;
+  --surface2:       #f0e0d8;
+}
+
+body[data-rubro="verduleria"] {
+  --brand-green:    #2D5016;
+  --brand-green-dk: #1a3009;
+  --brand-green-lt: #426824;
+  --brand-cream:    #f0e8c8;
+  --brand-cream-dk: #d8d8a8;
+  --brand-cream-lt: #f8f8e0;
+  --bg:             #f0f8e8;
+  --surface2:       #d8ecc8;
+}
+
+body[data-rubro="tortilleria"] {
+  --brand-green:    #A07A15;
+  --brand-green-dk: #6b4f0a;
+  --brand-green-lt: #c09030;
+  --brand-cream:    #fdf5d0;
+  --brand-cream-dk: #e0d8a0;
+  --brand-cream-lt: #fffbe8;
+  --bg:             #faf8e8;
+  --surface2:       #f0eccc;
+}

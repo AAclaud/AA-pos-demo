@@ -1,0 +1,15 @@
+{
+  "name": "aa-pos-demo",
+  "version": "1.0.0",
+  "description": "Demo Version — AA Projects POS multi-rubro",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "AA Projects",
+  "license": "UNLICENSED",
+  "private": true
+}
