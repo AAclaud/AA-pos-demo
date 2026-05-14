@@ -445,9 +445,27 @@
           "ts": 1778178636531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 3, "unidad": "u" },
-            { "id": 2, "nombre": "Taco al pastor", "precio": 35, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 2, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Taco de birria",
+              "precio": 45,
+              "qty": 3,
+              "unidad": "u"
+            },
+            {
+              "id": 2,
+              "nombre": "Taco al pastor",
+              "precio": 35,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco",
+              "precio": 15,
+              "qty": 2,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -459,8 +477,20 @@
           "ts": 1778166936531,
           "detalle": "Ticket #10",
           "orden": [
-            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 1, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Taco de birria",
+              "precio": 45,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco",
+              "precio": 15,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -473,8 +503,20 @@
           "ts": 1778117436531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 4, "nombre": "Birriamen", "precio": 65, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 2, "unidad": "u" }
+            {
+              "id": 4,
+              "nombre": "Birriamen",
+              "precio": 65,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco",
+              "precio": 15,
+              "qty": 2,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -486,7 +528,13 @@
           "ts": 1778111827169,
           "detalle": "Ticket #9",
           "orden": [
-            { "id": 3, "nombre": "Quesadilla", "precio": 30, "qty": 2, "unidad": "u" }
+            {
+              "id": 3,
+              "nombre": "Quesadilla",
+              "precio": 30,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -499,8 +547,20 @@
           "ts": 1778096736531,
           "detalle": "Ticket #8",
           "orden": [
-            { "id": 3, "nombre": "Quesadilla", "precio": 30, "qty": 3, "unidad": "u" },
-            { "id": 6, "nombre": "Agua de horchata", "precio": 12, "qty": 1, "unidad": "u" }
+            {
+              "id": 3,
+              "nombre": "Quesadilla",
+              "precio": 30,
+              "qty": 3,
+              "unidad": "u"
+            },
+            {
+              "id": 6,
+              "nombre": "Agua de horchata",
+              "precio": 12,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -513,9 +573,27 @@
           "ts": 1778032836531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 4, "unidad": "u" },
-            { "id": 2, "nombre": "Taco al pastor", "precio": 35, "qty": 3, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 3, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Taco de birria",
+              "precio": 45,
+              "qty": 4,
+              "unidad": "u"
+            },
+            {
+              "id": 2,
+              "nombre": "Taco al pastor",
+              "precio": 35,
+              "qty": 3,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco",
+              "precio": 15,
+              "qty": 3,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -527,9 +605,27 @@
           "ts": 1778013036531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 3, "nombre": "Quesadilla", "precio": 30, "qty": 2, "unidad": "u" },
-            { "id": 4, "nombre": "Birriamen", "precio": 65, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 1, "unidad": "u" }
+            {
+              "id": 3,
+              "nombre": "Quesadilla",
+              "precio": 30,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 4,
+              "nombre": "Birriamen",
+              "precio": 65,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco",
+              "precio": 15,
+              "qty": 1,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -541,8 +637,20 @@
           "ts": 1778000436531,
           "detalle": "Ticket #7",
           "orden": [
-            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 2, "unidad": "u" },
-            { "id": 6, "nombre": "Agua de horchata", "precio": 12, "qty": 2, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Taco de birria",
+              "precio": 45,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 6,
+              "nombre": "Agua de horchata",
+              "precio": 12,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -555,8 +663,20 @@
           "ts": 1777941936531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 4, "nombre": "Birriamen", "precio": 65, "qty": 2, "unidad": "u" },
-            { "id": 6, "nombre": "Agua de horchata", "precio": 12, "qty": 2, "unidad": "u" }
+            {
+              "id": 4,
+              "nombre": "Birriamen",
+              "precio": 65,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 6,
+              "nombre": "Agua de horchata",
+              "precio": 12,
+              "qty": 2,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -568,8 +688,20 @@
           "ts": 1777921236531,
           "detalle": "Ticket #6",
           "orden": [
-            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 3, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 1, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Taco de birria",
+              "precio": 45,
+              "qty": 3,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco",
+              "precio": 15,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -582,8 +714,20 @@
           "ts": 1777847436531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 3, "nombre": "Quesadilla", "precio": 30, "qty": 3, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 2, "unidad": "u" }
+            {
+              "id": 3,
+              "nombre": "Quesadilla",
+              "precio": 30,
+              "qty": 3,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco",
+              "precio": 15,
+              "qty": 2,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -595,9 +739,27 @@
           "ts": 1777831236531,
           "detalle": "Ticket #5",
           "orden": [
-            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 4, "unidad": "u" },
-            { "id": 2, "nombre": "Taco al pastor", "precio": 35, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 2, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Taco de birria",
+              "precio": 45,
+              "qty": 4,
+              "unidad": "u"
+            },
+            {
+              "id": 2,
+              "nombre": "Taco al pastor",
+              "precio": 35,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco",
+              "precio": 15,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -610,8 +772,20 @@
           "ts": 1777752036531,
           "detalle": "Ticket #4",
           "orden": [
-            { "id": 4, "nombre": "Birriamen", "precio": 65, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 1, "unidad": "u" }
+            {
+              "id": 4,
+              "nombre": "Birriamen",
+              "precio": 65,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco",
+              "precio": 15,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -624,9 +798,27 @@
           "ts": 1777683636531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 4, "unidad": "u" },
-            { "id": 2, "nombre": "Taco al pastor", "precio": 35, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 3, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Taco de birria",
+              "precio": 45,
+              "qty": 4,
+              "unidad": "u"
+            },
+            {
+              "id": 2,
+              "nombre": "Taco al pastor",
+              "precio": 35,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco",
+              "precio": 15,
+              "qty": 3,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -638,8 +830,20 @@
           "ts": 1777653036531,
           "detalle": "Ticket #3",
           "orden": [
-            { "id": 3, "nombre": "Quesadilla", "precio": 30, "qty": 2, "unidad": "u" },
-            { "id": 6, "nombre": "Agua de horchata", "precio": 12, "qty": 1, "unidad": "u" }
+            {
+              "id": 3,
+              "nombre": "Quesadilla",
+              "precio": 30,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 6,
+              "nombre": "Agua de horchata",
+              "precio": 12,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -652,9 +856,27 @@
           "ts": 1777577436531,
           "detalle": "Ticket #2",
           "orden": [
-            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 3, "unidad": "u" },
-            { "id": 4, "nombre": "Birriamen", "precio": 65, "qty": 1, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 2, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Taco de birria",
+              "precio": 45,
+              "qty": 3,
+              "unidad": "u"
+            },
+            {
+              "id": 4,
+              "nombre": "Birriamen",
+              "precio": 65,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco",
+              "precio": 15,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -667,9 +889,27 @@
           "ts": 1777420836531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 4, "nombre": "Birriamen", "precio": 65, "qty": 2, "unidad": "u" },
-            { "id": 2, "nombre": "Taco al pastor", "precio": 35, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 2, "unidad": "u" }
+            {
+              "id": 4,
+              "nombre": "Birriamen",
+              "precio": 65,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 2,
+              "nombre": "Taco al pastor",
+              "precio": 35,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco",
+              "precio": 15,
+              "qty": 2,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -681,8 +921,20 @@
           "ts": 1777139136531,
           "detalle": "Ticket #1",
           "orden": [
-            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 2, "unidad": "u" },
-            { "id": 6, "nombre": "Agua de horchata", "precio": 12, "qty": 2, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Taco de birria",
+              "precio": 45,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 6,
+              "nombre": "Agua de horchata",
+              "precio": 12,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -695,9 +947,27 @@
           "ts": 1776735036531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 1, "nombre": "Taco de birria", "precio": 45, "qty": 3, "unidad": "u" },
-            { "id": 2, "nombre": "Taco al pastor", "precio": 35, "qty": 3, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco", "precio": 15, "qty": 2, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Taco de birria",
+              "precio": 45,
+              "qty": 3,
+              "unidad": "u"
+            },
+            {
+              "id": 2,
+              "nombre": "Taco al pastor",
+              "precio": 35,
+              "qty": 3,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco",
+              "precio": 15,
+              "qty": 2,
+              "unidad": "u"
+            }
           ]
         }
       ],
@@ -904,8 +1174,20 @@
           "ts": 1778169636531,
           "detalle": "Ticket #6",
           "orden": [
-            { "id": 1, "nombre": "Americano", "precio": 25, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Croissant", "precio": 25, "qty": 2, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Americano",
+              "precio": 25,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Croissant",
+              "precio": 25,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -918,8 +1200,20 @@
           "ts": 1778104836531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 3, "nombre": "Latte", "precio": 40, "qty": 2, "unidad": "u" },
-            { "id": 6, "nombre": "Cheesecake", "precio": 50, "qty": 1, "unidad": "u" }
+            {
+              "id": 3,
+              "nombre": "Latte",
+              "precio": 40,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 6,
+              "nombre": "Cheesecake",
+              "precio": 50,
+              "qty": 1,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -931,8 +1225,20 @@
           "ts": 1778081436531,
           "detalle": "Ticket #5",
           "orden": [
-            { "id": 2, "nombre": "Cappuccino", "precio": 35, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Croissant", "precio": 25, "qty": 2, "unidad": "u" }
+            {
+              "id": 2,
+              "nombre": "Cappuccino",
+              "precio": 35,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Croissant",
+              "precio": 25,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -945,8 +1251,20 @@
           "ts": 1778016636531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 1, "nombre": "Americano", "precio": 25, "qty": 3, "unidad": "u" },
-            { "id": 4, "nombre": "Pastel de chocolate", "precio": 45, "qty": 2, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Americano",
+              "precio": 25,
+              "qty": 3,
+              "unidad": "u"
+            },
+            {
+              "id": 4,
+              "nombre": "Pastel de chocolate",
+              "precio": 45,
+              "qty": 2,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -958,9 +1276,27 @@
           "ts": 1777991436531,
           "detalle": "Ticket #4",
           "orden": [
-            { "id": 1, "nombre": "Americano", "precio": 25, "qty": 1, "unidad": "u" },
-            { "id": 2, "nombre": "Cappuccino", "precio": 35, "qty": 1, "unidad": "u" },
-            { "id": 5, "nombre": "Croissant", "precio": 25, "qty": 1, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Americano",
+              "precio": 25,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 2,
+              "nombre": "Cappuccino",
+              "precio": 35,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Croissant",
+              "precio": 25,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -973,8 +1309,20 @@
           "ts": 1777914036531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 3, "nombre": "Latte", "precio": 40, "qty": 2, "unidad": "u" },
-            { "id": 6, "nombre": "Cheesecake", "precio": 50, "qty": 2, "unidad": "u" }
+            {
+              "id": 3,
+              "nombre": "Latte",
+              "precio": 40,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 6,
+              "nombre": "Cheesecake",
+              "precio": 50,
+              "qty": 2,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -986,8 +1334,20 @@
           "ts": 1777845636531,
           "detalle": "Ticket #3",
           "orden": [
-            { "id": 2, "nombre": "Cappuccino", "precio": 35, "qty": 3, "unidad": "u" },
-            { "id": 5, "nombre": "Croissant", "precio": 25, "qty": 1, "unidad": "u" }
+            {
+              "id": 2,
+              "nombre": "Cappuccino",
+              "precio": 35,
+              "qty": 3,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Croissant",
+              "precio": 25,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -1000,9 +1360,27 @@
           "ts": 1777734036531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 1, "nombre": "Americano", "precio": 25, "qty": 2, "unidad": "u" },
-            { "id": 4, "nombre": "Pastel de chocolate", "precio": 45, "qty": 1, "unidad": "u" },
-            { "id": 5, "nombre": "Croissant", "precio": 25, "qty": 1, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Americano",
+              "precio": 25,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 4,
+              "nombre": "Pastel de chocolate",
+              "precio": 45,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Croissant",
+              "precio": 25,
+              "qty": 1,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -1014,8 +1392,20 @@
           "ts": 1777665636531,
           "detalle": "Ticket #2",
           "orden": [
-            { "id": 3, "nombre": "Latte", "precio": 40, "qty": 1, "unidad": "u" },
-            { "id": 6, "nombre": "Cheesecake", "precio": 50, "qty": 1, "unidad": "u" }
+            {
+              "id": 3,
+              "nombre": "Latte",
+              "precio": 40,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 6,
+              "nombre": "Cheesecake",
+              "precio": 50,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -1028,8 +1418,20 @@
           "ts": 1777566636531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 2, "nombre": "Cappuccino", "precio": 35, "qty": 2, "unidad": "u" },
-            { "id": 4, "nombre": "Pastel de chocolate", "precio": 45, "qty": 2, "unidad": "u" }
+            {
+              "id": 2,
+              "nombre": "Cappuccino",
+              "precio": 35,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 4,
+              "nombre": "Pastel de chocolate",
+              "precio": 45,
+              "qty": 2,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -1041,8 +1443,20 @@
           "ts": 1777410036531,
           "detalle": "Ticket #1",
           "orden": [
-            { "id": 1, "nombre": "Americano", "precio": 25, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Croissant", "precio": 25, "qty": 3, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Americano",
+              "precio": 25,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Croissant",
+              "precio": 25,
+              "qty": 3,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -1055,9 +1469,27 @@
           "ts": 1777136436531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 3, "nombre": "Latte", "precio": 40, "qty": 3, "unidad": "u" },
-            { "id": 6, "nombre": "Cheesecake", "precio": 50, "qty": 1, "unidad": "u" },
-            { "id": 4, "nombre": "Pastel de chocolate", "precio": 45, "qty": 1, "unidad": "u" }
+            {
+              "id": 3,
+              "nombre": "Latte",
+              "precio": 40,
+              "qty": 3,
+              "unidad": "u"
+            },
+            {
+              "id": 6,
+              "nombre": "Cheesecake",
+              "precio": 50,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 4,
+              "nombre": "Pastel de chocolate",
+              "precio": 45,
+              "qty": 1,
+              "unidad": "u"
+            }
           ]
         }
       ],
@@ -1279,9 +1711,27 @@
           "ts": 1778205636531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 2, "nombre": "Pizza Pepperoni", "precio": 145, "qty": 1, "unidad": "u" },
-            { "id": 3, "nombre": "Pizza Hawaiana", "precio": 135, "qty": 1, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 2, "unidad": "u" }
+            {
+              "id": 2,
+              "nombre": "Pizza Pepperoni",
+              "precio": 145,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 3,
+              "nombre": "Pizza Hawaiana",
+              "precio": 135,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco 500ml",
+              "precio": 20,
+              "qty": 2,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -1293,8 +1743,20 @@
           "ts": 1778182236531,
           "detalle": "Ticket #5",
           "orden": [
-            { "id": 1, "nombre": "Pizza Margherita", "precio": 120, "qty": 1, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 2, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Pizza Margherita",
+              "precio": 120,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco 500ml",
+              "precio": 20,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -1307,7 +1769,13 @@
           "ts": 1778130800845,
           "detalle": "Ticket #4",
           "orden": [
-            { "id": 4, "nombre": "Pasta Carbonara", "precio": 95, "qty": 3, "unidad": "u" }
+            {
+              "id": 4,
+              "nombre": "Pasta Carbonara",
+              "precio": 95,
+              "qty": 3,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -1320,9 +1788,27 @@
           "ts": 1778115636531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 2, "nombre": "Pizza Pepperoni", "precio": 145, "qty": 2, "unidad": "u" },
-            { "id": 4, "nombre": "Pasta Carbonara", "precio": 95, "qty": 1, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 3, "unidad": "u" }
+            {
+              "id": 2,
+              "nombre": "Pizza Pepperoni",
+              "precio": 145,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 4,
+              "nombre": "Pasta Carbonara",
+              "precio": 95,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco 500ml",
+              "precio": 20,
+              "qty": 3,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -1334,8 +1820,20 @@
           "ts": 1778036436531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 1, "nombre": "Pizza Margherita", "precio": 120, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 2, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Pizza Margherita",
+              "precio": 120,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco 500ml",
+              "precio": 20,
+              "qty": 2,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -1347,8 +1845,20 @@
           "ts": 1778004036531,
           "detalle": "Ticket #3",
           "orden": [
-            { "id": 4, "nombre": "Pasta Carbonara", "precio": 95, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 1, "unidad": "u" }
+            {
+              "id": 4,
+              "nombre": "Pasta Carbonara",
+              "precio": 95,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco 500ml",
+              "precio": 20,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -1361,10 +1871,34 @@
           "ts": 1777946436531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 2, "nombre": "Pizza Pepperoni", "precio": 145, "qty": 1, "unidad": "u" },
-            { "id": 3, "nombre": "Pizza Hawaiana", "precio": 135, "qty": 1, "unidad": "u" },
-            { "id": 4, "nombre": "Pasta Carbonara", "precio": 95, "qty": 1, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 2, "unidad": "u" }
+            {
+              "id": 2,
+              "nombre": "Pizza Pepperoni",
+              "precio": 145,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 3,
+              "nombre": "Pizza Hawaiana",
+              "precio": 135,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 4,
+              "nombre": "Pasta Carbonara",
+              "precio": 95,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco 500ml",
+              "precio": 20,
+              "qty": 2,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -1376,8 +1910,20 @@
           "ts": 1777858236531,
           "detalle": "Ticket #2",
           "orden": [
-            { "id": 1, "nombre": "Pizza Margherita", "precio": 120, "qty": 1, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 1, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Pizza Margherita",
+              "precio": 120,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco 500ml",
+              "precio": 20,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -1390,8 +1936,20 @@
           "ts": 1777773636531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 2, "nombre": "Pizza Pepperoni", "precio": 145, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 2, "unidad": "u" }
+            {
+              "id": 2,
+              "nombre": "Pizza Pepperoni",
+              "precio": 145,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco 500ml",
+              "precio": 20,
+              "qty": 2,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -1403,9 +1961,27 @@
           "ts": 1777689036531,
           "detalle": "Cuenta completa",
           "orden": [
-            { "id": 3, "nombre": "Pizza Hawaiana", "precio": 135, "qty": 1, "unidad": "u" },
-            { "id": 4, "nombre": "Pasta Carbonara", "precio": 95, "qty": 2, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 2, "unidad": "u" }
+            {
+              "id": 3,
+              "nombre": "Pizza Hawaiana",
+              "precio": 135,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 4,
+              "nombre": "Pasta Carbonara",
+              "precio": 95,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco 500ml",
+              "precio": 20,
+              "qty": 2,
+              "unidad": "u"
+            }
           ]
         },
         {
@@ -1417,9 +1993,27 @@
           "ts": 1777577436531,
           "detalle": "Ticket #1",
           "orden": [
-            { "id": 2, "nombre": "Pizza Pepperoni", "precio": 145, "qty": 1, "unidad": "u" },
-            { "id": 4, "nombre": "Pasta Carbonara", "precio": 95, "qty": 1, "unidad": "u" },
-            { "id": 5, "nombre": "Refresco 500ml", "precio": 20, "qty": 1, "unidad": "u" }
+            {
+              "id": 2,
+              "nombre": "Pizza Pepperoni",
+              "precio": 145,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 4,
+              "nombre": "Pasta Carbonara",
+              "precio": 95,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Refresco 500ml",
+              "precio": 20,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         }
@@ -1991,6 +2585,38 @@
           "emoji": "🍧",
           "invId": 1,
           "unidad": "u"
+        },
+        {
+          "id": 6,
+          "nombre": "fresáis",
+          "precio": 5,
+          "emoji": "🍓",
+          "invId": null,
+          "unidad": "u"
+        },
+        {
+          "id": 7,
+          "nombre": "ojos",
+          "precio": 8,
+          "emoji": "👀",
+          "invId": null,
+          "unidad": "u"
+        },
+        {
+          "id": 8,
+          "nombre": "res",
+          "precio": 67,
+          "emoji": "🥩",
+          "invId": null,
+          "unidad": "u"
+        },
+        {
+          "id": 9,
+          "nombre": "cake",
+          "precio": 45,
+          "emoji": "🍰",
+          "invId": null,
+          "unidad": "u"
         }
       ],
       "inventario": [
@@ -2027,8 +2653,20 @@
           "ts": 1778187636531,
           "detalle": "Ticket #7",
           "orden": [
-            { "id": 2, "nombre": "Copa 2 bolas", "precio": 30, "qty": 2, "unidad": "u" },
-            { "id": 3, "nombre": "Paleta cremosa", "precio": 20, "qty": 1, "unidad": "u" }
+            {
+              "id": 2,
+              "nombre": "Copa 2 bolas",
+              "precio": 30,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 3,
+              "nombre": "Paleta cremosa",
+              "precio": 20,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -2041,8 +2679,20 @@
           "ts": 1778106636531,
           "detalle": "Ticket #6",
           "orden": [
-            { "id": 4, "nombre": "Malteada", "precio": 45, "qty": 1, "unidad": "u" },
-            { "id": 1, "nombre": "Bola de helado", "precio": 18, "qty": 2, "unidad": "u" }
+            {
+              "id": 4,
+              "nombre": "Malteada",
+              "precio": 45,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 1,
+              "nombre": "Bola de helado",
+              "precio": 18,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -2055,8 +2705,20 @@
           "ts": 1778011236531,
           "detalle": "Ticket #5",
           "orden": [
-            { "id": 5, "nombre": "Sundae", "precio": 55, "qty": 1, "unidad": "u" },
-            { "id": 2, "nombre": "Copa 2 bolas", "precio": 30, "qty": 1, "unidad": "u" }
+            {
+              "id": 5,
+              "nombre": "Sundae",
+              "precio": 55,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 2,
+              "nombre": "Copa 2 bolas",
+              "precio": 30,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -2069,8 +2731,20 @@
           "ts": 1777935636531,
           "detalle": "Ticket #4",
           "orden": [
-            { "id": 1, "nombre": "Bola de helado", "precio": 18, "qty": 3, "unidad": "u" },
-            { "id": 3, "nombre": "Paleta cremosa", "precio": 20, "qty": 2, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Bola de helado",
+              "precio": 18,
+              "qty": 3,
+              "unidad": "u"
+            },
+            {
+              "id": 3,
+              "nombre": "Paleta cremosa",
+              "precio": 20,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -2083,8 +2757,20 @@
           "ts": 1777843836531,
           "detalle": "Ticket #3",
           "orden": [
-            { "id": 2, "nombre": "Copa 2 bolas", "precio": 30, "qty": 2, "unidad": "u" },
-            { "id": 4, "nombre": "Malteada", "precio": 45, "qty": 1, "unidad": "u" }
+            {
+              "id": 2,
+              "nombre": "Copa 2 bolas",
+              "precio": 30,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 4,
+              "nombre": "Malteada",
+              "precio": 45,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -2097,7 +2783,13 @@
           "ts": 1777672836531,
           "detalle": "Ticket #2",
           "orden": [
-            { "id": 5, "nombre": "Sundae", "precio": 55, "qty": 2, "unidad": "u" }
+            {
+              "id": 5,
+              "nombre": "Sundae",
+              "precio": 55,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -2110,9 +2802,27 @@
           "ts": 1777401036531,
           "detalle": "Ticket #1",
           "orden": [
-            { "id": 2, "nombre": "Copa 2 bolas", "precio": 30, "qty": 1, "unidad": "u" },
-            { "id": 3, "nombre": "Paleta cremosa", "precio": 20, "qty": 2, "unidad": "u" },
-            { "id": 1, "nombre": "Bola de helado", "precio": 18, "qty": 1, "unidad": "u" }
+            {
+              "id": 2,
+              "nombre": "Copa 2 bolas",
+              "precio": 30,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 3,
+              "nombre": "Paleta cremosa",
+              "precio": 20,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 1,
+              "nombre": "Bola de helado",
+              "precio": 18,
+              "qty": 1,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         }
@@ -2124,7 +2834,7 @@
         "Malteada": 2,
         "Sundae": 3
       },
-      "_nextMenuId": 6,
+      "_nextMenuId": 10,
       "_nextInvId": 4,
       "_nextMesaId": 1
     },
@@ -2355,9 +3065,27 @@
           "ts": 1778166036531,
           "detalle": "Ticket #8",
           "orden": [
-            { "id": 1, "nombre": "Baguette", "precio": 15, "qty": 2, "unidad": "u" },
-            { "id": 2, "nombre": "Pan dulce (pieza)", "precio": 5, "qty": 4, "unidad": "u" },
-            { "id": 3, "nombre": "Cuernito", "precio": 10, "qty": 2, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Baguette",
+              "precio": 15,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 2,
+              "nombre": "Pan dulce (pieza)",
+              "precio": 5,
+              "qty": 4,
+              "unidad": "u"
+            },
+            {
+              "id": 3,
+              "nombre": "Cuernito",
+              "precio": 10,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -2370,8 +3098,20 @@
           "ts": 1778083236531,
           "detalle": "Ticket #7",
           "orden": [
-            { "id": 4, "nombre": "Pastel chocolate", "precio": 80, "qty": 1, "unidad": "u" },
-            { "id": 5, "nombre": "Galletas (bolsa)", "precio": 20, "qty": 2, "unidad": "u" }
+            {
+              "id": 4,
+              "nombre": "Pastel chocolate",
+              "precio": 80,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Galletas (bolsa)",
+              "precio": 20,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -2384,8 +3124,20 @@
           "ts": 1777991536531,
           "detalle": "Ticket #6",
           "orden": [
-            { "id": 1, "nombre": "Baguette", "precio": 15, "qty": 3, "unidad": "u" },
-            { "id": 3, "nombre": "Cuernito", "precio": 10, "qty": 4, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Baguette",
+              "precio": 15,
+              "qty": 3,
+              "unidad": "u"
+            },
+            {
+              "id": 3,
+              "nombre": "Cuernito",
+              "precio": 10,
+              "qty": 4,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -2398,8 +3150,20 @@
           "ts": 1777908636531,
           "detalle": "Ticket #5",
           "orden": [
-            { "id": 2, "nombre": "Pan dulce (pieza)", "precio": 5, "qty": 6, "unidad": "u" },
-            { "id": 3, "nombre": "Cuernito", "precio": 10, "qty": 3, "unidad": "u" }
+            {
+              "id": 2,
+              "nombre": "Pan dulce (pieza)",
+              "precio": 5,
+              "qty": 6,
+              "unidad": "u"
+            },
+            {
+              "id": 3,
+              "nombre": "Cuernito",
+              "precio": 10,
+              "qty": 3,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -2412,8 +3176,20 @@
           "ts": 1777827636531,
           "detalle": "Ticket #4",
           "orden": [
-            { "id": 6, "nombre": "Rosca de reyes", "precio": 120, "qty": 1, "unidad": "u" },
-            { "id": 1, "nombre": "Baguette", "precio": 15, "qty": 2, "unidad": "u" }
+            {
+              "id": 6,
+              "nombre": "Rosca de reyes",
+              "precio": 120,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 1,
+              "nombre": "Baguette",
+              "precio": 15,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -2426,9 +3202,27 @@
           "ts": 1777734096531,
           "detalle": "Ticket #3",
           "orden": [
-            { "id": 4, "nombre": "Pastel chocolate", "precio": 80, "qty": 1, "unidad": "u" },
-            { "id": 5, "nombre": "Galletas (bolsa)", "precio": 20, "qty": 1, "unidad": "u" },
-            { "id": 2, "nombre": "Pan dulce (pieza)", "precio": 5, "qty": 3, "unidad": "u" }
+            {
+              "id": 4,
+              "nombre": "Pastel chocolate",
+              "precio": 80,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 5,
+              "nombre": "Galletas (bolsa)",
+              "precio": 20,
+              "qty": 1,
+              "unidad": "u"
+            },
+            {
+              "id": 2,
+              "nombre": "Pan dulce (pieza)",
+              "precio": 5,
+              "qty": 3,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -2441,8 +3235,20 @@
           "ts": 1777644036531,
           "detalle": "Ticket #2",
           "orden": [
-            { "id": 1, "nombre": "Baguette", "precio": 15, "qty": 4, "unidad": "u" },
-            { "id": 3, "nombre": "Cuernito", "precio": 10, "qty": 2, "unidad": "u" }
+            {
+              "id": 1,
+              "nombre": "Baguette",
+              "precio": 15,
+              "qty": 4,
+              "unidad": "u"
+            },
+            {
+              "id": 3,
+              "nombre": "Cuernito",
+              "precio": 10,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         },
@@ -2455,9 +3261,27 @@
           "ts": 1777564836531,
           "detalle": "Ticket #1",
           "orden": [
-            { "id": 5, "nombre": "Galletas (bolsa)", "precio": 20, "qty": 2, "unidad": "u" },
-            { "id": 2, "nombre": "Pan dulce (pieza)", "precio": 5, "qty": 5, "unidad": "u" },
-            { "id": 3, "nombre": "Cuernito", "precio": 10, "qty": 2, "unidad": "u" }
+            {
+              "id": 5,
+              "nombre": "Galletas (bolsa)",
+              "precio": 20,
+              "qty": 2,
+              "unidad": "u"
+            },
+            {
+              "id": 2,
+              "nombre": "Pan dulce (pieza)",
+              "precio": 5,
+              "qty": 5,
+              "unidad": "u"
+            },
+            {
+              "id": 3,
+              "nombre": "Cuernito",
+              "precio": 10,
+              "qty": 2,
+              "unidad": "u"
+            }
           ],
           "mostrador": true
         }
