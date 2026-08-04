@@ -31,6 +31,11 @@ function defaultMesas(n=8) {
   }));
 }
 
+// Fondo de caja / caja inicial — base del cuadre diario
+function defaultCaja() {
+  return { inicial: 0, fecha: '', hora: '', ts: null, nota: '' };
+}
+
 function defaultSucursal(id, nombre, ciudad) {
   return {
     id, nombre, ciudad,
@@ -39,6 +44,7 @@ function defaultSucursal(id, nombre, ciudad) {
     mesas:       defaultMesas(8),
     transacciones: [],
     ventas:      {},
+    caja:        defaultCaja(),
     _nextMenuId: 1,
     _nextInvId:  1,
     _nextMesaId: 9,
@@ -68,6 +74,7 @@ function defaultRubro(seed) {
     mesas:        seed.tipo === 'mesas' ? defaultMesas(seed.mesasCount || 8) : [],
     transacciones: [],
     ventas:       {},
+    caja:         defaultCaja(),
     _nextMenuId:  nextMenuId,
     _nextInvId:   nextInvId,
     _nextMesaId:  nextMesaId,
@@ -96,6 +103,15 @@ const BRANDING = {
   tagline:  process.env.BRAND_TAGLINE  || 'Control de ventas',
   currency: process.env.BRAND_CURRENCY || 'Q',
   credit:   process.env.BRAND_CREDIT   || 'AA Projects',
+  version:  process.env.APP_VERSION    || '1.1.0',
+  // Datos de soporte — configurables por variable de entorno en cada instalación
+  soporte: {
+    empresa:  process.env.SUPPORT_NAME     || 'AA Projects',
+    whatsapp: process.env.SUPPORT_WHATSAPP || '',   // solo dígitos con código de país: 502XXXXXXXX
+    telefono: process.env.SUPPORT_PHONE    || '',
+    email:    process.env.SUPPORT_EMAIL    || '',
+    horario:  process.env.SUPPORT_HOURS    || 'Lun a Sáb · 8:00 – 18:00',
+  },
 };
 
 // ─── Cargar / guardar ─────────────────────────────────────────────
@@ -130,6 +146,10 @@ function loadData() {
           }
         });
       }
+
+      // Migración — garantizar fondo de caja en rubros y sucursales existentes
+      Object.values(parsed.rubros).forEach(r => { if (!r.caja) r.caja = defaultCaja(); });
+      parsed.sucursales.forEach(s => { if (!s.caja) s.caja = defaultCaja(); });
 
       return parsed;
     }
@@ -192,6 +212,12 @@ function getSuc(id) { return db.sucursales.find(s=>s.id===id); }
 function getRubro(slug) { return db.rubros && db.rubros[slug]; }
 
 // ─── Lógica de cobro (compartida por suc y rubro) ─────────────────
+// Cuánto inventario consume 1 unidad vendida de un ítem de menú
+function factorDe(menuItem) {
+  const f = parseFloat(menuItem && menuItem.factor);
+  return (isFinite(f) && f > 0) ? f : 1;
+}
+
 function procesarCobro(scope, scopeKey, orden, mesaId, detalle, cobradoParcial, mostrador) {
   const total = orden.reduce((s,l) => s + l.precio * l.qty, 0);
   const now   = new Date();
@@ -200,11 +226,20 @@ function procesarCobro(scope, scopeKey, orden, mesaId, detalle, cobradoParcial, 
   const ts    = now.getTime();
 
   orden.forEach(l => { scope.ventas[l.nombre] = (scope.ventas[l.nombre]||0) + l.qty; });
+
+  // Descuento de inventario — qty × factor de consumo. No bloquea la venta,
+  // pero reporta el faltante para que el POS avise al cajero.
+  const faltantes = [];
   orden.forEach(l => {
     const mi  = scope.menu.find(m=>m.id===l.id);
     if (!mi || !mi.invId) return;
     const inv = scope.inventario.find(i=>i.id===mi.invId);
-    if (inv) inv.stock = Math.max(0, parseFloat((inv.stock - l.qty).toFixed(3)));
+    if (!inv) return;
+    const consumo = l.qty * factorDe(mi);
+    if (consumo > inv.stock + 1e-6) {
+      faltantes.push({ nombre: inv.nombre, pedido: consumo, disponible: inv.stock, unidad: inv.unidad||'u' });
+    }
+    inv.stock = Math.max(0, parseFloat((inv.stock - consumo).toFixed(3)));
   });
 
   if (mostrador) {
@@ -215,7 +250,7 @@ function procesarCobro(scope, scopeKey, orden, mesaId, detalle, cobradoParcial, 
       detalle: detalle || ('Ticket #'+ticketNum),
       orden:[...orden], mostrador:true
     });
-    return { ok:true, total, ticket:ticketNum };
+    return { ok:true, total, ticket:ticketNum, faltantes };
   }
 
   const mesaObj = scope.mesas.find(m=>m.id===mesaId);
@@ -223,12 +258,29 @@ function procesarCobro(scope, scopeKey, orden, mesaId, detalle, cobradoParcial, 
   scope.transacciones.unshift({mesaId, mesaNombre, total, hora, fecha, ts,
     detalle: detalle||'Cuenta completa', orden:[...orden]});
 
+  let liberada = false;
   if (!cobradoParcial) {
     scope.mesas = scope.mesas.map(m=>m.id===mesaId?{...m,orden:[],estado:'libre',cobrado:0}:m);
+    liberada = true;
   } else {
-    scope.mesas = scope.mesas.map(m=>m.id===mesaId?{...m,cobrado:(m.cobrado||0)+total}:m);
+    // Cobro parcial: las líneas pagadas SALEN de la orden viva para que no
+    // se puedan volver a cobrar ni sigan reservando inventario.
+    scope.mesas = scope.mesas.map(m => {
+      if (m.id !== mesaId) return m;
+      const restante = m.orden.map(l => {
+        const pagada = orden.find(o => o.id === l.id);
+        if (!pagada) return l;
+        const q = parseFloat((l.qty - pagada.qty).toFixed(3));
+        return q > 0 ? { ...l, qty: q } : null;
+      }).filter(Boolean);
+      if (!restante.length) {
+        liberada = true;
+        return { ...m, orden: [], estado: 'libre', cobrado: 0 };
+      }
+      return { ...m, orden: restante, cobrado: (m.cobrado||0) + total };
+    });
   }
-  return { ok:true, total };
+  return { ok:true, total, faltantes, liberada };
 }
 
 // ─── Servidor ────────────────────────────────────────────────────
@@ -412,7 +464,8 @@ const server = http.createServer(async (req, res) => {
     if (method==='POST' && subPath==='/menu') {
       const b=await readBody(req);
       const item={id:rubro._nextMenuId++, nombre:b.nombre||'Ítem', precio:Number(b.precio)||0,
-        emoji:b.emoji||'🍽', invId:b.invId||null, unidad:b.unidad||'u'};
+        emoji:b.emoji||'🍽', invId:b.invId||null, unidad:b.unidad||'u',
+        factor:(parseFloat(b.factor)>0?parseFloat(b.factor):1)};
       rubro.menu.push(item); save(); return json(res,201,item);
     }
     const menuMatch=subPath.match(/^\/menu\/(\d+)$/);
@@ -481,6 +534,21 @@ const server = http.createServer(async (req, res) => {
       return json(res, 200, result);
     }
 
+    // ── Caja inicial (fondo de caja) ──
+    if (method==='PUT' && subPath==='/caja-inicial') {
+      const b = await readBody(req);
+      const now = new Date();
+      rubro.caja = {
+        inicial: Math.max(0, parseFloat(b.inicial) || 0),
+        fecha:   now.toLocaleDateString('es-GT'),
+        hora:    now.toLocaleTimeString('es-GT', {hour:'2-digit', minute:'2-digit'}),
+        ts:      now.getTime(),
+        nota:    (b.nota || '').slice(0, 120),
+      };
+      save();
+      return json(res, 200, rubro.caja);
+    }
+
     // ── Eliminar transacción ──
     const txDelMatch = subPath.match(/^\/transacciones\/(\d+)$/);
     if (method==='DELETE' && txDelMatch) {
@@ -507,7 +575,8 @@ const server = http.createServer(async (req, res) => {
   if (method==='GET' && subPath==='/menu') return json(res,200,suc.menu);
   if (method==='POST' && subPath==='/menu') {
     const b=await readBody(req);
-    const item={id:suc._nextMenuId++,nombre:b.nombre||'Ítem',precio:Number(b.precio)||0,emoji:b.emoji||'🍽',invId:b.invId||null};
+    const item={id:suc._nextMenuId++,nombre:b.nombre||'Ítem',precio:Number(b.precio)||0,emoji:b.emoji||'🍽',
+      invId:b.invId||null,unidad:b.unidad||'u',factor:(parseFloat(b.factor)>0?parseFloat(b.factor):1)};
     suc.menu.push(item); save(); return json(res,201,item);
   }
   const menuMatchLeg=subPath.match(/^\/menu\/(\d+)$/);
@@ -520,7 +589,8 @@ const server = http.createServer(async (req, res) => {
   if (method==='GET' && subPath==='/inventario') return json(res,200,suc.inventario);
   if (method==='POST' && subPath==='/inventario') {
     const b=await readBody(req);
-    const item={id:suc._nextInvId++,nombre:b.nombre||'Producto',stock:Number(b.stock)||0,min:Number(b.min)||2};
+    const item={id:suc._nextInvId++,nombre:b.nombre||'Producto',stock:parseFloat(b.stock)||0,
+      min:parseFloat(b.min)||2,unidad:b.unidad||'u'};
     suc.inventario.push(item); save(); return json(res,201,item);
   }
   const invMatchLeg=subPath.match(/^\/inventario\/(\d+)$/);
@@ -548,6 +618,20 @@ const server = http.createServer(async (req, res) => {
     const result = procesarCobro(suc, 'suc:'+sucId, orden, mesaId, detalle, cobradoParcial, mostrador);
     save();
     return json(res, 200, result);
+  }
+
+  if (method==='PUT' && subPath==='/caja-inicial') {
+    const b = await readBody(req);
+    const now = new Date();
+    suc.caja = {
+      inicial: Math.max(0, parseFloat(b.inicial) || 0),
+      fecha:   now.toLocaleDateString('es-GT'),
+      hora:    now.toLocaleTimeString('es-GT', {hour:'2-digit', minute:'2-digit'}),
+      ts:      now.getTime(),
+      nota:    (b.nota || '').slice(0, 120),
+    };
+    save();
+    return json(res, 200, suc.caja);
   }
 
   const txDelMatchLeg = subPath.match(/^\/transacciones\/(\d+)$/);

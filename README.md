@@ -18,7 +18,48 @@ El branding (nombre comercial, moneda, etc.) se configura vía variables de ento
 | `DATA_FILE`       | `./data.json`  | `/data/data.json` (Railway volume) |
 | `PORT`            | `3000`         | (Railway lo inyecta)       |
 
+### Soporte técnico
+
+Los datos de contacto que ve el cliente en **Admin → Soporte técnico**:
+
+| Variable            | Default                    | Ejemplo                |
+| ------------------- | -------------------------- | ---------------------- |
+| `SUPPORT_NAME`      | `AA Projects`              | `AA Projects`          |
+| `SUPPORT_WHATSAPP`  | (vacío)                    | `50255551234` (solo dígitos, con código de país) |
+| `SUPPORT_PHONE`     | (vacío)                    | `+502 5555 1234`       |
+| `SUPPORT_EMAIL`     | (vacío)                    | `soporte@aaprojects.gt`|
+| `SUPPORT_HOURS`     | `Lun a Sáb · 8:00 – 18:00` | `24/7`                 |
+| `APP_VERSION`       | `1.1.0`                    | `1.1.0`                |
+
+Si no se configura ninguno, la sección explica cómo definirlos en vez de mostrar
+contactos vacíos. El botón de WhatsApp abre el chat con un mensaje ya redactado
+que incluye el rubro y la versión.
+
 El nombre y ciudad de cada sucursal se editan desde el panel **Admin** en la app.
+
+---
+
+## Caja inicial y cuadre
+
+El administrador define el **fondo de caja** en **Admin → Caja inicial**: el
+efectivo con el que abre el turno. La pestaña **Caja** calcula entonces:
+
+```
+fondo inicial  +  ventas del día  =  efectivo esperado
+```
+
+y al escribir el **conteo físico** muestra el sobrante o faltante. Es el cuadre
+que se entrega junto con el POS.
+
+## Consumo de inventario
+
+Cada ítem del menú puede vincularse a un producto de inventario y define
+**cuánto descuenta por venta** (campo *Consumo*, en **Menú**). Ejemplo: si un
+taco lleva `0.15 kg` de carne, 4 tacos descuentan `0.6 kg` — no 4 kg.
+
+Ítems distintos que apuntan al mismo insumo (americano, capuchino y latte sobre
+el mismo café) comparten existencias: lo que reserva uno deja de estar
+disponible para los otros, tanto en Mesas como en Mostrador.
 
 ---
 

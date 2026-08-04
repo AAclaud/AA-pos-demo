@@ -64,7 +64,7 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes slideRight{from{transform:translateX(-100%);opacity:0}to{transform:translateX(0);opacity:1}}
-@keyframes toastIn{from{transform:translateX(-50%) translateY(20px);opacity:0}to{transform:translateX(-50%) translateY(0);opacity:1}}
+@keyframes toastIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes stockFlash{0%{background:#dde8c8}100%{background:var(--surface)}}
 
 .fade-up{animation:fadeUp .22s ease both;}
@@ -103,7 +103,8 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 /* BOTTOM NAV (mobile) */
 .bottom-nav{
   display:none;
-  height:var(--bottomnav-h);flex-shrink:0;
+  height:calc(var(--bottomnav-h) + env(safe-area-inset-bottom,0px));flex-shrink:0;
+  padding-bottom:env(safe-area-inset-bottom,0px);
   background:var(--brand-green);
   border-top:2px solid var(--brand-green-dk);
   position:relative;z-index:50;
@@ -136,25 +137,53 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 @media(min-width:768px){.panel{padding:20px 24px;}}
 
 /* RESPONSIVE BREAKPOINTS */
+/* ─── Tablet + móvil (≤1023px) ──────────────────────────────────
+   Regla de oro: una sola barra de scroll — la del panel. Ningún
+   contenedor interno recorta el ticket ni crea "ventanitas". */
+@media(max-width:1023px){
+  /* Mesas — orden */
+  .orden-layout{grid-template-columns:1fr!important;height:auto!important;}
+  .orden-menu-col{overflow:visible!important;}
+  .sidebar{max-height:none!important;height:auto!important;}
+  .order-lines{flex:none!important;overflow:visible!important;max-height:none!important;}
+  .csep{overflow:visible!important;}
+  .cuenta-lines{flex:none!important;overflow:visible!important;max-height:none!important;}
+  .menu-grid{grid-template-columns:repeat(2,1fr)!important;}
+
+  /* Mostrador — el ticket queda entre el menú y el historial */
+  .mos-panel{overflow-y:auto!important;}
+  .mos-layout{grid-template-columns:1fr!important;flex:none!important;}
+  .mos-menu-col{display:contents!important;}
+  .mos-menu-grid{order:1;}
+  .mos-sidebar{order:2;max-height:none!important;height:auto!important;}
+  .mos-history{order:3;margin-top:0!important;}
+  .mos-order{max-height:none!important;flex:none!important;overflow:visible!important;}
+  .caja-registradora{overflow:visible!important;}
+
+  /* Objetivos táctiles */
+  .ol-btn{width:38px!important;height:38px!important;font-size:19px!important;}
+  .p-btn{width:36px!important;height:36px!important;font-size:17px!important;}
+  .mc-add{width:40px!important;height:40px!important;font-size:20px!important;}
+  .dnav-btn{padding:10px 14px!important;}
+
+  /* Modales siempre alcanzables */
+  .peso-overlay{align-items:flex-start!important;overflow-y:auto!important;padding:20px 16px 40px!important;}
+  .peso-modal{max-height:none!important;}
+}
+
 @media(max-width:767px){
   .bottom-nav{display:block;}
   .desktop-nav{display:none;}
   .topbar-suc-name{display:none;}
   .stats-row{grid-template-columns:1fr 1fr!important;}
   .mesas-grid{grid-template-columns:repeat(3,1fr)!important;}
-  .orden-layout{grid-template-columns:1fr!important;height:auto!important;}
-  .sidebar{max-height:60vh;}
   .menu-grid{grid-template-columns:1fr!important;}
   .inv-table th:nth-child(4),.inv-table td:nth-child(4){display:none;}
   .menu-admin-grid{grid-template-columns:1fr!important;}
   .rep-charts{grid-template-columns:1fr!important;}
   .admin-grid{grid-template-columns:1fr!important;}
-  .mos-panel{overflow-y:auto!important;}
-  .mos-layout{grid-template-columns:1fr!important;flex:none!important;}
   .mos-menu-grid{grid-template-columns:repeat(2,1fr)!important;}
   /* Ticket más legible en móvil */
-  .mos-sidebar{min-height:auto!important;}
-  .mos-order{max-height:300px!important;flex:none!important;}
   .mos-sidebar-ttl{font-size:14px!important;letter-spacing:2.2px!important;}
   .mos-sidebar-sub{font-size:22px!important;}
   .mos-order .ol-name{font-size:17px!important;}
@@ -312,7 +341,8 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 /* ─── MODAL DE PESO ─────────────────────────────────────────────── */
 .peso-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:300;display:flex;align-items:center;justify-content:center;padding:16px;animation:fadeIn .15s ease;}
 @media(max-width:767px){.peso-overlay{align-items:flex-start;overflow-y:auto;padding-top:24px;}}
-.peso-modal{background:#fff;border-radius:var(--r-xl);padding:24px;width:100%;max-width:320px;box-shadow:0 20px 60px rgba(0,0,0,.4);}
+.peso-modal-warn{background:var(--red-bg);border:1px solid var(--red-border);color:var(--red);border-radius:var(--r);padding:8px 12px;font-size:12px;font-weight:600;margin-bottom:12px;text-align:center;}
+.peso-modal{background:#fff;border-radius:var(--r-xl);padding:24px;width:100%;max-width:320px;box-shadow:0 20px 60px rgba(0,0,0,.4);max-height:calc(100dvh - 32px);overflow-y:auto;}
 .peso-modal-title{font-family:'Jost',sans-serif;font-size:18px;font-weight:700;color:var(--brand-green);margin-bottom:4px;}
 .peso-modal-sub{font-size:12px;color:var(--text3);margin-bottom:18px;letter-spacing:.3px;}
 .peso-modal-calc{background:var(--bg);border-radius:var(--r);padding:14px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:baseline;}
@@ -362,7 +392,8 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 .mesa-cobrado{font-size:10px;color:var(--green);margin-top:2px;font-weight:500;}
 
 /* ─── ORDEN ─────────────────────────────────────────────────────── */
-.orden-layout{display:grid;grid-template-columns:1fr 340px;gap:14px;height:calc(100dvh - var(--topbar-h) - 40px);}
+/* La altura descuenta topbar + padding del panel + la cabecera de la orden */
+.orden-layout{display:grid;grid-template-columns:1fr 340px;gap:14px;height:calc(100dvh - var(--topbar-h) - 96px);min-height:360px;}
 .orden-menu-col{overflow-y:auto;padding-right:2px;}
 .back-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:8px;font-size:13px;border:1px solid var(--border);background:var(--surface);color:var(--text2);transition:all .15s;margin-bottom:12px;box-shadow:var(--shadow);}
 .back-btn:hover{border-color:var(--brand-green);color:var(--brand-green);}
@@ -384,12 +415,12 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 .mc-add:disabled{background:var(--border2);color:var(--text3);cursor:not-allowed;transform:none;}
 
 /* Sidebar */
-.sidebar{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow-md);}
-.sidebar-hdr{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--brand-green);}
+.sidebar{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);display:flex;flex-direction:column;overflow-y:auto;box-shadow:var(--shadow-md);}
+.sidebar-hdr{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--brand-green);flex-shrink:0;}
 .sidebar-hdr-title{font-family:'Jost',sans-serif;font-size:14px;font-weight:600;color:var(--brand-cream);letter-spacing:1px;text-transform:uppercase;}
 .btn-pide{padding:5px 10px;border-radius:7px;font-size:11px;font-weight:500;background:rgba(253,248,208,.15);color:var(--brand-cream);border:1px solid rgba(253,248,208,.28);cursor:pointer;transition:all .15s;letter-spacing:.3px;}
 .btn-pide:hover{background:rgba(253,248,208,.25);}
-.personas-row{display:flex;align-items:center;gap:8px;padding:8px 14px;border-bottom:1px solid var(--border);background:var(--surface2);}
+.personas-row{display:flex;align-items:center;gap:8px;padding:8px 14px;border-bottom:1px solid var(--border);background:var(--surface2);flex-shrink:0;}
 .personas-lbl{font-size:12px;color:var(--text3);font-weight:500;}
 .personas-ctrl{display:flex;align-items:center;gap:6px;margin-left:auto;}
 .p-btn{width:26px;height:26px;border-radius:7px;border:1px solid var(--border2);background:var(--surface);color:var(--text);font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
@@ -408,7 +439,7 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 .ol-qty{font-size:13px;font-weight:600;min-width:18px;text-align:center;}
 .ol-price{font-family:'Jost',sans-serif;font-size:13px;font-weight:700;color:var(--brand-green);min-width:44px;text-align:right;}
 .empty-msg{font-size:13px;color:var(--text3);text-align:center;padding:20px 0;}
-.sidebar-footer{padding:12px 14px;border-top:2px solid var(--border);}
+.sidebar-footer{padding:12px 14px;border-top:2px solid var(--border);flex-shrink:0;}
 .footer-desglose{background:var(--surface2);border-radius:var(--r);padding:8px 10px;margin-bottom:10px;font-size:12px;}
 .footer-row{display:flex;justify-content:space-between;align-items:baseline;padding:2px 0;}
 .footer-row .lbl{color:var(--text3);}
@@ -420,12 +451,12 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 
 /* Cuentas separadas */
 .csep{display:flex;flex-direction:column;flex:1;overflow:hidden;}
-.ctabs{display:flex;gap:3px;padding:8px 14px;border-bottom:1px solid var(--border);flex-wrap:wrap;background:var(--surface2);}
+.ctabs{display:flex;gap:3px;padding:8px 14px;border-bottom:1px solid var(--border);flex-wrap:wrap;background:var(--surface2);flex-shrink:0;}
 .ctab{padding:4px 10px;border-radius:7px;font-size:11px;font-weight:500;border:1px solid var(--border);background:var(--surface);color:var(--text3);transition:all .15s;}
 .ctab:hover{color:var(--text);}
 .ctab.active{background:var(--brand-green);color:var(--brand-cream);border-color:var(--brand-green);font-weight:600;}
 .ctab.pagada{background:var(--green-bg);color:var(--green);border-color:var(--green-border);text-decoration:line-through;opacity:.7;}
-.sin-asignar{padding:8px 14px;border-bottom:1px solid var(--border);background:var(--amber-bg);}
+.sin-asignar{padding:8px 14px;border-bottom:1px solid var(--border);background:var(--amber-bg);flex-shrink:0;max-height:26vh;overflow-y:auto;}
 .sa-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--amber);font-weight:700;margin-bottom:5px;}
 .sa-item{display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px solid rgba(160,118,0,.1);}
 .sa-item:last-child{border:none;}
@@ -435,7 +466,7 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 .btn-asignar:hover{background:var(--brand-green-dk);}
 .todo-ok{font-size:12px;color:var(--green);font-weight:600;}
 .cuenta-lines{flex:1;overflow-y:auto;padding:6px 14px;}
-.csep-footer{padding:10px 14px;border-top:1px solid var(--border);}
+.csep-footer{padding:10px 14px;border-top:1px solid var(--border);flex-shrink:0;}
 .ctotal-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
 .ctotal-lbl{font-size:12px;color:var(--text3);}
 .ctotal-val{font-family:'Jost',sans-serif;font-size:18px;font-weight:700;color:var(--brand-green);}
@@ -465,17 +496,17 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 .mos-stock{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;font-weight:600;}
 .mos-stock.bajo{color:var(--amber);}
 .mos-stock.agotado{color:var(--red);}
-.mos-sidebar{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow-md);}
-.mos-sidebar-hdr{padding:14px 16px;background:var(--brand-green);color:var(--brand-cream);}
+.mos-sidebar{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);display:flex;flex-direction:column;overflow-y:auto;box-shadow:var(--shadow-md);}
+.mos-sidebar-hdr{padding:14px 16px;background:var(--brand-green);color:var(--brand-cream);flex-shrink:0;}
 .mos-sidebar-ttl{font-family:'Jost',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:500;opacity:.85;}
 .mos-sidebar-sub{font-family:'Jost',sans-serif;font-size:18px;font-weight:600;margin-top:2px;letter-spacing:.5px;}
-.mos-order{flex:1;overflow-y:auto;padding:10px 16px;}
+.mos-order{flex:1 1 auto;min-height:70px;overflow-y:auto;padding:10px 16px;}
 .mos-order .order-line{padding:12px 0;gap:10px;border-bottom:1px solid var(--border);}
 .mos-order .ol-name{font-size:15px;font-weight:500;letter-spacing:.2px;}
 .mos-order .ol-btn{width:32px;height:32px;border-radius:8px;font-size:18px;font-weight:600;}
 .mos-order .ol-qty{font-size:16px;font-weight:700;min-width:28px;color:var(--brand-green);}
 .mos-order .ol-price{font-size:15px;min-width:60px;font-weight:700;}
-.mos-footer{padding:14px 16px;border-top:2px solid var(--border);background:var(--surface2);}
+.mos-footer{padding:14px 16px;border-top:2px solid var(--border);background:var(--surface2);flex-shrink:0;}
 .mos-total-row{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;}
 .mos-total-lbl{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);font-weight:600;}
 .mos-total-val{font-family:'Jost',sans-serif;font-size:32px;font-weight:700;color:var(--brand-green);letter-spacing:-1px;}
@@ -583,6 +614,10 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 .pin-reset-form{background:var(--surface2);border-radius:var(--r);padding:12px;margin-top:8px;}
 
 /* Menú admin */
+.mac-factor{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:11px;color:var(--text3);flex-wrap:wrap;}
+.mac-factor input{width:76px;padding:4px 7px;border:1px solid var(--border2);border-radius:6px;font-family:'Jost',sans-serif;font-size:12px;font-weight:600;color:var(--text);background:var(--surface);}
+.mac-factor input:focus{outline:none;border-color:var(--brand-green);}
+.field-hint{font-size:11px;color:var(--text3);line-height:1.5;margin-top:5px;}
 .menu-admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .menu-admin-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:10px 12px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow);}
 .mac-info{flex:1;min-width:0;}
@@ -614,9 +649,9 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 .loading-txt{font-size:14px;color:var(--text3);letter-spacing:.3px;}
 
 /* Toast */
-.toast-wrap{position:fixed;bottom:calc(var(--bottomnav-h) + 12px);left:50%;transform:translateX(-50%);z-index:200;pointer-events:none;}
+.toast-wrap{position:fixed;bottom:calc(var(--bottomnav-h) + env(safe-area-inset-bottom,0px) + 12px);left:50%;transform:translateX(-50%);z-index:200;pointer-events:none;width:max-content;max-width:calc(100vw - 32px);}
 @media(min-width:768px){.toast-wrap{bottom:24px;}}
-.toast{background:var(--text);color:var(--brand-cream);padding:10px 20px;border-radius:99px;font-size:13px;font-weight:500;animation:toastIn .25s ease both;box-shadow:var(--shadow-lg);white-space:nowrap;letter-spacing:.3px;}
+.toast{background:var(--text);color:var(--brand-cream);padding:10px 20px;border-radius:99px;font-size:13px;font-weight:500;animation:toastIn .25s ease both;box-shadow:var(--shadow-lg);white-space:normal;text-align:center;letter-spacing:.3px;}
 .toast.success{background:var(--green);}
 .toast.error{background:var(--red);}
 .toast.warning{background:var(--amber);}
@@ -627,7 +662,7 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 .divider{border:none;border-top:1px solid var(--border);margin:14px 0;}
 
 /* ─── CAJA REGISTRADORA ─────────────────────────────────────────── */
-.caja-registradora{padding:14px 16px;border-top:2px solid var(--border);background:var(--surface2);animation:fadeUp .2s ease both;}
+.caja-registradora{padding:14px 16px;border-top:2px solid var(--border);background:var(--surface2);animation:fadeUp .2s ease both;flex-shrink:0;}
 .caja-reg-total-box{background:var(--brand-green);border-radius:var(--r-lg);padding:14px 16px;margin-bottom:12px;display:flex;align-items:baseline;justify-content:space-between;}
 .caja-reg-total-lbl{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(253,248,208,.75);font-weight:600;}
 .caja-reg-total-val{font-family:'Jost',sans-serif;font-size:30px;font-weight:700;color:var(--brand-cream);letter-spacing:-1px;}
@@ -648,6 +683,46 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 .caja-cambio-val{font-family:'Jost',sans-serif;font-size:26px;font-weight:700;}
 .caja-reg-cambio-box.ok .caja-cambio-val{color:var(--green);}
 .caja-reg-cambio-box.falta .caja-cambio-val{color:var(--red);}
+
+/* Cuadre de caja */
+.cuadre-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:14px 16px;margin-bottom:14px;box-shadow:var(--shadow);}
+.cuadre-hdr{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+.cuadre-ttl{font-family:'Jost',sans-serif;font-size:15px;font-weight:600;color:var(--brand-green);letter-spacing:.4px;}
+.cuadre-meta{font-size:11px;color:var(--text3);}
+.cuadre-meta.warn{color:var(--amber);font-weight:600;}
+.cuadre-rows{border-top:1px solid var(--border);padding-top:8px;}
+.cuadre-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:5px 0;font-size:14px;}
+.cr-lbl{color:var(--text2);}
+.cr-sub{color:var(--text3);font-size:11px;}
+.cr-val{font-family:'Jost',sans-serif;font-weight:600;color:var(--text);white-space:nowrap;}
+.cuadre-row.esperado{border-top:1px solid var(--border);margin-top:4px;padding-top:9px;}
+.cuadre-row.esperado .cr-lbl{font-weight:600;color:var(--text);}
+.cuadre-row.esperado .cr-val{font-size:22px;font-weight:700;color:var(--brand-green);letter-spacing:-.5px;}
+.cuadre-conteo{margin-top:12px;}
+.cuadre-conteo-lbl{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);font-weight:600;display:block;margin-bottom:6px;}
+.cuadre-conteo-field{display:flex;align-items:center;border:2px solid var(--border2);border-radius:var(--r);background:var(--surface);overflow:hidden;transition:border-color .15s;}
+.cuadre-conteo-field:focus-within{border-color:var(--brand-green);}
+.cuadre-sym{padding:8px 12px;font-family:'Jost',sans-serif;font-size:17px;font-weight:700;color:var(--brand-green);border-right:1px solid var(--border);background:var(--surface2);flex-shrink:0;}
+.cuadre-conteo-field input{flex:1;min-width:0;border:none;outline:none;padding:8px 12px;font-family:'Jost',sans-serif;font-size:20px;font-weight:700;color:var(--text);background:transparent;}
+.cuadre-clear{border:none;background:none;color:var(--text3);font-size:20px;padding:0 12px;cursor:pointer;line-height:1;}
+.cuadre-dif{margin-top:10px;border-radius:var(--r);padding:9px 14px;display:flex;align-items:baseline;justify-content:space-between;gap:10px;animation:fadeUp .15s ease;}
+.cuadre-dif .cd-lbl{font-size:13px;font-weight:600;letter-spacing:.3px;}
+.cuadre-dif .cd-val{font-family:'Jost',sans-serif;font-size:22px;font-weight:700;white-space:nowrap;}
+.cuadre-dif.ok{background:var(--green-bg);border:1px solid var(--green-border);color:var(--green);}
+.cuadre-dif.sobra{background:var(--amber-bg);border:1px solid var(--amber-border);color:var(--amber);}
+.cuadre-dif.falta{background:var(--red-bg);border:1px solid var(--red-border);color:var(--red);}
+
+/* Soporte */
+.sop-card{background:linear-gradient(135deg,var(--brand-green),var(--brand-green-dk));border-radius:var(--r-lg);padding:14px 16px;margin-bottom:10px;}
+.sop-empresa{font-family:'Jost',sans-serif;font-size:18px;font-weight:700;color:var(--brand-cream);letter-spacing:.5px;}
+.sop-horario{font-size:11px;color:rgba(253,248,208,.7);margin-top:2px;}
+.sop-btn{display:flex;align-items:center;gap:10px;width:100%;padding:11px 14px;border-radius:var(--r);border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-size:14px;font-weight:500;text-decoration:none;margin-bottom:8px;transition:all .15s;cursor:pointer;text-align:left;font-family:inherit;}
+.sop-btn:hover{border-color:var(--brand-green);background:var(--surface2);}
+.sop-btn .sop-ico{font-size:18px;flex-shrink:0;}
+.sop-btn .sop-txt{flex:1;min-width:0;}
+.sop-btn .sop-lbl{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.6px;font-weight:600;}
+.sop-btn .sop-val{font-size:14px;font-weight:600;color:var(--text);word-break:break-all;}
+.sop-vacio{font-size:12px;color:var(--text3);line-height:1.6;padding:8px 0;}
 </style>
 <script src="/seeds/rubros.js"></script>
 </head>
@@ -657,7 +732,8 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
 const {useState,useEffect,useRef,useMemo}=React;
 
 // ── Branding (se sobreescribe con /api/config en el bootstrap) ────
-const BRAND={ name:'AA POS', tagline:'', currency:'Q', credit:'AA Projects' };
+const BRAND={ name:'AA POS', tagline:'', currency:'Q', credit:'AA Projects', version:'1.1.0',
+  soporte:{ empresa:'AA Projects', whatsapp:'', telefono:'', email:'', horario:'' } };
 const money=v=>`${BRAND.currency}${v}`;
 
 // ── API ───────────────────────────────────────────────────────────
@@ -778,6 +854,50 @@ const RUBRO_BEHAVIOR={
   peso:     {hasMesas:false, pesoMode:true,  decimalQty:true },
 };
 
+// ── Motor de stock ────────────────────────────────────────────────
+// La reserva se calcula por ítem de INVENTARIO (no por ítem de menú),
+// para que dos platos que consumen el mismo insumo compartan existencias.
+const SIN_CONTROL=99999;
+function factorDe(mi){const f=parseFloat(mi&&mi.factor);return (isFinite(f)&&f>0)?f:1;}
+function esPesoItem(mi){return ['lb','kg'].includes(mi&&mi.unidad);}
+
+// Inventario comprometido por órdenes abiertas de mesas + carrito en curso
+function reservadoDe(invId,menu,mesas,carrito){
+  const hermanos=menu.filter(m=>m.invId===invId);
+  if(!hermanos.length) return 0;
+  const porId={};hermanos.forEach(m=>{porId[m.id]=factorDe(m);});
+  const suma=lineas=>(lineas||[]).reduce((s,l)=>s+(porId[l.id]?l.qty*porId[l.id]:0),0);
+  let t=0;
+  (mesas||[]).forEach(m=>{t+=suma(m.orden);});
+  t+=suma(carrito);
+  return t;
+}
+
+// Unidades del ÍTEM DE MENÚ que aún se pueden vender
+function dispDe(menuId,{menu,inventario,mesas,carrito}){
+  const mi=(menu||[]).find(m=>m.id===menuId);
+  if(!mi||!mi.invId) return SIN_CONTROL;
+  const inv=(inventario||[]).find(i=>i.id===mi.invId);
+  if(!inv) return SIN_CONTROL;
+  const libre=(parseFloat(inv.stock)||0)-reservadoDe(mi.invId,menu,mesas,carrito);
+  return Math.max(0,parseFloat((libre/factorDe(mi)).toFixed(3)));
+}
+
+// Un ítem por unidad se agota bajo 1; uno por peso, bajo cero
+function agotadoDe(disp,mi){return esPesoItem(mi)?disp<=0.0005:disp<1;}
+
+// El servidor nunca bloquea el cobro, pero avisa si el inventario no alcanzó
+function avisarFaltantes(resp,addToast){
+  const f=resp&&resp.faltantes;
+  if(!f||!f.length) return;
+  const txt=f.map(x=>`${x.nombre} (quedaban ${x.disponible} ${x.unidad})`).join(', ');
+  addToast('⚠ Inventario insuficiente: '+txt+'. Revisa existencias.','warning');
+}
+function dispTxt(disp,mi){
+  if(disp>=SIN_CONTROL) return '';
+  return esPesoItem(mi)?disp.toFixed(2):String(Math.floor(disp));
+}
+
 function RubroSelector({onSelect, onLogout, rol}){
   const [rubros,setRubros]=useState(window.RUBROS||[]);
   const [resetting,setResetting]=useState(false);
@@ -826,11 +946,13 @@ function RubroSelector({onSelect, onLogout, rol}){
 }
 
 // ── Modal de peso (carnicería, verdulería, tortillería) ───────────
-function PesoModal({item, currency, onConfirm, onCancel}){
+function PesoModal({item, currency, max, onConfirm, onCancel}){
   const [peso,setPeso]=useState('');
   const pesoNum=parseFloat(peso)||0;
   const subtotal=pesoNum*item.precio;
   const unidad=item.unidad||'lb';
+  const hayTope=max!=null&&max<SIN_CONTROL;
+  const excede=hayTope&&pesoNum>max+0.0005;
 
   function handleKey(k){
     if(k==='del'){setPeso(p=>p.slice(0,-1));}
@@ -844,7 +966,7 @@ function PesoModal({item, currency, onConfirm, onCancel}){
     <div className="peso-overlay" onClick={e=>{if(e.target===e.currentTarget)onCancel();}}>
       <div className="peso-modal fade-up">
         <div className="peso-modal-title">{item.emoji} {item.nombre}</div>
-        <div className="peso-modal-sub">Precio: {currency}{item.precio} / {unidad}</div>
+        <div className="peso-modal-sub">Precio: {currency}{item.precio} / {unidad}{hayTope?` · Disponible: ${max.toFixed(2)} ${unidad}`:''}</div>
         <div className="field" style={{marginBottom:12}}>
           <label>Cantidad ({unidad})</label>
           <input type="number" step="0.01" min="0" placeholder="0.0"
@@ -855,6 +977,7 @@ function PesoModal({item, currency, onConfirm, onCancel}){
           <div className="peso-modal-calc-lbl">{pesoNum} {unidad} × {currency}{item.precio}</div>
           <div className="peso-modal-calc-val">{currency}{subtotal.toFixed(2)}</div>
         </div>
+        {excede&&<div className="peso-modal-warn">⚠ Solo quedan {max.toFixed(2)} {unidad} disponibles</div>}
         <div className="pin-keypad" style={{marginBottom:14}}>
           {keys.map(k=>(
             <button key={k} className={`pin-key${k==='del'?' del':''}`} onClick={()=>handleKey(k)} style={{padding:'12px',fontSize:'18px'}}>
@@ -863,7 +986,7 @@ function PesoModal({item, currency, onConfirm, onCancel}){
           ))}
         </div>
         <div style={{display:'flex',gap:8}}>
-          <button className="btn btn-primary btn-full" disabled={pesoNum<=0} onClick={()=>onConfirm(pesoNum,subtotal)}>
+          <button className="btn btn-primary btn-full" disabled={pesoNum<=0||excede} onClick={()=>onConfirm(pesoNum,subtotal)}>
             Agregar {pesoNum>0?`${pesoNum} ${unidad}`:''} →
           </button>
           <button className="btn btn-ghost" style={{minWidth:80}} onClick={onCancel}>✕</button>
@@ -880,24 +1003,26 @@ function MesasTab({suc,addToast,reload}){
   const [separando,setSeparando]=useState(false);
   const [cuentas,setCuentas]=useState([]);
   const [cuentaActiva,setCuentaActiva]=useState(0);
+  const [cobrando,setCobrando]=useState(false);
+  const [showCajaMesa,setShowCajaMesa]=useState(false);
+  const [efectivoMesa,setEfectivoMesa]=useState('');
+  const efectivoMesaRef=useRef(null);
 
   const mesa=mesaSel!=null?mesas.find(m=>m.id===mesaSel):null;
 
+  // Disponibilidad real: descuenta lo comprometido en TODAS las mesas
+  // abiertas y agrupa los ítems que comparten el mismo insumo.
   function stockDisponible(menuId){
-    const mi=menu.find(m=>m.id===menuId);
-    if(!mi||!mi.invId) return 999;
-    const inv=inventario.find(i=>i.id===mi.invId);
-    if(!inv) return 999;
-    const enUso=mesas.reduce((s,m)=>{const l=m.orden.find(l=>l.id===menuId);return s+(l?l.qty:0);},0);
-    return Math.max(0,inv.stock-enUso);
+    return dispDe(menuId,{menu,inventario,mesas});
   }
   function getMenuSt(menuId){
-    const d=stockDisponible(menuId);
-    if(d<=0) return 'sin-stock';
     const mi=menu.find(m=>m.id===menuId);
+    const d=stockDisponible(menuId);
+    if(agotadoDe(d,mi)) return 'sin-stock';
     if(!mi||!mi.invId) return 'disponible';
     const inv=inventario.find(i=>i.id===mi.invId);
-    return (!inv||inv.stock<=inv.min)?'stock-bajo':'disponible';
+    if(!inv) return 'disponible';
+    return (d*factorDe(mi))<=inv.min?'stock-bajo':'disponible';
   }
 
   function initCuentas(m){
@@ -910,10 +1035,10 @@ function MesasTab({suc,addToast,reload}){
   async function patchMesa(id,patch){await S(suc.id,'/mesas/'+id,patch,'PUT');reload();}
 
   async function agregarItem(itemId){
-    const d=stockDisponible(itemId);
-    if(d<=0){addToast('Sin stock para este ítem','error');return;}
     const mi=menu.find(m=>m.id===itemId);
-    if(d===1) addToast('⚠ Último disponible: '+mi.nombre,'warning');
+    const d=stockDisponible(itemId);
+    if(agotadoDe(d,mi)){addToast('Sin stock para este ítem','error');return;}
+    if(d>=1&&d<2) addToast('⚠ Último disponible: '+mi.nombre,'warning');
     const m={...mesa,orden:mesa.orden.map(l=>({...l}))};
     const l=m.orden.find(l=>l.id===itemId);
     if(l) l.qty++;
@@ -933,15 +1058,31 @@ function MesasTab({suc,addToast,reload}){
     await patchMesa(mesaSel,{estado:'cuenta'});
     addToast('Mesa '+mesa.nombre+' pide la cuenta');
   }
-  async function cobrarMesa(){
+  function cobrarMesa(){
     if(!mesa.orden.length){addToast('No hay nada que cobrar','error');return;}
-    const total=mesa.orden.reduce((s,l)=>s+l.precio*l.qty,0);
-    await S(suc.id,'/cobrar',{mesaId:mesaSel,orden:mesa.orden,detalle:'Cuenta completa',cobradoParcial:false},'POST');
-    addToast('Cobrado Q'+total+' ✓','success');reload();volver();
+    setShowCajaMesa(true);setEfectivoMesa('');
+    setTimeout(()=>efectivoMesaRef.current?.focus(),150);
+  }
+  async function confirmarCobroMesa(){
+    if(cobrando) return;
+    // mesa.orden solo contiene lo NO cobrado: su total es lo que falta pagar
+    const pend=mesa.orden.reduce((s,l)=>s+l.precio*l.qty,0);
+    const efectivoNum=parseFloat(efectivoMesa)||0;
+    if(efectivoNum<pend){addToast('Efectivo insuficiente','error');return;}
+    const cambio=efectivoNum-pend;
+    setCobrando(true);
+    try{
+      const r=await S(suc.id,'/cobrar',{mesaId:mesaSel,orden:mesa.orden,detalle:'Cuenta completa',cobradoParcial:false},'POST');
+      addToast(`${mesa.nombre} · ${BRAND.currency}${pend} · Vuelto ${BRAND.currency}${cambio.toFixed(2)} ✓`,'success');
+      avisarFaltantes(r,addToast);
+      setShowCajaMesa(false);setEfectivoMesa('');reload();volver();
+    }finally{setCobrando(false);}
   }
   async function cancelarOrden(){
+    const pend=mesa.orden.reduce((s,l)=>s+l.precio*l.qty,0);
+    if(pend>0&&!confirm(`Se descartará lo no cobrado (${BRAND.currency}${pend}) y la mesa quedará libre. ¿Continuar?`)) return;
     await patchMesa(mesaSel,{orden:[],estado:'libre',cobrado:0});
-    setCuentas([]);volver();
+    setCuentas([]);setShowCajaMesa(false);volver();
   }
   async function cambiarPersonas(d){
     const np=Math.max(1,Math.min(20,mesa.personas+d));
@@ -966,19 +1107,27 @@ function MesasTab({suc,addToast,reload}){
     }));
   }
   async function cobrarCuenta(i){
+    if(cobrando) return;
     const cuenta=cuentas[i];
+    if(!cuenta.items.length){addToast('Esta cuenta está vacía','error');return;}
     const total=cuenta.items.reduce((s,it)=>s+it.precio*it.qty,0);
     const nuevas=cuentas.map((c,j)=>j===i?{...c,pagada:true}:c);
-    const todas=nuevas.every(c=>c.pagada);
-    await S(suc.id,'/cobrar',{
-      mesaId:mesaSel,
-      orden:cuenta.items.map(it=>({id:it.lineaId,nombre:it.nombre,precio:it.precio,qty:it.qty})),
-      detalle:cuenta.label,cobradoParcial:!todas
-    },'POST');
-    setCuentas(nuevas);
-    addToast('Cobrado '+cuenta.label+' Q'+total+' ✓','success');
-    if(todas){await patchMesa(mesaSel,{orden:[],estado:'libre',cobrado:0});addToast('Mesa liberada ✓','success');volver();}
-    else{setCuentaActiva(nuevas.findIndex(c=>!c.pagada));reload();}
+    setCobrando(true);
+    try{
+      // Siempre parcial: el servidor descuenta las líneas pagadas de la orden
+      // y libera la mesa solo cuando ya no queda nada pendiente.
+      const r=await S(suc.id,'/cobrar',{
+        mesaId:mesaSel,
+        orden:cuenta.items.map(it=>({id:it.lineaId,nombre:it.nombre,precio:it.precio,qty:it.qty})),
+        detalle:cuenta.label,cobradoParcial:true
+      },'POST');
+      setCuentas(nuevas);
+      addToast('Cobrado '+cuenta.label+' '+BRAND.currency+total+' ✓','success');
+      avisarFaltantes(r,addToast);
+      reload();
+      if(r&&r.liberada){addToast('Mesa liberada ✓','success');volver();}
+      else{const sig=nuevas.findIndex(c=>!c.pagada);setCuentaActiva(sig>=0?sig:i);}
+    }finally{setCobrando(false);}
   }
 
   const libres=mesas.filter(m=>m.estado==='libre').length;
@@ -1013,9 +1162,14 @@ function MesasTab({suc,addToast,reload}){
     </div>
   );
 
-  const totalOrden=mesa.orden.reduce((s,l)=>s+l.precio*l.qty,0);
+  // mesa.orden contiene SOLO lo que falta cobrar (el servidor retira las
+  // líneas ya pagadas), así que el pendiente es su propio total.
+  const pendienteMesa=mesa.orden.reduce((s,l)=>s+l.precio*l.qty,0);
   const cobradoMesa=mesa.cobrado||0;
-  const pendienteMesa=totalOrden-cobradoMesa;
+  const totalCuenta=pendienteMesa+cobradoMesa;
+  const efectivoMesaNum=parseFloat(efectivoMesa)||0;
+  const cambioMesa=efectivoMesaNum-pendienteMesa;
+  const quickMesa=DENOM.filter(d=>d>=pendienteMesa).slice(0,4);
   const asignados={};
   cuentas.forEach(c=>c.items.forEach(it=>{asignados[it.lineaId]=(asignados[it.lineaId]||0)+it.qty;}));
   const sinAsignar=mesa.orden.map(l=>{const a=asignados[l.id]||0;const r=l.qty-a;return r>0?{...l,disponible:r}:null;}).filter(Boolean);
@@ -1041,7 +1195,7 @@ function MesasTab({suc,addToast,reload}){
                   <div className="mc-info">
                     <div className="mc-name">{item.emoji} {item.nombre}</div>
                     <div className="mc-price">{BRAND.currency}{item.precio}</div>
-                    {inv&&<div className={`mc-stock ${st==='sin-stock'?'agotado':st==='stock-bajo'?'bajo':'ok'}`}>{st==='sin-stock'?'Agotado':disp+' disp.'}</div>}
+                    {inv&&<div className={`mc-stock ${st==='sin-stock'?'agotado':st==='stock-bajo'?'bajo':'ok'}`}>{st==='sin-stock'?'Agotado':dispTxt(disp,item)+' disp.'}</div>}
                   </div>
                   <button className="mc-add" disabled={st==='sin-stock'} onClick={e=>{e.stopPropagation();if(st!=='sin-stock')agregarItem(item.id);}}>+</button>
                 </div>
@@ -1087,16 +1241,51 @@ function MesasTab({suc,addToast,reload}){
                 }
               </div>
               <div className="sidebar-footer">
-                {totalOrden>0&&(
-                  <div className="footer-desglose">
-                    <div className="footer-row"><span className="lbl">Total orden</span><span className="val total-fx">{BRAND.currency}{totalOrden}</span></div>
-                    {cobradoMesa>0&&<><hr className="footer-divider"/><div className="footer-row"><span className="lbl">✓ Cobrado</span><span className="val cobrado">{BRAND.currency}{cobradoMesa}</span></div></>}
-                    <hr className="footer-divider"/>
-                    <div className="footer-row"><span className="lbl">Por cobrar</span><span className="val pendiente">{BRAND.currency}{pendienteMesa}</span></div>
+                {showCajaMesa?(
+                  <div className="caja-registradora">
+                    <div className="caja-reg-total-box">
+                      <div className="caja-reg-total-lbl">Total a cobrar</div>
+                      <div className="caja-reg-total-val">{BRAND.currency}{pendienteMesa}</div>
+                    </div>
+                    {quickMesa.length>0&&(
+                      <div className="caja-quick-row">
+                        {quickMesa.map(d=>(
+                          <button key={d} className={`caja-quick-btn${efectivoMesaNum===d?' active':''}`} onClick={()=>setEfectivoMesa(String(d))}>{BRAND.currency}{d}</button>
+                        ))}
+                      </div>
+                    )}
+                    <div className="caja-reg-input-wrap">
+                      <div className="caja-reg-input-lbl">Efectivo recibido</div>
+                      <div className="caja-reg-input-field">
+                        <span className="caja-reg-currency-sym">{BRAND.currency}</span>
+                        <input ref={efectivoMesaRef} type="number" inputMode="decimal" className="caja-reg-input" value={efectivoMesa} onChange={e=>setEfectivoMesa(e.target.value)} placeholder="0" min="0" step="1"/>
+                      </div>
+                    </div>
+                    {efectivoMesaNum>0&&(
+                      <div className={`caja-reg-cambio-box ${cambioMesa>=0?'ok':'falta'}`}>
+                        <div className="caja-cambio-lbl">{cambioMesa>=0?'Vuelto':'Falta'}</div>
+                        <div className="caja-cambio-val">{BRAND.currency}{Math.abs(cambioMesa).toFixed(2)}</div>
+                      </div>
+                    )}
+                    <button className="mos-btn-cobrar" disabled={cobrando||!efectivoMesa||efectivoMesaNum<pendienteMesa} onClick={confirmarCobroMesa}>
+                      {cobrando?'Cobrando…':'Confirmar Cobro'}
+                    </button>
+                    <button className="mos-btn-cancel" onClick={()=>setShowCajaMesa(false)}>← Volver al ticket</button>
                   </div>
+                ):(
+                  <>
+                    {totalCuenta>0&&(
+                      <div className="footer-desglose">
+                        <div className="footer-row"><span className="lbl">Total cuenta</span><span className="val total-fx">{BRAND.currency}{totalCuenta}</span></div>
+                        {cobradoMesa>0&&<><hr className="footer-divider"/><div className="footer-row"><span className="lbl">✓ Cobrado</span><span className="val cobrado">{BRAND.currency}{cobradoMesa}</span></div></>}
+                        <hr className="footer-divider"/>
+                        <div className="footer-row"><span className="lbl">Por cobrar</span><span className="val pendiente">{BRAND.currency}{pendienteMesa}</span></div>
+                      </div>
+                    )}
+                    <button className="btn btn-primary btn-full" disabled={!mesa.orden.length} onClick={cobrarMesa}>Cobrar {BRAND.currency}{pendienteMesa}</button>
+                    <button className="btn btn-ghost btn-full" style={{marginTop:6}} onClick={cancelarOrden}>Cancelar orden</button>
+                  </>
                 )}
-                <button className="btn btn-primary btn-full" onClick={cobrarMesa}>Cobrar todo — {BRAND.currency}{totalOrden}</button>
-                <button className="btn btn-ghost btn-full" style={{marginTop:6}} onClick={cancelarOrden}>Cancelar orden</button>
               </div>
             </>
           ):(
@@ -1134,11 +1323,12 @@ function MesasTab({suc,addToast,reload}){
 // ── Mostrador (toma express / tablet) ─────────────────────────────
 const DENOM=[10,20,50,100,200,500];
 function MostradorTab({suc,addToast,reload}){
-  const {menu,inventario,transacciones}=suc;
+  const {menu,inventario,transacciones,mesas}=suc;
   const [orden,setOrden]=useState([]);
   const [showCaja,setShowCaja]=useState(false);
   const [efectivo,setEfectivo]=useState('');
   const [pesoItem,setPesoItem]=useState(null); // item que abrió el modal de peso
+  const [cobrando,setCobrando]=useState(false);
   const efectivoRef=useRef(null);
   const behavior=RUBRO_BEHAVIOR[suc.tipo]||RUBRO_BEHAVIOR.mostrador;
 
@@ -1148,29 +1338,26 @@ function MostradorTab({suc,addToast,reload}){
   const efectivoNum=parseFloat(efectivo)||0;
   const cambio=efectivoNum-total;
 
+  // Descuenta el carrito en curso Y las mesas abiertas del mismo rubro
   function stockDisponible(menuId){
-    const mi=menu.find(m=>m.id===menuId);
-    if(!mi||!mi.invId) return 999;
-    const inv=inventario.find(i=>i.id===mi.invId);
-    if(!inv) return 999;
-    const enCarrito=orden.find(l=>l.id===menuId);
-    return Math.max(0,inv.stock-(enCarrito?enCarrito.qty:0));
+    return dispDe(menuId,{menu,inventario,mesas,carrito:orden});
   }
   function getEst(menuId){
-    const d=stockDisponible(menuId);
-    if(d<=0) return 'sin-stock';
     const mi=menu.find(m=>m.id===menuId);
+    const d=stockDisponible(menuId);
+    if(agotadoDe(d,mi)) return 'sin-stock';
     if(!mi||!mi.invId) return 'ok';
     const inv=inventario.find(i=>i.id===mi.invId);
-    return (!inv||inv.stock<=inv.min)?'bajo':'ok';
+    if(!inv) return 'ok';
+    return (d*factorDe(mi))<=inv.min?'bajo':'ok';
   }
 
   function agregar(itemId){
-    const d=stockDisponible(itemId);
-    if(d<=0){addToast('Sin stock','error');return;}
     const mi=menu.find(m=>m.id===itemId);
-    // Modo peso: abrir modal si el ítem tiene unidad lb/kg o el rubro es peso
-    if(behavior.pesoMode||['lb','kg'].includes(mi.unidad)){
+    const d=stockDisponible(itemId);
+    if(agotadoDe(d,mi)){addToast('Sin stock','error');return;}
+    // Modal de peso solo para ítems vendidos por lb/kg
+    if(esPesoItem(mi)){
       setPesoItem(mi); return;
     }
     setOrden(prev=>{
@@ -1183,10 +1370,12 @@ function MostradorTab({suc,addToast,reload}){
   function agregarConPeso(peso,subtotal){
     const mi=pesoItem;
     const unidad=mi.unidad||'lb';
-    setOrden(prev=>{
-      // Para items de peso, cada entrada es independiente (no acumula qty)
-      return [...prev,{id:mi.id,nombre:mi.nombre,precio:mi.precio,qty:peso,unidad,_pesoLine:true}];
-    });
+    const disp=stockDisponible(mi.id);
+    if(disp<SIN_CONTROL&&peso>disp+0.0005){
+      addToast(`Solo quedan ${disp.toFixed(2)} ${unidad} de ${mi.nombre}`,'error');
+      return;
+    }
+    setOrden(prev=>[...prev,{id:mi.id,nombre:mi.nombre,precio:mi.precio,qty:peso,unidad,_pesoLine:true}]);
     setPesoItem(null);
   }
   function quitar(itemId){
@@ -1203,12 +1392,17 @@ function MostradorTab({suc,addToast,reload}){
     setTimeout(()=>efectivoRef.current?.focus(),150);
   }
   async function confirmarCobro(){
+    if(cobrando) return;
     if(efectivoNum<total){addToast('Efectivo insuficiente','error');return;}
-    await S(suc.id,'/cobrar',{
-      mesaId:0,orden,detalle:'Ticket #'+nextTicket,cobradoParcial:false,mostrador:true
-    },'POST');
-    addToast(`Ticket #${nextTicket} · ${BRAND.currency}${total} · Vuelto ${BRAND.currency}${cambio.toFixed(2)} ✓`,'success');
-    setOrden([]);setShowCaja(false);setEfectivo('');reload();
+    setCobrando(true);
+    try{
+      const r=await S(suc.id,'/cobrar',{
+        mesaId:0,orden,detalle:'Ticket #'+nextTicket,cobradoParcial:false,mostrador:true
+      },'POST');
+      addToast(`Ticket #${nextTicket} · ${BRAND.currency}${total} · Vuelto ${BRAND.currency}${cambio.toFixed(2)} ✓`,'success');
+      avisarFaltantes(r,addToast);
+      setOrden([]);setShowCaja(false);setEfectivo('');reload();
+    }finally{setCobrando(false);}
   }
 
   const ultimos=ticketsHoy.slice(0,5);
@@ -1216,7 +1410,7 @@ function MostradorTab({suc,addToast,reload}){
 
   return(
     <div className="mos-panel fade-up">
-      {pesoItem&&<PesoModal item={pesoItem} currency={BRAND.currency} onConfirm={agregarConPeso} onCancel={()=>setPesoItem(null)}/>}
+      {pesoItem&&<PesoModal item={pesoItem} currency={BRAND.currency} max={stockDisponible(pesoItem.id)} onConfirm={agregarConPeso} onCancel={()=>setPesoItem(null)}/>}
       <div className="mos-hdr">
         <div className="mos-title">Mostrador · Toma express</div>
         <div className="mos-ticket">Ticket <b>#{nextTicket}</b></div>
@@ -1237,7 +1431,7 @@ function MostradorTab({suc,addToast,reload}){
                   <div className="mos-emoji">{item.emoji}</div>
                   <div className="mos-name">{item.nombre}</div>
                   <div className="mos-price">{BRAND.currency}{item.precio}{unidad?<span style={{fontSize:'11px',fontWeight:400}}> /{unidad}</span>:null}</div>
-                  {item.invId&&<div className={`mos-stock ${est}`}>{est==='sin-stock'?'Agotado':est==='bajo'?disp+' disp.':''}</div>}
+                  {item.invId&&<div className={`mos-stock ${est}`}>{est==='sin-stock'?'Agotado':est==='bajo'?dispTxt(disp,item)+' disp.':''}</div>}
                   {unidad&&<div className="mos-unit">por {unidad}</div>}
                 </button>
               );
@@ -1316,7 +1510,7 @@ function MostradorTab({suc,addToast,reload}){
                   <div className="caja-cambio-val">{BRAND.currency}{Math.abs(cambio).toFixed(2)}</div>
                 </div>
               )}
-              <button className="mos-btn-cobrar" disabled={!efectivo||efectivoNum<total} onClick={confirmarCobro}>Confirmar Cobro</button>
+              <button className="mos-btn-cobrar" disabled={cobrando||!efectivo||efectivoNum<total} onClick={confirmarCobro}>{cobrando?'Cobrando…':'Confirmar Cobro'}</button>
               <button className="mos-btn-cancel" onClick={()=>setShowCaja(false)}>← Volver al ticket</button>
             </div>
           ):(
@@ -1344,6 +1538,18 @@ function CajaTab({suc,rol,addToast,reload}){
   const totalPend=suc.mesas.reduce((s,m)=>s+m.orden.reduce((a,l)=>a+l.precio*l.qty,0),0);
   const prom=tx.length?Math.round(total/tx.length):0;
 
+  // ── Cuadre de caja ──
+  const caja=suc.caja||{inicial:0};
+  const hoy=new Date().toLocaleDateString('es-GT');
+  const txHoy=useMemo(()=>tx.filter(t=>!t.fecha||t.fecha===hoy),[tx,hoy]);
+  const ventasHoy=txHoy.reduce((s,t)=>s+t.total,0);
+  const fondo=parseFloat(caja.inicial)||0;
+  const esperado=fondo+ventasHoy;
+  const [conteo,setConteo]=useState('');
+  const conteoNum=parseFloat(conteo);
+  const hayConteo=conteo!==''&&!isNaN(conteoNum);
+  const dif=hayConteo?conteoNum-esperado:0;
+
   // Agrupar por mesa+fecha
   const grupos=useMemo(()=>{
     const map={};
@@ -1370,6 +1576,35 @@ function CajaTab({suc,rol,addToast,reload}){
         <div className="stat-card"><div className="stat-label">Ventas</div><div className="stat-value">{tx.length}</div></div>
         <div className="stat-card"><div className="stat-label">Venta promedio</div><div className="stat-value">{BRAND.currency}{prom}</div></div>
       </div>
+      {/* Cuadre de caja */}
+      <div className="cuadre-card">
+        <div className="cuadre-hdr">
+          <div className="cuadre-ttl">🧾 Cuadre de caja — {hoy}</div>
+          {caja.ts
+            ?<div className="cuadre-meta">Fondo abierto {caja.fecha} · {caja.hora}</div>
+            :<div className="cuadre-meta warn">Sin fondo configurado — pídelo al administrador</div>}
+        </div>
+        <div className="cuadre-rows">
+          <div className="cuadre-row"><span className="cr-lbl">Fondo inicial</span><span className="cr-val">{BRAND.currency}{fondo.toFixed(2)}</span></div>
+          <div className="cuadre-row"><span className="cr-lbl">+ Ventas de hoy <span className="cr-sub">({txHoy.length})</span></span><span className="cr-val">{BRAND.currency}{ventasHoy.toFixed(2)}</span></div>
+          <div className="cuadre-row esperado"><span className="cr-lbl">= Efectivo esperado</span><span className="cr-val">{BRAND.currency}{esperado.toFixed(2)}</span></div>
+        </div>
+        <div className="cuadre-conteo">
+          <label className="cuadre-conteo-lbl">Conteo físico en caja</label>
+          <div className="cuadre-conteo-field">
+            <span className="cuadre-sym">{BRAND.currency}</span>
+            <input type="number" inputMode="decimal" placeholder="0.00" value={conteo} onChange={e=>setConteo(e.target.value)} min="0" step="0.01"/>
+            {conteo!==''&&<button className="cuadre-clear" onClick={()=>setConteo('')} title="Limpiar">×</button>}
+          </div>
+        </div>
+        {hayConteo&&(
+          <div className={`cuadre-dif ${Math.abs(dif)<0.005?'ok':dif>0?'sobra':'falta'}`}>
+            <span className="cd-lbl">{Math.abs(dif)<0.005?'✓ Caja cuadrada':dif>0?'Sobrante':'Faltante'}</span>
+            <span className="cd-val">{BRAND.currency}{Math.abs(dif).toFixed(2)}</span>
+          </div>
+        )}
+      </div>
+
       <div className="sec-hdr">Historial de ventas{rol==='admin'&&<span style={{fontSize:'11px',color:'var(--text3)',fontWeight:400,letterSpacing:0,textTransform:'none'}}> — Admin: puedes eliminar transacciones</span>}</div>
       {!grupos.length?<div className="empty-msg" style={{textAlign:'left'}}>Sin ventas aún</div>
         :grupos.map((g,gi)=>(
@@ -1473,12 +1708,21 @@ function InventarioTab({suc,addToast,reload}){
 function MenuTab({suc,addToast,reload}){
   const {menu,inventario}=suc;
   const [showForm,setShowForm]=useState(false);
-  const [f,setF]=useState({nombre:'',precio:'',emoji:'🍽',invId:'',unidad:'u'});
+  const [f,setF]=useState({nombre:'',precio:'',emoji:'🍽',invId:'',unidad:'u',factor:'1'});
+  const invSel=f.invId?inventario.find(i=>i.id===parseInt(f.invId)):null;
   async function del(id){if(!confirm('¿Eliminar?')) return;await S(suc.id,'/menu/'+id,null,'DELETE');reload();addToast('Eliminado');}
   async function add(){
     if(!f.nombre.trim()||!f.precio){addToast('Nombre y precio requeridos','error');return;}
-    await S(suc.id,'/menu',{nombre:f.nombre.trim(),precio:parseFloat(f.precio)||0,emoji:f.emoji||'🍽',invId:f.invId?parseInt(f.invId):null,unidad:f.unidad||'u'},'POST');
-    setF({nombre:'',precio:'',emoji:'🍽',invId:'',unidad:'u'});setShowForm(false);reload();addToast('Ítem agregado ✓','success');
+    const factor=parseFloat(f.factor);
+    if(f.invId&&(!isFinite(factor)||factor<=0)){addToast('El consumo debe ser mayor que 0','error');return;}
+    await S(suc.id,'/menu',{nombre:f.nombre.trim(),precio:parseFloat(f.precio)||0,emoji:f.emoji||'🍽',
+      invId:f.invId?parseInt(f.invId):null,unidad:f.unidad||'u',factor:f.invId?factor:1},'POST');
+    setF({nombre:'',precio:'',emoji:'🍽',invId:'',unidad:'u',factor:'1'});setShowForm(false);reload();addToast('Ítem agregado ✓','success');
+  }
+  async function setFactor(item,val){
+    const n=parseFloat(val);
+    if(!isFinite(n)||n<=0){addToast('Consumo inválido','error');return;}
+    await S(suc.id,'/menu/'+item.id,{factor:n},'PUT');reload();addToast('Consumo actualizado ✓','success');
   }
   return(
     <div className="panel fade-up">
@@ -1491,7 +1735,15 @@ function MenuTab({suc,addToast,reload}){
               <div className="mac-info">
                 <div className="mac-name">{item.emoji} {item.nombre}</div>
                 <div className="mac-price">{BRAND.currency}{item.precio}</div>
-                <div className="mac-inv">{inv?'→ '+inv.nombre+' ('+inv.stock+')':'Sin inventario vinculado'}</div>
+                <div className="mac-inv">{inv?`→ ${inv.nombre} (${inv.stock} ${inv.unidad||'u'})`:'Sin inventario vinculado'}</div>
+                {inv&&(
+                  <div className="mac-factor">
+                    <span>Consume</span>
+                    <input type="number" min="0.001" step="0.001" defaultValue={factorDe(item)}
+                      onBlur={e=>{const v=parseFloat(e.target.value);if(v!==factorDe(item))setFactor(item,e.target.value);}}/>
+                    <span>{inv.unidad||'u'} por venta</span>
+                  </div>
+                )}
               </div>
               <button className="mac-del" onClick={()=>del(item.id)}>×</button>
             </div>
@@ -1521,6 +1773,17 @@ function MenuTab({suc,addToast,reload}){
                 </select>
               </div>
             </div>
+            {invSel&&(
+              <div className="field">
+                <label>Consumo por venta — cuánto descuenta de «{invSel.nombre}»</label>
+                <input type="number" min="0.001" step="0.001" value={f.factor}
+                  onChange={e=>setF(p=>({...p,factor:e.target.value}))}/>
+                <div className="field-hint">
+                  1 {f.unidad||'u'} vendida descuenta <b>{parseFloat(f.factor)>0?parseFloat(f.factor):'—'} {invSel.unidad||'u'}</b> del inventario.
+                  Ej: si un taco lleva 0.15 kg de carne, escribe 0.15.
+                </div>
+              </div>
+            )}
             <div style={{display:'flex',gap:8}}>
               <button className="btn btn-primary" onClick={add}>Agregar</button>
               <button className="btn btn-ghost" onClick={()=>setShowForm(false)}>Cancelar</button>
@@ -1943,6 +2206,22 @@ function AdminTab({suc,allData,addToast,reloadAll,reloadSuc,onResetDemo}){
   const [editMesaId,setEditMesaId]=useState(null);
   const [editMesaNombre,setEditMesaNombre]=useState('');
   const [resetting,setResetting]=useState(false);
+  const [showCajaForm,setShowCajaForm]=useState(false);
+  const [cajaMonto,setCajaMonto]=useState('');
+  const [cajaNota,setCajaNota]=useState('');
+
+  const caja=suc.caja||{inicial:0};
+  const sop=BRAND.soporte||{};
+  const waNum=(sop.whatsapp||'').replace(/\D/g,'');
+  const waMsg=encodeURIComponent(`Hola ${sop.empresa||'AA Projects'}, soy de "${suc.nombre}" y necesito soporte con el POS (v${BRAND.version||'1.0'}).`);
+
+  async function guardarCaja(){
+    const monto=parseFloat(cajaMonto);
+    if(isNaN(monto)||monto<0){addToast('Monto inválido','error');return;}
+    await S(suc.id,'/caja-inicial',{inicial:monto,nota:cajaNota.trim()},'PUT');
+    setShowCajaForm(false);setCajaMonto('');setCajaNota('');
+    reloadSuc();addToast('Fondo de caja actualizado ✓','success');
+  }
 
   async function resetRubro(){
     if(!confirm(`¿Restaurar el demo de "${suc.nombre}"? Se borrarán ventas y cambios de inventario.`)) return;
@@ -2038,6 +2317,77 @@ function AdminTab({suc,allData,addToast,reloadAll,reloadSuc,onResetDemo}){
           }
         </div>}
 
+        {/* Caja inicial / fondo de caja */}
+        <div className="admin-section-card">
+          <div className="admin-section-title">💵 Caja inicial — {suc.nombre}</div>
+          <div style={{fontSize:12,color:'var(--text3)',marginBottom:12,lineHeight:1.5}}>
+            Efectivo con el que abre la caja. Es la base del cuadre: <b>fondo + ventas del día = efectivo esperado</b>.
+          </div>
+          <div className="admin-list-item">
+            <div className="admin-item-info">
+              <div className="admin-item-name">Fondo actual</div>
+              <div className="admin-item-sub">{caja.ts?`Abierto ${caja.fecha} · ${caja.hora}`:'Nunca configurado'}</div>
+            </div>
+            <div style={{fontFamily:"'Jost',sans-serif",fontSize:20,fontWeight:700,color:'var(--brand-green)'}}>
+              {BRAND.currency}{(parseFloat(caja.inicial)||0).toFixed(2)}
+            </div>
+          </div>
+          {caja.nota&&<div className="admin-list-item"><div className="admin-item-info"><div className="admin-item-sub">📝 {caja.nota}</div></div></div>}
+          {!showCajaForm
+            ?<button className="btn btn-ghost btn-full btn-sm" style={{marginTop:10}} onClick={()=>{setShowCajaForm(true);setCajaMonto(String(parseFloat(caja.inicial)||0));}}>
+              {caja.ts?'Cambiar fondo de caja':'Configurar fondo de caja'}
+            </button>
+            :(
+              <div className="add-form-wrap" style={{marginTop:10}}>
+                <div className="field"><label>Monto del fondo ({BRAND.currency})</label>
+                  <input type="number" inputMode="decimal" min="0" step="0.01" placeholder="0.00" value={cajaMonto} onChange={e=>setCajaMonto(e.target.value)} autoFocus/></div>
+                <div className="field"><label>Nota (opcional)</label>
+                  <input placeholder="Ej: entrega de turno mañana" value={cajaNota} onChange={e=>setCajaNota(e.target.value)} maxLength={120}/></div>
+                <div style={{display:'flex',gap:8}}>
+                  <button className="btn btn-primary btn-sm" onClick={guardarCaja}>Guardar fondo</button>
+                  <button className="btn btn-ghost btn-sm" onClick={()=>setShowCajaForm(false)}>Cancelar</button>
+                </div>
+              </div>
+            )
+          }
+        </div>
+
+        {/* Soporte */}
+        <div className="admin-section-card">
+          <div className="admin-section-title">🛟 Soporte técnico</div>
+          <div className="sop-card">
+            <div className="sop-empresa">{sop.empresa||'AA Projects'}</div>
+            {sop.horario&&<div className="sop-horario">🕘 {sop.horario}</div>}
+          </div>
+          {waNum&&(
+            <a className="sop-btn" href={`https://wa.me/${waNum}?text=${waMsg}`} target="_blank" rel="noopener noreferrer">
+              <span className="sop-ico">💬</span>
+              <span className="sop-txt"><span className="sop-lbl">WhatsApp</span><span className="sop-val">+{waNum}</span></span>
+            </a>
+          )}
+          {sop.telefono&&(
+            <a className="sop-btn" href={`tel:${sop.telefono.replace(/\s/g,'')}`}>
+              <span className="sop-ico">📞</span>
+              <span className="sop-txt"><span className="sop-lbl">Teléfono</span><span className="sop-val">{sop.telefono}</span></span>
+            </a>
+          )}
+          {sop.email&&(
+            <a className="sop-btn" href={`mailto:${sop.email}?subject=${encodeURIComponent('Soporte POS — '+suc.nombre)}`}>
+              <span className="sop-ico">✉️</span>
+              <span className="sop-txt"><span className="sop-lbl">Correo</span><span className="sop-val">{sop.email}</span></span>
+            </a>
+          )}
+          {!waNum&&!sop.telefono&&!sop.email&&(
+            <div className="sop-vacio">
+              Los datos de contacto no están configurados en este servidor.<br/>
+              Se definen con las variables <b>SUPPORT_WHATSAPP</b>, <b>SUPPORT_PHONE</b> y <b>SUPPORT_EMAIL</b>.
+            </div>
+          )}
+          <div style={{fontSize:11,color:'var(--text3)',marginTop:10,lineHeight:1.5}}>
+            Al reportar un problema indica el rubro (<b>{suc.nombre}</b>) y qué estabas haciendo.
+          </div>
+        </div>
+
         {/* Demo Reset */}
         <div className="admin-section-card">
           <div className="admin-section-title">🔄 Demo</div>
@@ -2099,6 +2449,7 @@ function AdminTab({suc,allData,addToast,reloadAll,reloadSuc,onResetDemo}){
         <div className="admin-section-card">
           <div className="admin-section-title">ℹ️ Sistema</div>
           <div className="admin-list-item"><div className="admin-item-info"><div className="admin-item-name">Producto</div></div><div style={{fontSize:13,color:'var(--text3)'}}>{BRAND.name} · POS</div></div>
+          <div className="admin-list-item"><div className="admin-item-info"><div className="admin-item-name">Versión</div></div><div style={{fontSize:13,color:'var(--text3)'}}>v{BRAND.version||'1.0'}</div></div>
           <div className="admin-list-item"><div className="admin-item-info"><div className="admin-item-name">Datos</div></div><div style={{fontSize:12,color:'var(--text3)'}}>data.json</div></div>
           <div className="admin-list-item"><div className="admin-item-info"><div className="admin-item-name">Sucursal activa</div></div><div style={{fontSize:13,color:'var(--brand-green)',fontWeight:600}}>{suc.nombre}</div></div>
           <div style={{marginTop:12}}>
