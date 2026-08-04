@@ -24,8 +24,8 @@ const RUBROS = [
       { id:6, nombre:'Agua de horchata',precio:12, emoji:'🥛', invId:5, unidad:'u' },
     ],
     inventario: [
-      { id:1, nombre:'Carne birria',  stock:5,  min:2, unidad:'kg' },
-      { id:2, nombre:'Carne pastor',  stock:4,  min:2, unidad:'kg' },
+      { id:1, nombre:'Carne birria',  stock:11,  min:4.5, unidad:'lb' },
+      { id:2, nombre:'Carne pastor',  stock:9,  min:4.5, unidad:'lb' },
       { id:3, nombre:'Tortillas',     stock:10, min:3, unidad:'paquete' },
       { id:4, nombre:'Refrescos',     stock:24, min:6, unidad:'u' },
       { id:5, nombre:'Horchata',      stock:8,  min:2, unidad:'u' },
@@ -52,7 +52,7 @@ const RUBROS = [
       { id:6, nombre:'Cheesecake',       precio:50, emoji:'🍰', invId:4, unidad:'u' },
     ],
     inventario: [
-      { id:1, nombre:'Café molido',    stock:3,  min:1, unidad:'kg' },
+      { id:1, nombre:'Café molido',    stock:6.5,  min:2, unidad:'lb' },
       { id:2, nombre:'Pastel chocolate', stock:12, min:3, unidad:'u' },
       { id:3, nombre:'Croissants',     stock:20, min:5, unidad:'u' },
       { id:4, nombre:'Cheesecakes',    stock:8,  min:2, unidad:'u' },
@@ -79,9 +79,9 @@ const RUBROS = [
     ],
     inventario: [
       { id:1, nombre:'Masa pizza',      stock:15, min:5, unidad:'u' },
-      { id:2, nombre:'Pepperoni',       stock:2,  min:1, unidad:'kg' },
+      { id:2, nombre:'Pepperoni',       stock:4.5,  min:2, unidad:'lb' },
       { id:3, nombre:'Piña (lata)',      stock:10, min:3, unidad:'u' },
-      { id:4, nombre:'Pasta seca',      stock:3,  min:1, unidad:'kg' },
+      { id:4, nombre:'Pasta seca',      stock:6.5,  min:2, unidad:'lb' },
       { id:5, nombre:'Refrescos',       stock:36, min:12, unidad:'u' },
     ],
   },
@@ -105,7 +105,7 @@ const RUBROS = [
       { id:5, nombre:'Horchata',             precio:12, emoji:'🥛', invId:3, unidad:'u' },
     ],
     inventario: [
-      { id:1, nombre:'Masa de maíz',   stock:10, min:3, unidad:'kg' },
+      { id:1, nombre:'Masa de maíz',   stock:22, min:6.5, unidad:'lb' },
       { id:2, nombre:'Elote dulce',    stock:20, min:5, unidad:'u' },
       { id:3, nombre:'Horchata',       stock:8,  min:2, unidad:'u' },
     ],
@@ -130,8 +130,8 @@ const RUBROS = [
       { id:5, nombre:'Cerveza',           precio:30,  emoji:'🍺', invId:3, unidad:'u' },
     ],
     inventario: [
-      { id:1, nombre:'Camarón fresco', stock:2,  min:1, unidad:'kg' },
-      { id:2, nombre:'Filete pescado', stock:3,  min:1, unidad:'kg' },
+      { id:1, nombre:'Camarón fresco', stock:4.5,  min:2, unidad:'lb' },
+      { id:2, nombre:'Filete pescado', stock:6.5,  min:2, unidad:'lb' },
       { id:3, nombre:'Cervezas',       stock:24, min:6, unidad:'u' },
     ],
   },
@@ -155,11 +155,11 @@ const RUBROS = [
       { id:5, nombre:'Batido fresa',     precio:40, emoji:'🥤', invId:5, unidad:'u' },
     ],
     inventario: [
-      { id:1, nombre:'Nutella',         stock:5,  min:1, unidad:'kg' },
-      { id:2, nombre:'Jamón/queso',     stock:2,  min:1, unidad:'kg' },
-      { id:3, nombre:'Mix frutas',      stock:3,  min:1, unidad:'kg' },
+      { id:1, nombre:'Nutella',         stock:11,  min:2, unidad:'lb' },
+      { id:2, nombre:'Jamón/queso',     stock:4.5,  min:2, unidad:'lb' },
+      { id:3, nombre:'Mix frutas',      stock:6.5,  min:2, unidad:'lb' },
       { id:4, nombre:'Jugos',           stock:12, min:3, unidad:'u' },
-      { id:5, nombre:'Fresa congelada', stock:2,  min:1, unidad:'kg' },
+      { id:5, nombre:'Fresa congelada', stock:4.5,  min:2, unidad:'lb' },
     ],
   },
 
@@ -211,9 +211,9 @@ const RUBROS = [
     inventario: [
       { id:1, nombre:'Tamarindos',      stock:100, min:20, unidad:'u' },
       { id:2, nombre:'Chocolates',      stock:50,  min:10, unidad:'u' },
-      { id:3, nombre:'Gomitas (kg)',    stock:5,   min:1,  unidad:'kg' },
+      { id:3, nombre:'Gomitas (lb)',    stock:11,   min:2,  unidad:'lb' },
       { id:4, nombre:'Paletas mango',   stock:60,  min:15, unidad:'u' },
-      { id:5, nombre:'Surtido dulces',  stock:3,   min:1,  unidad:'kg' },
+      { id:5, nombre:'Surtido dulces',  stock:6.5,   min:2,  unidad:'lb' },
     ],
   },
   {
