@@ -708,6 +708,85 @@ input,select,textarea{font-family:'Jost','Futura','Century Gothic',sans-serif;}
   .tx-det-unit{display:none;}
 }
 
+/* ── Variantes / excepciones ─────────────────────────────────── */
+.ol-var{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;}
+.ol-sin{font-size:11px;font-weight:600;color:var(--red);background:var(--red-bg);border:1px solid var(--red-border);border-radius:99px;padding:1px 8px;}
+.ol-nota{font-size:11px;color:var(--text3);font-style:italic;}
+.ol-var-btn{border:1px dashed var(--border2);background:none;color:var(--text3);border-radius:99px;padding:1px 8px;font-size:10px;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit;}
+.ol-var-btn:hover{border-color:var(--brand-green);color:var(--brand-green);border-style:solid;}
+.ol-pend{color:var(--amber);font-size:9px;margin-left:5px;vertical-align:middle;}
+.sa-sin{color:var(--red);font-size:11px;font-style:normal;}
+.btn-cocina{width:100%;margin-top:6px;padding:9px;border-radius:var(--r);border:1.5px solid var(--amber-border);background:var(--amber-bg);color:var(--amber);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit;letter-spacing:.3px;}
+.btn-cocina:hover:not(:disabled){background:var(--amber);color:#fff;border-color:var(--amber);}
+.btn-cocina:disabled{opacity:.5;cursor:default;}
+
+.var-modal{background:var(--surface);border-radius:var(--r-xl);padding:20px;width:100%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,.4);max-height:calc(100dvh - 32px);overflow-y:auto;}
+.var-hdr{margin-bottom:14px;}
+.var-title{font-family:'Jost',sans-serif;font-size:19px;font-weight:700;color:var(--text);letter-spacing:.3px;}
+.var-sub{font-size:12px;color:var(--text3);margin-top:2px;}
+.var-lista{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+.var-ing{display:flex;align-items:center;gap:10px;padding:11px 13px;border-radius:var(--r);border:1.5px solid var(--border);background:var(--surface2);cursor:pointer;transition:all .15s;font-family:inherit;text-align:left;}
+.var-ing:hover{border-color:var(--brand-green);}
+.var-check{width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;transition:all .15s;}
+.var-ing-name{flex:1;font-size:15px;font-weight:500;color:var(--text);}
+.var-ing.quitado{background:var(--red-bg);border-color:var(--red-border);}
+.var-ing.quitado .var-check{background:var(--red);}
+.var-ing.quitado .var-ing-name{color:var(--red);text-decoration:line-through;opacity:.75;}
+.var-tag{font-size:10px;font-weight:800;letter-spacing:1px;color:#fff;background:var(--red);border-radius:5px;padding:2px 7px;}
+.var-resumen{background:var(--surface2);border-left:3px solid var(--brand-green);border-radius:8px;padding:9px 12px;margin-bottom:14px;font-size:12px;color:var(--text2);line-height:1.6;}
+.mac-ings{display:flex;align-items:center;gap:6px;margin-top:6px;flex-wrap:wrap;}
+.mac-ings-lbl{font-size:11px;color:var(--text3);}
+.mac-ings input{flex:1;min-width:120px;padding:4px 7px;border:1px solid var(--border2);border-radius:6px;font-size:11px;color:var(--text);background:var(--surface);font-family:inherit;}
+.mac-ings input:focus{outline:none;border-color:var(--brand-green);}
+
+/* ── Pantalla de cocina ──────────────────────────────────────── */
+.coc-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap;}
+.coc-title{font-family:'Jost',sans-serif;font-size:22px;font-weight:700;color:var(--brand-green);letter-spacing:.3px;}
+.coc-sub{font-size:12px;color:var(--text3);margin-top:2px;}
+.coc-filtros{display:none;gap:6px;margin-bottom:12px;}
+.coc-filtro{flex:1;padding:9px 6px;border-radius:var(--r);border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:5px;transition:all .15s;}
+.coc-filtro.on{background:var(--brand-green);color:var(--brand-cream);border-color:var(--brand-green);}
+.coc-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:start;}
+.coc-col{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;}
+.coc-col-hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;font-family:'Jost',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;color:var(--brand-cream);background:var(--brand-green);}
+.coc-col.preparando .coc-col-hdr{background:var(--amber);}
+.coc-col.listo .coc-col-hdr{background:var(--green);}
+.coc-badge{background:rgba(253,248,208,.25);border-radius:99px;padding:1px 9px;font-size:12px;font-weight:700;}
+.coc-filtro .coc-badge{background:var(--border);color:var(--text2);}
+.coc-filtro.on .coc-badge{background:rgba(253,248,208,.25);color:var(--brand-cream);}
+.coc-col-body{padding:10px;display:flex;flex-direction:column;gap:10px;}
+.coc-vacio{font-size:12px;color:var(--text3);text-align:center;padding:22px 0;}
+.coc-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--green);border-radius:var(--r);padding:11px 13px;box-shadow:var(--shadow);animation:fadeUp .2s ease both;}
+.coc-card.medio{border-left-color:var(--amber);}
+.coc-card.tarde{border-left-color:var(--red);}
+.coc-card-hdr{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:8px;}
+.coc-origen{font-family:'Jost',sans-serif;font-size:15px;font-weight:700;color:var(--text);letter-spacing:.3px;}
+.coc-tiempo{font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--green-bg);color:var(--green);white-space:nowrap;}
+.coc-tiempo.medio{background:var(--amber-bg);color:var(--amber);}
+.coc-tiempo.tarde{background:var(--red-bg);color:var(--red);}
+.coc-items{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;}
+.coc-item{display:flex;gap:9px;align-items:flex-start;}
+.coc-qty{font-family:'Jost',sans-serif;font-size:16px;font-weight:800;color:var(--brand-green);min-width:38px;}
+.coc-item-body{flex:1;min-width:0;}
+.coc-item-name{font-size:15px;font-weight:500;color:var(--text);line-height:1.3;}
+.coc-sins{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;}
+.coc-sin{font-size:11px;font-weight:800;letter-spacing:.5px;color:#fff;background:var(--red);border-radius:5px;padding:2px 7px;}
+.coc-nota{font-size:12px;color:var(--text2);background:var(--surface2);border-radius:6px;padding:4px 8px;margin-top:4px;font-style:italic;}
+.coc-accion{width:100%;padding:9px;border-radius:8px;border:none;font-family:'Jost',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;cursor:pointer;transition:all .15s;color:var(--brand-cream);background:var(--brand-green);}
+.coc-accion:hover{filter:brightness(1.12);}
+.coc-accion.preparando{background:var(--amber);}
+.coc-accion.listo{background:var(--green);}
+
+@media(max-width:767px){
+  .coc-filtros{display:flex;}
+  .coc-cols{grid-template-columns:1fr;}
+  .coc-col{display:none;}
+  .coc-col.activa{display:block;}
+  .coc-item-name{font-size:16px;}
+  .coc-origen{font-size:17px;}
+  .coc-accion{padding:13px;font-size:15px;}
+}
+
 /* Cuadre de caja */
 .cuadre-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:14px 16px;margin-bottom:14px;box-shadow:var(--shadow);}
 .cuadre-hdr{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
@@ -921,6 +1000,14 @@ function dispDe(menuId,{menu,inventario,mesas,carrito}){
 // Un ítem por unidad se agota bajo 1; uno por peso, bajo cero
 function agotadoDe(disp,mi){return esPesoItem(mi)?disp<=0.0005:disp<1;}
 
+// Dos líneas son la misma solo si comparten ítem, exclusiones y nota.
+// Así "taco sin cebolla" y "taco normal" no se suman en una sola línea.
+function claveLinea(l){
+  const sin=(l.sin||[]).slice().sort().join('~');
+  return `${l.id}|${sin}|${(l.nota||'').trim()}`;
+}
+function tieneVariantes(mi){return !!(mi&&Array.isArray(mi.ingredientes)&&mi.ingredientes.length);}
+
 // El servidor nunca bloquea el cobro, pero avisa si el inventario no alcanzó
 function avisarFaltantes(resp,addToast){
   const f=resp&&resp.faltantes;
@@ -975,6 +1062,72 @@ function RubroSelector({onSelect, onLogout, rol}){
             {resetting?'Restaurando…':'Restaurar demo'}
           </button>
         )}
+      </div>
+    </div>
+  );
+}
+
+// ── Variantes / excepciones de un ítem ────────────────────────────
+// Muestra "sin cebolla" bajo la línea y el lápiz para editarla
+function LineaVariantes({linea,mi,onEditar}){
+  const sin=linea.sin||[];
+  const hay=tieneVariantes(mi);
+  if(!hay&&!sin.length&&!linea.nota) return null;
+  return(
+    <div className="ol-var">
+      {sin.length>0&&<span className="ol-sin">sin {sin.join(', ')}</span>}
+      {linea.nota&&<span className="ol-nota">“{linea.nota}”</span>}
+      {onEditar&&hay&&<button className="ol-var-btn" onClick={onEditar}>
+        {sin.length||linea.nota?'✎ Editar':'✎ Variantes'}
+      </button>}
+    </div>
+  );
+}
+
+// Panel para desmarcar ingredientes y dejar una nota para cocina
+function VariantesModal({item,linea,onConfirm,onCancel}){
+  const ingredientes=(item&&item.ingredientes)||[];
+  const [sin,setSin]=useState(linea?.sin||[]);
+  const [nota,setNota]=useState(linea?.nota||'');
+  function toggle(ing){
+    setSin(prev=>prev.includes(ing)?prev.filter(x=>x!==ing):[...prev,ing]);
+  }
+  return(
+    <div className="peso-overlay" onClick={e=>{if(e.target===e.currentTarget)onCancel();}}>
+      <div className="var-modal fade-up">
+        <div className="var-hdr">
+          <div className="var-title">{item.emoji} {item.nombre}</div>
+          <div className="var-sub">Desmarca lo que NO lleva</div>
+        </div>
+        <div className="var-lista">
+          {ingredientes.map(ing=>{
+            const quitado=sin.includes(ing);
+            return(
+              <button key={ing} className={`var-ing${quitado?' quitado':''}`} onClick={()=>toggle(ing)}>
+                <span className="var-check">{quitado?'✕':'✓'}</span>
+                <span className="var-ing-name">{ing}</span>
+                {quitado&&<span className="var-tag">SIN</span>}
+              </button>
+            );
+          })}
+        </div>
+        <div className="field" style={{marginBottom:14}}>
+          <label>Nota para cocina (opcional)</label>
+          <input placeholder="Ej: bien cocido, aparte, para llevar"
+            value={nota} maxLength={140} onChange={e=>setNota(e.target.value)}/>
+        </div>
+        {(sin.length>0||nota)&&(
+          <div className="var-resumen">
+            {sin.length>0&&<div>🚫 Sin: <b>{sin.join(', ')}</b></div>}
+            {nota&&<div>📝 {nota}</div>}
+          </div>
+        )}
+        <div style={{display:'flex',gap:8}}>
+          <button className="btn btn-primary btn-full" onClick={()=>onConfirm(sin,nota.trim())}>
+            {linea?'Guardar':'Agregar'}
+          </button>
+          <button className="btn btn-ghost" style={{minWidth:80}} onClick={onCancel}>✕</button>
+        </div>
       </div>
     </div>
   );
@@ -1053,6 +1206,7 @@ function MesasTab({suc,addToast,reload}){
   const [cuentas,setCuentas]=useState([]);
   const [cuentaActiva,setCuentaActiva]=useState(0);
   const [cobrando,setCobrando]=useState(false);
+  const [editVar,setEditVar]=useState(null);   // {clave,linea,mi} en edición
   const [showCajaMesa,setShowCajaMesa]=useState(false);
   const [efectivoMesa,setEfectivoMesa]=useState('');
   const efectivoMesaRef=useRef(null);
@@ -1083,24 +1237,51 @@ function MesasTab({suc,addToast,reload}){
 
   async function patchMesa(id,patch){await S(suc.id,'/mesas/'+id,patch,'PUT');reload();}
 
-  async function agregarItem(itemId){
+  async function agregarItem(itemId,sin,nota){
     const mi=menu.find(m=>m.id===itemId);
     const d=stockDisponible(itemId);
     if(agotadoDe(d,mi)){addToast('Sin stock para este ítem','error');return;}
     if(d>=1&&d<2) addToast('⚠ Último disponible: '+mi.nombre,'warning');
-    const m={...mesa,orden:mesa.orden.map(l=>({...l}))};
-    const l=m.orden.find(l=>l.id===itemId);
+    const nueva={id:itemId,nombre:mi.nombre,precio:mi.precio,qty:1,
+      sin:sin||[],nota:nota||'',enviadas:0};
+    const k=claveLinea(nueva);
+    const orden=mesa.orden.map(l=>({...l}));
+    const l=orden.find(x=>claveLinea(x)===k);
     if(l) l.qty++;
-    else m.orden=[...m.orden,{id:itemId,nombre:mi.nombre,precio:mi.precio,qty:1}];
-    m.estado='ocupada';
-    await patchMesa(mesaSel,{orden:m.orden,estado:m.estado});
+    else orden.push(nueva);
+    await patchMesa(mesaSel,{orden,estado:'ocupada'});
   }
-  async function quitarItem(itemId){
-    const m={...mesa,orden:mesa.orden.map(l=>({...l}))};
-    const l=m.orden.find(l=>l.id===itemId);
-    if(l){l.qty--;if(l.qty<=0)m.orden=m.orden.filter(x=>x.id!==itemId);}
-    if(!m.orden.length) m.estado='libre';
-    await patchMesa(mesaSel,{orden:m.orden,estado:m.estado});
+  async function quitarItem(clave){
+    const orden=mesa.orden.map(l=>({...l}));
+    const l=orden.find(x=>claveLinea(x)===clave);
+    if(!l) return;
+    l.qty--;
+    if(l.enviadas>l.qty) l.enviadas=l.qty;
+    const restante=orden.filter(x=>x.qty>0);
+    await patchMesa(mesaSel,{orden:restante,estado:restante.length?'ocupada':'libre'});
+  }
+  // Cambia exclusiones/nota de una línea; si choca con otra igual, las une
+  async function editarVariantes(clave,sin,nota){
+    const orden=mesa.orden.map(l=>({...l}));
+    const l=orden.find(x=>claveLinea(x)===clave);
+    if(!l) return;
+    l.sin=sin;l.nota=nota;l.enviadas=0;
+    const k=claveLinea(l);
+    const gemela=orden.find(x=>x!==l&&claveLinea(x)===k);
+    let final=orden;
+    if(gemela){gemela.qty+=l.qty;final=orden.filter(x=>x!==l);}
+    await patchMesa(mesaSel,{orden:final});
+    addToast('Variantes actualizadas ✓','success');
+  }
+  // Manda a cocina solo lo que aún no se ha mandado
+  async function enviarACocina(){
+    const pendientes=mesa.orden
+      .map(l=>({...l,qty:parseFloat(((l.qty)-(l.enviadas||0)).toFixed(3))}))
+      .filter(l=>l.qty>0);
+    if(!pendientes.length){addToast('Todo fue enviado a cocina ya','error');return;}
+    await S(suc.id,'/comandas',{origen:mesa.nombre,mesaId:mesaSel,items:pendientes},'POST');
+    await patchMesa(mesaSel,{orden:mesa.orden.map(l=>({...l,enviadas:l.qty}))});
+    addToast('🍳 Enviado a cocina ('+pendientes.length+' ítem/s)','success');
   }
   async function pedirCuenta(){
     if(!mesa.orden.length){addToast('La orden está vacía','error');return;}
@@ -1139,14 +1320,16 @@ function MesasTab({suc,addToast,reload}){
     const n=Array.from({length:np},(_,i)=>({id:i,label:'Persona '+(i+1),items:[],pagada:false}));
     setCuentas(n);setCuentaActiva(0);
   }
-  function asignarItem(lineaId){
-    const linea=mesa.orden.find(l=>l.id===lineaId);if(!linea) return;
-    const asig=cuentas.reduce((s,c)=>s+c.items.filter(it=>it.lineaId===lineaId).reduce((a,it)=>a+it.qty,0),0);
+  function asignarItem(clave){
+    const linea=mesa.orden.find(l=>claveLinea(l)===clave);if(!linea) return;
+    const asig=cuentas.reduce((s,c)=>s+c.items.filter(it=>it.lineaId===clave).reduce((a,it)=>a+it.qty,0),0);
     if(asig>=linea.qty){addToast('Ya todos asignados','error');return;}
     setCuentas(prev=>prev.map((c,i)=>{
       if(i!==cuentaActiva) return c;
-      const ex=c.items.find(it=>it.lineaId===lineaId);
-      return{...c,items:ex?c.items.map(it=>it.lineaId===lineaId?{...it,qty:it.qty+1}:it):[...c.items,{lineaId,nombre:linea.nombre,precio:linea.precio,qty:1}]};
+      const ex=c.items.find(it=>it.lineaId===clave);
+      return{...c,items:ex
+        ?c.items.map(it=>it.lineaId===clave?{...it,qty:it.qty+1}:it)
+        :[...c.items,{lineaId:clave,id:linea.id,nombre:linea.nombre,precio:linea.precio,qty:1,sin:linea.sin||[],nota:linea.nota||''}]};
     }));
   }
   function quitarDeCuenta(idx){
@@ -1167,7 +1350,7 @@ function MesasTab({suc,addToast,reload}){
       // y libera la mesa solo cuando ya no queda nada pendiente.
       const r=await S(suc.id,'/cobrar',{
         mesaId:mesaSel,
-        orden:cuenta.items.map(it=>({id:it.lineaId,nombre:it.nombre,precio:it.precio,qty:it.qty})),
+        orden:cuenta.items.map(it=>({id:it.id,nombre:it.nombre,precio:it.precio,qty:it.qty,sin:it.sin||[],nota:it.nota||''})),
         detalle:cuenta.label,cobradoParcial:true
       },'POST');
       setCuentas(nuevas);
@@ -1221,7 +1404,11 @@ function MesasTab({suc,addToast,reload}){
   const quickMesa=DENOM.filter(d=>d>=pendienteMesa).slice(0,4);
   const asignados={};
   cuentas.forEach(c=>c.items.forEach(it=>{asignados[it.lineaId]=(asignados[it.lineaId]||0)+it.qty;}));
-  const sinAsignar=mesa.orden.map(l=>{const a=asignados[l.id]||0;const r=l.qty-a;return r>0?{...l,disponible:r}:null;}).filter(Boolean);
+  const sinAsignar=mesa.orden.map(l=>{
+    const k=claveLinea(l);const a=asignados[k]||0;const r=l.qty-a;
+    return r>0?{...l,clave:k,disponible:r}:null;
+  }).filter(Boolean);
+  const porEnviar=mesa.orden.reduce((s,l)=>s+Math.max(0,l.qty-(l.enviadas||0)),0);
   const cuentaAct=cuentas[cuentaActiva];
 
   return(
@@ -1270,23 +1457,35 @@ function MesasTab({suc,addToast,reload}){
             <button className={`sep-btn${separando?' on':''}`} onClick={()=>setSeparando(s=>!s)}>
               {separando?'↩ Ver orden completa':'Separar cuentas por persona'}
             </button>
+            {!separando&&<button className="btn-cocina" disabled={!porEnviar} onClick={enviarACocina}>
+              🍳 {porEnviar?`Enviar a cocina (${+porEnviar.toFixed(2)})`:'Todo en cocina'}
+            </button>}
           </div>
 
           {!separando?(
             <>
               <div className="order-lines">
                 {!mesa.orden.length?<div className="empty-msg">Sin ítems aún</div>
-                  :mesa.orden.map(l=>(
-                    <div key={l.id} className="order-line">
-                      <div className="ol-name">{l.nombre}</div>
-                      <div className="ol-ctrl">
-                        <button className="ol-btn" onClick={()=>quitarItem(l.id)}>−</button>
-                        <span className="ol-qty">{l.qty}</span>
-                        <button className="ol-btn" onClick={()=>agregarItem(l.id)}>+</button>
+                  :mesa.orden.map(l=>{
+                    const k=claveLinea(l);
+                    const mi=menu.find(m=>m.id===l.id);
+                    const pend=Math.max(0,l.qty-(l.enviadas||0));
+                    return(
+                      <div key={k} className="order-line">
+                        <div className="ol-name">
+                          {l.nombre}
+                          {pend>0&&<span className="ol-pend" title="Aún no enviado a cocina">●</span>}
+                          <LineaVariantes linea={l} mi={mi} onEditar={()=>setEditVar({clave:k,linea:l,mi})}/>
+                        </div>
+                        <div className="ol-ctrl">
+                          <button className="ol-btn" onClick={()=>quitarItem(k)}>−</button>
+                          <span className="ol-qty">{l.qty}</span>
+                          <button className="ol-btn" onClick={()=>agregarItem(l.id,l.sin,l.nota)}>+</button>
+                        </div>
+                        <div className="ol-price">{BRAND.currency}{l.precio*l.qty}</div>
                       </div>
-                      <div className="ol-price">{BRAND.currency}{l.precio*l.qty}</div>
-                    </div>
-                  ))
+                    );
+                  })
                 }
               </div>
               <div className="sidebar-footer">
@@ -1345,7 +1544,7 @@ function MesasTab({suc,addToast,reload}){
               <div className="sin-asignar">
                 <div className="sa-lbl">Sin asignar</div>
                 {!sinAsignar.length?<div className="todo-ok">✓ Todos asignados</div>
-                  :sinAsignar.map(l=><div key={l.id} className="sa-item"><span className="sa-name">{l.nombre}</span><span className="sa-disp">×{l.disponible}</span><button className="btn-asignar" onClick={()=>asignarItem(l.id)}>Asignar</button></div>)
+                  :sinAsignar.map(l=><div key={l.clave} className="sa-item"><span className="sa-name">{l.nombre}{(l.sin||[]).length?<em className="sa-sin"> sin {l.sin.join(', ')}</em>:null}</span><span className="sa-disp">×{l.disponible}</span><button className="btn-asignar" onClick={()=>asignarItem(l.clave)}>Asignar</button></div>)
                 }
               </div>
               {cuentaAct&&!cuentaAct.pagada?(
@@ -1365,6 +1564,9 @@ function MesasTab({suc,addToast,reload}){
           )}
         </div>
       </div>
+      {editVar&&<VariantesModal item={editVar.mi} linea={editVar.linea}
+        onConfirm={(sin,nota)=>{editarVariantes(editVar.clave,sin,nota);setEditVar(null);}}
+        onCancel={()=>setEditVar(null)}/>}
     </div>
   );
 }
@@ -1378,6 +1580,7 @@ function MostradorTab({suc,addToast,reload}){
   const [efectivo,setEfectivo]=useState('');
   const [pesoItem,setPesoItem]=useState(null); // item que abrió el modal de peso
   const [cobrando,setCobrando]=useState(false);
+  const [editVar,setEditVar]=useState(null);   // {idx,linea,mi} en edición
   const efectivoRef=useRef(null);
   const behavior=RUBRO_BEHAVIOR[suc.tipo]||RUBRO_BEHAVIOR.mostrador;
 
@@ -1401,7 +1604,7 @@ function MostradorTab({suc,addToast,reload}){
     return (d*factorDe(mi))<=inv.min?'bajo':'ok';
   }
 
-  function agregar(itemId){
+  function agregar(itemId,sin,nota){
     const mi=menu.find(m=>m.id===itemId);
     const d=stockDisponible(itemId);
     if(agotadoDe(d,mi)){addToast('Sin stock','error');return;}
@@ -1409,11 +1612,25 @@ function MostradorTab({suc,addToast,reload}){
     if(esPesoItem(mi)){
       setPesoItem(mi); return;
     }
+    const nueva={id:itemId,nombre:mi.nombre,precio:mi.precio,qty:1,unidad:mi.unidad||'u',
+      sin:sin||[],nota:nota||''};
+    const k=claveLinea(nueva);
     setOrden(prev=>{
-      const l=prev.find(x=>x.id===itemId);
-      if(l) return prev.map(x=>x.id===itemId?{...x,qty:x.qty+1}:x);
-      return [...prev,{id:itemId,nombre:mi.nombre,precio:mi.precio,qty:1,unidad:mi.unidad||'u'}];
+      const l=prev.find(x=>!x._pesoLine&&claveLinea(x)===k);
+      if(l) return prev.map(x=>x===l?{...x,qty:x.qty+1}:x);
+      return [...prev,nueva];
     });
+  }
+  // Cambia exclusiones/nota de una línea del ticket y une las que queden iguales
+  function editarVariantes(idx,sin,nota){
+    setOrden(prev=>{
+      const base=prev.map((x,i)=>i===idx?{...x,sin,nota}:x);
+      const l=base[idx];const k=claveLinea(l);
+      const gi=base.findIndex((x,i)=>i!==idx&&!x._pesoLine&&claveLinea(x)===k);
+      if(gi<0) return base;
+      return base.map((x,i)=>i===gi?{...x,qty:x.qty+l.qty}:x).filter((_,i)=>i!==idx);
+    });
+    addToast('Variantes actualizadas ✓','success');
   }
 
   function agregarConPeso(peso,subtotal){
@@ -1427,8 +1644,8 @@ function MostradorTab({suc,addToast,reload}){
     setOrden(prev=>[...prev,{id:mi.id,nombre:mi.nombre,precio:mi.precio,qty:peso,unidad,_pesoLine:true}]);
     setPesoItem(null);
   }
-  function quitar(itemId){
-    setOrden(prev=>prev.map(x=>x.id===itemId?{...x,qty:x.qty-1}:x).filter(x=>x.qty>0));
+  function quitar(idx){
+    setOrden(prev=>prev.map((x,i)=>i===idx?{...x,qty:x.qty-1}:x).filter(x=>x.qty>0));
   }
   function limpiar(){
     if(!orden.length) return;
@@ -1460,6 +1677,9 @@ function MostradorTab({suc,addToast,reload}){
   return(
     <div className="mos-panel fade-up">
       {pesoItem&&<PesoModal item={pesoItem} currency={BRAND.currency} max={stockDisponible(pesoItem.id)} onConfirm={agregarConPeso} onCancel={()=>setPesoItem(null)}/>}
+      {editVar&&<VariantesModal item={editVar.mi} linea={editVar.linea}
+        onConfirm={(sin,nota)=>{editarVariantes(editVar.idx,sin,nota);setEditVar(null);}}
+        onCancel={()=>setEditVar(null)}/>}
       <div className="mos-hdr">
         <div className="mos-title">Mostrador · Toma express</div>
         <div className="mos-ticket">Ticket <b>#{nextTicket}</b></div>
@@ -1517,13 +1737,15 @@ function MostradorTab({suc,addToast,reload}){
                   <div className="ol-name">
                     {l.nombre}
                     {l.unidad&&l.unidad!=='u'&&<span style={{fontSize:'10px',color:'var(--text3)',marginLeft:4}}>{l.qty} {l.unidad}</span>}
+                    <LineaVariantes linea={l} mi={menu.find(m=>m.id===l.id)}
+                      onEditar={()=>setEditVar({idx,linea:l,mi:menu.find(m=>m.id===l.id)})}/>
                   </div>
                   <div className="ol-ctrl">
                     {l._pesoLine
                       ?<button className="ol-btn" onClick={()=>setOrden(prev=>prev.filter((_,i)=>i!==idx))}>×</button>
-                      :<><button className="ol-btn" onClick={()=>quitar(l.id)}>−</button>
+                      :<><button className="ol-btn" onClick={()=>quitar(idx)}>−</button>
                         <span className="ol-qty">{l.qty}</span>
-                        <button className="ol-btn" onClick={()=>agregar(l.id)}>+</button></>
+                        <button className="ol-btn" onClick={()=>agregar(l.id,l.sin,l.nota)}>+</button></>
                     }
                   </div>
                   <div className="ol-price">{BRAND.currency}{(l.precio*l.qty).toFixed(2)}</div>
@@ -1575,6 +1797,123 @@ function MostradorTab({suc,addToast,reload}){
             </div>
           )}
         </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Pantalla de cocina ────────────────────────────────────────────
+const COL_COCINA=[
+  {estado:'pendiente', titulo:'Por preparar', icono:'🔔', accion:'Empezar',  siguiente:'preparando'},
+  {estado:'preparando',titulo:'En preparación',icono:'🍳', accion:'Listo',    siguiente:'listo'},
+  {estado:'listo',     titulo:'Listos',        icono:'✅', accion:'Entregar', siguiente:null},
+];
+
+function minutosDesde(ts,ahora){return Math.max(0,Math.floor((ahora-ts)/60000));}
+
+function CocinaTab({suc,addToast,reload}){
+  const comandas=suc.comandas||[];
+  const [ahora,setAhora]=useState(Date.now());
+  const [filtro,setFiltro]=useState('pendiente'); // solo se usa en móvil
+
+  // El reloj corre para que el tiempo de espera no quede congelado
+  useEffect(()=>{const id=setInterval(()=>setAhora(Date.now()),20000);return()=>clearInterval(id);},[]);
+
+  async function cambiar(c,estado){
+    if(estado===null){
+      await S(suc.id,'/comandas/'+c.id,null,'DELETE');
+      addToast('Comanda entregada ✓','success');
+    }else{
+      await S(suc.id,'/comandas/'+c.id,{estado},'PUT');
+    }
+    reload();
+  }
+  async function limpiarListos(){
+    const n=comandas.filter(c=>c.estado==='listo').length;
+    if(!n){addToast('No hay comandas listas','error');return;}
+    if(!confirm(`¿Quitar ${n} comanda(s) ya lista(s)?`)) return;
+    await S(suc.id,'/comandas/limpiar',{},'POST');
+    reload();addToast('Comandas listas archivadas');
+  }
+
+  const porEstado=e=>comandas.filter(c=>c.estado===e);
+  const espera=porEstado('pendiente').concat(porEstado('preparando'));
+  const masVieja=espera.length?Math.max(...espera.map(c=>minutosDesde(c.ts,ahora))):0;
+
+  return(
+    <div className="panel fade-up">
+      <div className="coc-hdr">
+        <div>
+          <div className="coc-title">🍳 Cocina</div>
+          <div className="coc-sub">
+            {espera.length?`${espera.length} comanda(s) en espera`:'Todo al día — sin pendientes'}
+            {masVieja>0&&` · la más antigua hace ${masVieja} min`}
+          </div>
+        </div>
+        {porEstado('listo').length>0&&(
+          <button className="btn btn-ghost btn-sm" onClick={limpiarListos}>Archivar listas</button>
+        )}
+      </div>
+
+      {/* Selector por columna — solo visible en móvil */}
+      <div className="coc-filtros">
+        {COL_COCINA.map(col=>(
+          <button key={col.estado} className={`coc-filtro${filtro===col.estado?' on':''}`}
+            onClick={()=>setFiltro(col.estado)}>
+            {col.icono} {col.titulo}
+            <span className="coc-badge">{porEstado(col.estado).length}</span>
+          </button>
+        ))}
+      </div>
+
+      <div className="coc-cols">
+        {COL_COCINA.map(col=>{
+          const lista=porEstado(col.estado);
+          return(
+            <div key={col.estado} className={`coc-col ${col.estado}${filtro===col.estado?' activa':''}`}>
+              <div className="coc-col-hdr">
+                <span>{col.icono} {col.titulo}</span>
+                <span className="coc-badge">{lista.length}</span>
+              </div>
+              <div className="coc-col-body">
+                {!lista.length
+                  ?<div className="coc-vacio">Sin comandas</div>
+                  :lista.map(c=>{
+                    const min=minutosDesde(c.ts,ahora);
+                    const urg=c.estado==='listo'?'ok':min>=20?'tarde':min>=10?'medio':'ok';
+                    return(
+                      <div key={c.id} className={`coc-card ${urg}`}>
+                        <div className="coc-card-hdr">
+                          <span className="coc-origen">{c.origen}</span>
+                          <span className={`coc-tiempo ${urg}`}>{min===0?'ahora':min+' min'}</span>
+                        </div>
+                        <div className="coc-items">
+                          {c.items.map((it,i)=>(
+                            <div key={i} className="coc-item">
+                              <span className="coc-qty">{+Number(it.qty).toFixed(3)}{it.unidad&&it.unidad!=='u'?' '+it.unidad:'×'}</span>
+                              <div className="coc-item-body">
+                                <div className="coc-item-name">{it.nombre}</div>
+                                {(it.sin||[]).length>0&&(
+                                  <div className="coc-sins">
+                                    {it.sin.map(x=><span key={x} className="coc-sin">SIN {x}</span>)}
+                                  </div>
+                                )}
+                                {it.nota&&<div className="coc-nota">📝 {it.nota}</div>}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        <button className={`coc-accion ${col.estado}`} onClick={()=>cambiar(c,col.siguiente)}>
+                          {col.accion}
+                        </button>
+                      </div>
+                    );
+                  })
+                }
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
@@ -1774,6 +2113,15 @@ function InventarioTab({suc,addToast,reload}){
                 {UNIDADES.map(u=><option key={u} value={u}>{u}</option>)}
               </select>
             </div>
+            <div className="field">
+              <label>Ingredientes quitables (separados por coma)</label>
+              <input placeholder="Ej: cebolla, cilantro, picante, salsa"
+                value={f.ingredientes} onChange={e=>setF(p=>({...p,ingredientes:e.target.value}))}/>
+              <div className="field-hint">
+                Al tomar la orden se pueden desmarcar y la cocina lo recibe como
+                «SIN cebolla». Dejalo vacío si el producto no se modifica.
+              </div>
+            </div>
             <div style={{display:'flex',gap:8}}>
               <button className="btn btn-primary" onClick={add}>Agregar</button>
               <button className="btn btn-ghost" onClick={()=>setShowForm(false)}>Cancelar</button>
@@ -1789,7 +2137,7 @@ function InventarioTab({suc,addToast,reload}){
 function MenuTab({suc,addToast,reload}){
   const {menu,inventario}=suc;
   const [showForm,setShowForm]=useState(false);
-  const [f,setF]=useState({nombre:'',precio:'',emoji:'🍽',invId:'',unidad:'u',factor:'1'});
+  const [f,setF]=useState({nombre:'',precio:'',emoji:'🍽',invId:'',unidad:'u',factor:'1',ingredientes:''});
   const invSel=f.invId?inventario.find(i=>i.id===parseInt(f.invId)):null;
   async function del(id){if(!confirm('¿Eliminar?')) return;await S(suc.id,'/menu/'+id,null,'DELETE');reload();addToast('Eliminado');}
   async function add(){
@@ -1797,8 +2145,14 @@ function MenuTab({suc,addToast,reload}){
     const factor=parseFloat(f.factor);
     if(f.invId&&(!isFinite(factor)||factor<=0)){addToast('El consumo debe ser mayor que 0','error');return;}
     await S(suc.id,'/menu',{nombre:f.nombre.trim(),precio:parseFloat(f.precio)||0,emoji:f.emoji||'🍽',
-      invId:f.invId?parseInt(f.invId):null,unidad:f.unidad||'u',factor:f.invId?factor:1},'POST');
-    setF({nombre:'',precio:'',emoji:'🍽',invId:'',unidad:'u',factor:'1'});setShowForm(false);reload();addToast('Ítem agregado ✓','success');
+      invId:f.invId?parseInt(f.invId):null,unidad:f.unidad||'u',factor:f.invId?factor:1,
+      ingredientes:f.ingredientes.split(',').map(x=>x.trim()).filter(Boolean)},'POST');
+    setF({nombre:'',precio:'',emoji:'🍽',invId:'',unidad:'u',factor:'1',ingredientes:''});setShowForm(false);reload();addToast('Ítem agregado ✓','success');
+  }
+  async function setIngredientes(item,texto){
+    const lista=texto.split(',').map(x=>x.trim()).filter(Boolean);
+    await S(suc.id,'/menu/'+item.id,{ingredientes:lista},'PUT');
+    reload();addToast('Variantes guardadas ✓','success');
   }
   async function setFactor(item,val){
     const n=parseFloat(val);
@@ -1817,6 +2171,15 @@ function MenuTab({suc,addToast,reload}){
                 <div className="mac-name">{item.emoji} {item.nombre}</div>
                 <div className="mac-price">{BRAND.currency}{item.precio}</div>
                 <div className="mac-inv">{inv?`→ ${inv.nombre} (${inv.stock} ${inv.unidad||'u'})`:'Sin inventario vinculado'}</div>
+                <div className="mac-ings">
+                  <span className="mac-ings-lbl">Variantes</span>
+                  <input defaultValue={(item.ingredientes||[]).join(', ')}
+                    placeholder="cebolla, picante…"
+                    onBlur={e=>{
+                      const antes=(item.ingredientes||[]).join(', ');
+                      if(e.target.value.trim()!==antes) setIngredientes(item,e.target.value);
+                    }}/>
+                </div>
                 {inv&&(
                   <div className="mac-factor">
                     <span>Consume</span>
@@ -2583,10 +2946,10 @@ function AdminTab({suc,allData,addToast,reloadAll,reloadSuc,onResetDemo}){
 }
 
 // ── App Root ──────────────────────────────────────────────────────
-const CAJERO_TABS=['mesas','mostrador','caja','inventario'];
-const ADMIN_TABS=['mesas','mostrador','caja','inventario','menu','reportes','admin'];
-const TAB_LABELS={mesas:'Mesas',mostrador:'Mostrador',caja:'Caja',inventario:'Inventario',menu:'Menú',reportes:'Reportes',admin:'Admin'};
-const TAB_ICONS={mesas:'🪑',mostrador:'📱',caja:'💰',inventario:'📦',menu:'🌮',reportes:'📊',admin:'⚙️'};
+const CAJERO_TABS=['mesas','mostrador','cocina','caja','inventario'];
+const ADMIN_TABS=['mesas','mostrador','cocina','caja','inventario','menu','reportes','admin'];
+const TAB_LABELS={mesas:'Mesas',mostrador:'Mostrador',cocina:'Cocina',caja:'Caja',inventario:'Inventario',menu:'Menú',reportes:'Reportes',admin:'Admin'};
+const TAB_ICONS={mesas:'🪑',mostrador:'📱',cocina:'🍳',caja:'💰',inventario:'📦',menu:'🌮',reportes:'📊',admin:'⚙️'};
 
 function App(){
   const [session,setSession]=useState(null);    // {rol}
@@ -2705,6 +3068,7 @@ function App(){
       <div className="content">
         {activeTab==='mesas'      &&<MesasTab      suc={suc} addToast={addToast} reload={reloadRubro}/>}
         {activeTab==='mostrador'  &&<MostradorTab  suc={suc} addToast={addToast} reload={reloadRubro}/>}
+        {activeTab==='cocina'     &&<CocinaTab     suc={suc} addToast={addToast} reload={reloadRubro}/>}
         {activeTab==='caja'       &&<CajaTab       suc={suc} rol={session?.rol} addToast={addToast} reload={reloadRubro}/>}
         {activeTab==='inventario' &&<InventarioTab suc={suc} addToast={addToast} reload={reloadRubro}/>}
         {activeTab==='menu'       &&<MenuTab       suc={suc} addToast={addToast} reload={reloadRubro}/>}

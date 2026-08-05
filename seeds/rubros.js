@@ -13,7 +13,7 @@ const RUBROS = [
     colorLight: '#4a6b30',
     colorCream: '#FDF8D0',
     tipo: 'mesas',
-    tabs: ['mesas','mostrador','caja','inventario','menu','reportes','admin'],
+    tabs: ['mesas','mostrador','cocina','caja','inventario','menu','reportes','admin'],
     mesasCount: 8,
     menu: [
       { id:1, nombre:'Taco de birria',  precio:45, emoji:'🌮', invId:1, unidad:'u' },
@@ -41,7 +41,7 @@ const RUBROS = [
     colorLight: '#7a5030',
     colorCream: '#f5e8d0',
     tipo: 'mesas',
-    tabs: ['mesas','mostrador','caja','inventario','menu','reportes','admin'],
+    tabs: ['mesas','mostrador','cocina','caja','inventario','menu','reportes','admin'],
     mesasCount: 10,
     menu: [
       { id:1, nombre:'Americano',        precio:25, emoji:'☕', invId:1, unidad:'u' },
@@ -68,7 +68,7 @@ const RUBROS = [
     colorLight: '#a83a2c',
     colorCream: '#fbe8c8',
     tipo: 'mesas',
-    tabs: ['mesas','mostrador','caja','inventario','menu','reportes','admin'],
+    tabs: ['mesas','mostrador','cocina','caja','inventario','menu','reportes','admin'],
     mesasCount: 12,
     menu: [
       { id:1, nombre:'Pizza Margherita', precio:120, emoji:'🍕', invId:1, unidad:'u' },
@@ -95,7 +95,7 @@ const RUBROS = [
     colorLight: '#2e7a60',
     colorCream: '#fdf3d8',
     tipo: 'mesas',
-    tabs: ['mesas','mostrador','caja','inventario','menu','reportes','admin'],
+    tabs: ['mesas','mostrador','cocina','caja','inventario','menu','reportes','admin'],
     mesasCount: 8,
     menu: [
       { id:1, nombre:'Pupusa de chicharrón', precio:12, emoji:'🫓', invId:1, unidad:'u' },
@@ -120,7 +120,7 @@ const RUBROS = [
     colorLight: '#2e6090',
     colorCream: '#f0eddc',
     tipo: 'mesas',
-    tabs: ['mesas','mostrador','caja','inventario','menu','reportes','admin'],
+    tabs: ['mesas','mostrador','cocina','caja','inventario','menu','reportes','admin'],
     mesasCount: 10,
     menu: [
       { id:1, nombre:'Cóctel de camarón', precio:95,  emoji:'🦐', invId:1, unidad:'u' },
@@ -145,7 +145,7 @@ const RUBROS = [
     colorLight: '#9a6a35',
     colorCream: '#fff5d8',
     tipo: 'mesas',
-    tabs: ['mesas','mostrador','caja','inventario','menu','reportes','admin'],
+    tabs: ['mesas','mostrador','cocina','caja','inventario','menu','reportes','admin'],
     mesasCount: 8,
     menu: [
       { id:1, nombre:'Crepa Nutella',    precio:55, emoji:'🥞', invId:1, unidad:'u' },
@@ -174,7 +174,7 @@ const RUBROS = [
     colorLight: '#c070a8',
     colorCream: '#fbeaf2',
     tipo: 'mostrador',
-    tabs: ['mostrador','caja','inventario','menu','reportes','admin'],
+    tabs: ['mostrador','cocina','caja','inventario','menu','reportes','admin'],
     mesasCount: 0,
     menu: [
       { id:1, nombre:'Bola de helado',   precio:18, emoji:'🍦', invId:1, unidad:'u' },
@@ -482,7 +482,7 @@ const RUBROS = [
     colorLight: '#c87030',
     colorCream: '#fdf0d8',
     tipo: 'mostrador',
-    tabs: ['mostrador','caja','inventario','menu','reportes','admin'],
+    tabs: ['mostrador','cocina','caja','inventario','menu','reportes','admin'],
     mesasCount: 0,
     menu: [
       { id:1, nombre:'Pollo entero asado',  precio:120, emoji:'🍗', invId:1, unidad:'u' },

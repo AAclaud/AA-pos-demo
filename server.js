@@ -45,9 +45,11 @@ function defaultSucursal(id, nombre, ciudad) {
     transacciones: [],
     ventas:      {},
     caja:        defaultCaja(),
+    comandas:    [],
     _nextMenuId: 1,
     _nextInvId:  1,
     _nextMesaId: 9,
+    _nextComandaId: 1,
   };
 }
 
@@ -75,9 +77,11 @@ function defaultRubro(seed) {
     transacciones: [],
     ventas:       {},
     caja:         defaultCaja(),
+    comandas:     [],
     _nextMenuId:  nextMenuId,
     _nextInvId:   nextInvId,
     _nextMesaId:  nextMesaId,
+    _nextComandaId: 1,
   };
 }
 
@@ -148,8 +152,13 @@ function loadData() {
       }
 
       // Migración — garantizar fondo de caja en rubros y sucursales existentes
-      Object.values(parsed.rubros).forEach(r => { if (!r.caja) r.caja = defaultCaja(); });
-      parsed.sucursales.forEach(s => { if (!s.caja) s.caja = defaultCaja(); });
+      const migrar = o => {
+        if (!o.caja) o.caja = defaultCaja();
+        if (!Array.isArray(o.comandas)) o.comandas = [];
+        if (!o._nextComandaId) o._nextComandaId = 1;
+      };
+      Object.values(parsed.rubros).forEach(migrar);
+      parsed.sucursales.forEach(migrar);
 
       return parsed;
     }
@@ -212,10 +221,51 @@ function getSuc(id) { return db.sucursales.find(s=>s.id===id); }
 function getRubro(slug) { return db.rubros && db.rubros[slug]; }
 
 // ─── Lógica de cobro (compartida por suc y rubro) ─────────────────
+// Lista de ingredientes quitables — texto corto, sin vacíos ni duplicados
+function limpiarIngredientes(arr) {
+  if (!Array.isArray(arr)) return [];
+  const vistos = new Set();
+  return arr.map(x => String(x||'').trim().slice(0,28))
+    .filter(x => { if (!x || vistos.has(x.toLowerCase())) return false; vistos.add(x.toLowerCase()); return true; })
+    .slice(0, 14);
+}
+
+// Dos líneas son la misma solo si comparten ítem, exclusiones y nota
+function claveLinea(l) {
+  const sin = (l.sin || []).slice().sort().join('~');
+  return `${l.id}|${sin}|${(l.nota || '').trim()}`;
+}
+
 // Cuánto inventario consume 1 unidad vendida de un ítem de menú
 function factorDe(menuItem) {
   const f = parseFloat(menuItem && menuItem.factor);
   return (isFinite(f) && f > 0) ? f : 1;
+}
+
+// Una comanda es lo que ve la cocina: qué preparar, sin qué y con qué nota
+function nuevaComanda(scope, origen, mesaId, items) {
+  const lineas = (items || [])
+    .filter(l => l.qty > 0)
+    .map(l => ({
+      nombre: l.nombre, qty: l.qty, unidad: l.unidad || 'u',
+      sin: Array.isArray(l.sin) ? l.sin.slice() : [],
+      nota: (l.nota || '').slice(0, 140),
+    }));
+  if (!lineas.length) return null;
+  if (!Array.isArray(scope.comandas)) scope.comandas = [];
+  if (!scope._nextComandaId) scope._nextComandaId = 1;
+  const now = new Date();
+  const c = {
+    id: scope._nextComandaId++,
+    ts: now.getTime(),
+    hora: now.toLocaleTimeString('es-GT', {hour:'2-digit', minute:'2-digit'}),
+    origen, mesaId: mesaId || 0,
+    items: lineas,
+    estado: 'pendiente',
+  };
+  scope.comandas.unshift(c);
+  if (scope.comandas.length > 120) scope.comandas.length = 120;
+  return c;
 }
 
 function procesarCobro(scope, scopeKey, orden, mesaId, detalle, cobradoParcial, mostrador) {
@@ -244,6 +294,7 @@ function procesarCobro(scope, scopeKey, orden, mesaId, detalle, cobradoParcial, 
 
   if (mostrador) {
     const ticketNum = (scope.transacciones.filter(t=>t.mostrador).length) + 1;
+    nuevaComanda(scope, 'Mostrador · Ticket #'+ticketNum, 0, orden);
     scope.transacciones.unshift({
       mesaId:0, mesaNombre:'Mostrador · Ticket #'+ticketNum,
       total, hora, fecha, ts,
@@ -267,11 +318,15 @@ function procesarCobro(scope, scopeKey, orden, mesaId, detalle, cobradoParcial, 
     // se puedan volver a cobrar ni sigan reservando inventario.
     scope.mesas = scope.mesas.map(m => {
       if (m.id !== mesaId) return m;
+      const pagadas = orden.map(o => ({ k: claveLinea(o), q: o.qty }));
       const restante = m.orden.map(l => {
-        const pagada = orden.find(o => o.id === l.id);
-        if (!pagada) return l;
-        const q = parseFloat((l.qty - pagada.qty).toFixed(3));
-        return q > 0 ? { ...l, qty: q } : null;
+        const k = claveLinea(l);
+        const p = pagadas.find(x => x.k === k && x.q > 0);
+        if (!p) return l;
+        const usar = Math.min(p.q, l.qty);
+        p.q = parseFloat((p.q - usar).toFixed(3));
+        const q = parseFloat((l.qty - usar).toFixed(3));
+        return q > 0 ? { ...l, qty: q, enviadas: Math.min(l.enviadas || 0, q) } : null;
       }).filter(Boolean);
       if (!restante.length) {
         liberada = true;
@@ -465,7 +520,8 @@ const server = http.createServer(async (req, res) => {
       const b=await readBody(req);
       const item={id:rubro._nextMenuId++, nombre:b.nombre||'Ítem', precio:Number(b.precio)||0,
         emoji:b.emoji||'🍽', invId:b.invId||null, unidad:b.unidad||'u',
-        factor:(parseFloat(b.factor)>0?parseFloat(b.factor):1)};
+        factor:(parseFloat(b.factor)>0?parseFloat(b.factor):1),
+        ingredientes:limpiarIngredientes(b.ingredientes)};
       rubro.menu.push(item); save(); return json(res,201,item);
     }
     const menuMatch=subPath.match(/^\/menu\/(\d+)$/);
@@ -473,6 +529,7 @@ const server = http.createServer(async (req, res) => {
       const id=parseInt(menuMatch[1]);
       if (method==='PUT') {
         const b=await readBody(req);
+        if ('ingredientes' in b) b.ingredientes = limpiarIngredientes(b.ingredientes);
         rubro.menu=rubro.menu.map(m=>m.id===id?{...m,...b,id}:m);
         save(); return json(res,200,rubro.menu.find(m=>m.id===id));
       }
@@ -532,6 +589,35 @@ const server = http.createServer(async (req, res) => {
       const result = procesarCobro(rubro, scopeKey, orden, mesaId, detalle, cobradoParcial, mostrador);
       save();
       return json(res, 200, result);
+    }
+
+    // ── Comandas (pantalla de cocina) ──
+    if (method==='GET' && subPath==='/comandas') return json(res,200,rubro.comandas||[]);
+    if (method==='POST' && subPath==='/comandas') {
+      const b=await readBody(req);
+      const c=nuevaComanda(rubro, b.origen||'Mostrador', b.mesaId||0, b.items);
+      if (!c) return json(res,400,{error:'La comanda no tiene ítems'});
+      save(); return json(res,201,c);
+    }
+    if (method==='POST' && subPath==='/comandas/limpiar') {
+      rubro.comandas=(rubro.comandas||[]).filter(c=>c.estado!=='listo');
+      save(); return json(res,200,{ok:true});
+    }
+    const comMatch=subPath.match(/^\/comandas\/(\d+)$/);
+    if (comMatch) {
+      const id=parseInt(comMatch[1]);
+      if (method==='PUT') {
+        const b=await readBody(req);
+        const validos=['pendiente','preparando','listo'];
+        rubro.comandas=(rubro.comandas||[]).map(c=>c.id===id
+          ? {...c, estado: validos.includes(b.estado)?b.estado:c.estado}
+          : c);
+        save(); return json(res,200,(rubro.comandas||[]).find(c=>c.id===id)||{});
+      }
+      if (method==='DELETE') {
+        rubro.comandas=(rubro.comandas||[]).filter(c=>c.id!==id);
+        save(); return json(res,200,{ok:true});
+      }
     }
 
     // ── Caja inicial (fondo de caja) ──

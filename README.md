@@ -51,6 +51,30 @@ fondo inicial  +  ventas del día  =  efectivo esperado
 y al escribir el **conteo físico** muestra el sobrante o faltante. Es el cuadre
 que se entrega junto con el POS.
 
+## Variantes y pantalla de cocina
+
+Cada ítem del menú puede declarar sus **ingredientes quitables** (en *Menú*:
+`cebolla, cilantro, picante`). Al tomar la orden, el botón **✎ Variantes** de
+cada línea abre un panel donde se desmarca lo que el cliente no quiere y se
+puede dejar una nota libre («bien cocido», «para llevar»).
+
+Dos líneas del mismo producto con distintas exclusiones **no se suman**: en el
+ticket aparecen separadas, y al cobrar por persona cada una va por su lado.
+
+En **Mesas**, el botón *🍳 Enviar a cocina* manda solo lo que todavía no se
+mandó — las líneas pendientes llevan un punto ámbar. En **Mostrador** la
+comanda se genera automáticamente al cobrar.
+
+La pestaña **Cocina** muestra tres columnas —*Por preparar → En preparación →
+Listos*— con el tiempo de espera de cada comanda (verde, ámbar a los 10 min,
+rojo a los 20) y las exclusiones resaltadas como `SIN CEBOLLA`, que es lo que
+al cocinero le importa ver de un golpe. En celular se cambia de columna con las
+pestañas de arriba. Se actualiza en vivo por SSE: lo que se manda desde la
+tablet aparece en la pantalla de cocina sin recargar.
+
+Está habilitada en los rubros que preparan a la orden (taquería, cafetería,
+pizzería, pupusería, marisquería, crepería, heladería y pollería).
+
 ## Consumo de inventario
 
 Cada ítem del menú puede vincularse a un producto de inventario y define
