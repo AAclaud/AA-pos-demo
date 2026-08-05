@@ -147,6 +147,24 @@ function loadData() {
           if (!parsed.rubros[seed.slug]) {
             parsed.rubros[seed.slug] = defaultRubro(seed);
             console.log(`  + Rubro nuevo añadido: ${seed.slug}`);
+          } else {
+            // La presentación (pestañas, tipo, colores) vive en las semillas, no
+            // en los datos del cliente: se resincroniza en cada arranque para que
+            // una pestaña nueva aparezca sin tener que restaurar el demo.
+            const r = parsed.rubros[seed.slug];
+            const antes = (r.tabs || []).join(',');
+            ['tabs','tipo','nombre','icono','descripcion','color','colorDark','colorLight','colorCream']
+              .forEach(k => { if (seed[k] !== undefined) r[k] = seed[k]; });
+            if (antes !== (r.tabs || []).join(',')) {
+              console.log(`  ↻ ${seed.slug}: pestañas actualizadas → ${r.tabs.join(', ')}`);
+            }
+            // Ingredientes sugeridos: solo se rellenan si el ítem nunca los tuvo,
+            // para no pisar lo que el cliente haya configurado.
+            (r.menu || []).forEach(mi => {
+              if (mi.ingredientes !== undefined) return;
+              const sm = (seed.menu || []).find(x => x.id === mi.id && x.nombre === mi.nombre);
+              if (sm && sm.ingredientes) mi.ingredientes = sm.ingredientes.slice();
+            });
           }
         });
       }
