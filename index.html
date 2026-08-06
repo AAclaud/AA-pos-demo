@@ -2639,6 +2639,15 @@ function MenuTab({suc,addToast,reload}){
                 </div>
               </div>
             )}
+            <div className="field">
+              <label>Variantes — ingredientes quitables (separados por coma)</label>
+              <input placeholder="Ej: cebolla, cilantro, picante, salsa"
+                value={f.ingredientes} onChange={e=>setF(p=>({...p,ingredientes:e.target.value}))}/>
+              <div className="field-hint">
+                Al tomar la orden se pueden desmarcar y la cocina lo recibe como
+                «SIN cebolla». Déjalo vacío si el ítem no se modifica.
+              </div>
+            </div>
             <div style={{display:'flex',gap:8}}>
               <button className="btn btn-primary" onClick={add}>Agregar</button>
               <button className="btn btn-ghost" onClick={()=>setShowForm(false)}>Cancelar</button>
