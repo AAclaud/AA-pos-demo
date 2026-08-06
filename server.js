@@ -31,6 +31,28 @@ function defaultMesas(n=8) {
   }));
 }
 
+// Caja — fondo inicial, apertura y cierre de turno con historial de cuadres
+function defaultCaja() {
+  return {
+    abierta: false,
+    inicial: 0,
+    fechaApertura: null,
+    fechaCierre: null,
+    ultimoCierre: null,
+    historial: [],
+  };
+}
+
+const METODOS_PAGO_DEFAULT = ['efectivo','tarjeta','transferencia'];
+
+// Módulos opcionales — se activan por comercio desde el dashboard de Admin
+function defaultModulos(seed) {
+  return {
+    inventarioAvanzado: false,
+    cocina: !!(seed && (seed.tabs || []).includes('cocina')),
+  };
+}
+
 function defaultSucursal(id, nombre, ciudad) {
   return {
     id, nombre, ciudad,
@@ -39,9 +61,16 @@ function defaultSucursal(id, nombre, ciudad) {
     mesas:       defaultMesas(8),
     transacciones: [],
     ventas:      {},
+    caja:        defaultCaja(),
+    metodosPago: [...METODOS_PAGO_DEFAULT],
+    modulos:     defaultModulos(),
+    comandas:    [],
+    movimientos: [],
     _nextMenuId: 1,
     _nextInvId:  1,
     _nextMesaId: 9,
+    _nextComandaId: 1,
+    _nextMovId:  1,
   };
 }
 
@@ -63,14 +92,21 @@ function defaultRubro(seed) {
     colorCream:   seed.colorCream,
     tipo:         seed.tipo,
     tabs:         seed.tabs,
-    menu:         (seed.menu || []).map(m=>({...m})),
-    inventario:   (seed.inventario || []).map(i=>({...i})),
+    menu:         (seed.menu || []).map(m=>({unidad:'u', consumo:1, receta:[], ...m})),
+    inventario:   (seed.inventario || []).map(i=>({unidad:'u', costo:0, ...i})),
     mesas:        seed.tipo === 'mesas' ? defaultMesas(seed.mesasCount || 8) : [],
     transacciones: [],
     ventas:       {},
+    caja:         defaultCaja(),
+    metodosPago:  [...METODOS_PAGO_DEFAULT],
+    modulos:      defaultModulos(seed),
+    comandas:     [],
+    movimientos:  [],
     _nextMenuId:  nextMenuId,
     _nextInvId:   nextInvId,
     _nextMesaId:  nextMesaId,
+    _nextComandaId: 1,
+    _nextMovId:   1,
   };
 }
 
@@ -96,6 +132,15 @@ const BRANDING = {
   tagline:  process.env.BRAND_TAGLINE  || 'Control de ventas',
   currency: process.env.BRAND_CURRENCY || 'Q',
   credit:   process.env.BRAND_CREDIT   || 'AA Projects',
+  version:  process.env.APP_VERSION    || '1.1.0',
+  // Datos de soporte — configurables por variable de entorno en cada instalación
+  soporte: {
+    empresa:  process.env.SUPPORT_NAME     || 'AA Projects',
+    whatsapp: process.env.SUPPORT_WHATSAPP || '',   // solo dígitos con código de país: 502XXXXXXXX
+    telefono: process.env.SUPPORT_PHONE    || '',
+    email:    process.env.SUPPORT_EMAIL    || '',
+    horario:  process.env.SUPPORT_HOURS    || 'Lun a Sáb · 8:00 – 18:00',
+  },
 };
 
 // ─── Cargar / guardar ─────────────────────────────────────────────
@@ -127,9 +172,51 @@ function loadData() {
           if (!parsed.rubros[seed.slug]) {
             parsed.rubros[seed.slug] = defaultRubro(seed);
             console.log(`  + Rubro nuevo añadido: ${seed.slug}`);
+          } else {
+            // La presentación (pestañas, tipo, colores) vive en las semillas, no
+            // en los datos del cliente: se resincroniza en cada arranque para que
+            // una pestaña nueva aparezca sin tener que restaurar el demo.
+            const r = parsed.rubros[seed.slug];
+            const antes = (r.tabs || []).join(',');
+            ['tabs','tipo','nombre','icono','descripcion','color','colorDark','colorLight','colorCream']
+              .forEach(k => { if (seed[k] !== undefined) r[k] = seed[k]; });
+            if (antes !== (r.tabs || []).join(',')) {
+              console.log(`  ↻ ${seed.slug}: pestañas actualizadas → ${r.tabs.join(', ')}`);
+            }
+            // Ingredientes sugeridos: solo se rellenan si el ítem nunca los tuvo,
+            // para no pisar lo que el cliente haya configurado.
+            (r.menu || []).forEach(mi => {
+              if (mi.ingredientes !== undefined) return;
+              const sm = (seed.menu || []).find(x => x.id === mi.id && x.nombre === mi.nombre);
+              if (sm && sm.ingredientes) mi.ingredientes = sm.ingredientes.slice();
+            });
           }
         });
       }
+
+      // Migración no destructiva — rellena lo que falte sin pisar nada existente
+      const migrar = o => {
+        if (!o.caja) o.caja = defaultCaja();
+        if (!Array.isArray(o.comandas))    o.comandas    = [];
+        if (!Array.isArray(o.movimientos)) o.movimientos = [];
+        if (!o._nextComandaId) o._nextComandaId = 1;
+        if (!o._nextMovId)     o._nextMovId     = 1;
+        if (!Array.isArray(o.metodosPago) || !o.metodosPago.length) {
+          o.metodosPago = [...METODOS_PAGO_DEFAULT];
+        }
+        if (!o.modulos) o.modulos = defaultModulos(o);
+        o.menu = (o.menu || []).map(m => {
+          const mm = { unidad:'u', consumo:1, ...m };
+          // `factor` es el nombre viejo del paquete de la nube
+          if (m.factor != null && m.consumo == null) mm.consumo = m.factor;
+          delete mm.factor;
+          if (!Array.isArray(mm.receta)) mm.receta = [];
+          return mm;
+        });
+        o.inventario = (o.inventario || []).map(i => ({ unidad:'u', costo:0, ...i }));
+      };
+      Object.values(parsed.rubros).forEach(migrar);
+      parsed.sucursales.forEach(migrar);
 
       return parsed;
     }
@@ -192,43 +279,340 @@ function getSuc(id) { return db.sucursales.find(s=>s.id===id); }
 function getRubro(slug) { return db.rubros && db.rubros[slug]; }
 
 // ─── Lógica de cobro (compartida por suc y rubro) ─────────────────
-function procesarCobro(scope, scopeKey, orden, mesaId, detalle, cobradoParcial, mostrador) {
+// Lista de ingredientes quitables — texto corto, sin vacíos ni duplicados
+function limpiarIngredientes(arr) {
+  if (!Array.isArray(arr)) return [];
+  const vistos = new Set();
+  return arr.map(x => String(x||'').trim().slice(0,28))
+    .filter(x => { if (!x || vistos.has(x.toLowerCase())) return false; vistos.add(x.toLowerCase()); return true; })
+    .slice(0, 14);
+}
+
+// Receta enviada por el cliente — insumos existentes, sin duplicados ni ceros
+function limpiarReceta(arr, inventario) {
+  if (!Array.isArray(arr)) return [];
+  const vistos = new Set();
+  return arr
+    .map(r => ({ invId: Number(r && r.invId), cantidad: parseFloat(r && r.cantidad) }))
+    .filter(r => {
+      if (!r.invId || !isFinite(r.cantidad) || r.cantidad <= 0) return false;
+      if (vistos.has(r.invId)) return false;
+      if (inventario && !inventario.some(i => i.id === r.invId)) return false;
+      vistos.add(r.invId); return true;
+    })
+    .map(r => ({ invId: r.invId, cantidad: parseFloat(r.cantidad.toFixed(4)) }))
+    .slice(0, 20);
+}
+
+// Normaliza el cuerpo de un ítem de menú. `factor` (nombre viejo del paquete de
+// la nube) se traduce a `consumo`, que es el nombre canónico.
+function normalizarMenuBody(b, inventario) {
+  if ('ingredientes' in b) b.ingredientes = limpiarIngredientes(b.ingredientes);
+  if ('receta' in b)       b.receta       = limpiarReceta(b.receta, inventario);
+  if ('factor' in b) { if (b.consumo == null) b.consumo = b.factor; delete b.factor; }
+  if ('consumo' in b) { const c = parseFloat(b.consumo); b.consumo = (isFinite(c) && c > 0) ? c : 1; }
+  return b;
+}
+
+// Dos líneas son la misma solo si comparten ítem, exclusiones y nota
+function claveLinea(l) {
+  const sin = (l.sin || []).slice().sort().join('~');
+  return `${l.id}|${sin}|${(l.nota || '').trim()}`;
+}
+
+// Cuánto inventario consume 1 unidad vendida de un ítem de menú.
+// `consumo` es el nombre canónico; `factor` se acepta por compatibilidad.
+function factorDe(menuItem) {
+  const raw = menuItem && (menuItem.consumo != null ? menuItem.consumo : menuItem.factor);
+  const f = parseFloat(raw);
+  return (isFinite(f) && f > 0) ? f : 1;
+}
+
+// Receta efectiva de un ítem: lista de {invId, cantidad}. Con el módulo de
+// inventario avanzado activo manda `receta`; si no, la ruta simple invId × consumo.
+function recetaDe(scope, mi) {
+  const avanzado = !!(scope.modulos && scope.modulos.inventarioAvanzado);
+  if (avanzado && Array.isArray(mi.receta) && mi.receta.length) {
+    return mi.receta
+      .map(r => ({ invId: Number(r.invId), cantidad: parseFloat(r.cantidad) || 0 }))
+      .filter(r => r.invId && r.cantidad > 0);
+  }
+  return mi.invId ? [{ invId: mi.invId, cantidad: factorDe(mi) }] : [];
+}
+
+// Kardex — un renglón por cada cambio de existencia. Tope FIFO para no
+// engordar data.json sin límite.
+const MOV_MAX = 3000;
+function registrarMovimiento(scope, inv, tipo, cantidad, motivo, ref) {
+  if (!Array.isArray(scope.movimientos)) scope.movimientos = [];
+  if (!scope._nextMovId) scope._nextMovId = 1;
+  const now = new Date();
+  const mov = {
+    id: scope._nextMovId++,
+    ts: now.getTime(),
+    fecha: now.toLocaleDateString('es-GT'),
+    hora:  now.toLocaleTimeString('es-GT', {hour:'2-digit', minute:'2-digit'}),
+    invId: inv.id, invNombre: inv.nombre, unidad: inv.unidad || 'u',
+    tipo, cantidad: parseFloat(Number(cantidad).toFixed(3)),
+    saldo: inv.stock,
+    costoUnit: parseFloat(inv.costo) || 0,
+    motivo: (motivo || '').slice(0, 120),
+    ref: String(ref || '').slice(0, 60),
+  };
+  scope.movimientos.unshift(mov);
+  if (scope.movimientos.length > MOV_MAX) scope.movimientos.length = MOV_MAX;
+  return mov;
+}
+
+// Descuento de inventario al cobrar. No bloquea la venta, pero devuelve los
+// faltantes para que el POS avise al cajero. Suma primero por insumo, para que
+// dos platos del mismo ticket que comparten un insumo no se pisen.
+function consumirInventario(scope, orden, ref) {
+  const avanzado = !!(scope.modulos && scope.modulos.inventarioAvanzado);
+  const faltantes = [];
+  const acumulado = new Map();
+  (orden || []).forEach(l => {
+    const mi = scope.menu.find(m => m.id === l.id);
+    if (!mi) return;
+    recetaDe(scope, mi).forEach(r => {
+      acumulado.set(r.invId, (acumulado.get(r.invId) || 0) + l.qty * r.cantidad);
+    });
+  });
+  acumulado.forEach((cant, invId) => {
+    const inv = scope.inventario.find(i => i.id === invId);
+    if (!inv || cant <= 0) return;
+    if (cant > inv.stock + 1e-6) {
+      faltantes.push({ nombre: inv.nombre, pedido: parseFloat(cant.toFixed(3)),
+        disponible: inv.stock, unidad: inv.unidad || 'u' });
+    }
+    inv.stock = Math.max(0, parseFloat((inv.stock - cant).toFixed(3)));
+    if (avanzado) registrarMovimiento(scope, inv, 'venta', -cant, 'Venta', ref);
+  });
+  return faltantes;
+}
+
+// Una comanda es lo que ve la cocina: qué preparar, sin qué y con qué nota
+function nuevaComanda(scope, origen, mesaId, items) {
+  const lineas = (items || [])
+    .filter(l => l.qty > 0)
+    .map(l => ({
+      nombre: l.nombre, qty: l.qty, unidad: l.unidad || 'u',
+      sin: Array.isArray(l.sin) ? l.sin.slice() : [],
+      nota: (l.nota || '').slice(0, 140),
+    }));
+  if (!lineas.length) return null;
+  if (!Array.isArray(scope.comandas)) scope.comandas = [];
+  if (!scope._nextComandaId) scope._nextComandaId = 1;
+  const now = new Date();
+  const c = {
+    id: scope._nextComandaId++,
+    ts: now.getTime(),
+    hora: now.toLocaleTimeString('es-GT', {hour:'2-digit', minute:'2-digit'}),
+    origen, mesaId: mesaId || 0,
+    items: lineas,
+    estado: 'pendiente',
+  };
+  scope.comandas.unshift(c);
+  if (scope.comandas.length > 120) scope.comandas.length = 120;
+  return c;
+}
+
+function procesarCobro(scope, scopeKey, orden, mesaId, detalle, cobradoParcial, mostrador, metodoPago) {
   const total = orden.reduce((s,l) => s + l.precio * l.qty, 0);
   const now   = new Date();
   const hora  = now.toLocaleTimeString('es-GT', {hour:'2-digit', minute:'2-digit'});
   const fecha = now.toLocaleDateString('es-GT');
   const ts    = now.getTime();
+  const pago  = metodoPago || 'efectivo';
 
   orden.forEach(l => { scope.ventas[l.nombre] = (scope.ventas[l.nombre]||0) + l.qty; });
-  orden.forEach(l => {
-    const mi  = scope.menu.find(m=>m.id===l.id);
-    if (!mi || !mi.invId) return;
-    const inv = scope.inventario.find(i=>i.id===mi.invId);
-    if (inv) inv.stock = Math.max(0, parseFloat((inv.stock - l.qty).toFixed(3)));
-  });
+
+  const faltantes = consumirInventario(scope, orden, detalle || '');
 
   if (mostrador) {
     const ticketNum = (scope.transacciones.filter(t=>t.mostrador).length) + 1;
+    nuevaComanda(scope, 'Mostrador · Ticket #'+ticketNum, 0, orden);
     scope.transacciones.unshift({
       mesaId:0, mesaNombre:'Mostrador · Ticket #'+ticketNum,
-      total, hora, fecha, ts,
+      total, hora, fecha, ts, metodoPago:pago,
       detalle: detalle || ('Ticket #'+ticketNum),
       orden:[...orden], mostrador:true
     });
-    return { ok:true, total, ticket:ticketNum };
+    return { ok:true, total, ticket:ticketNum, faltantes };
   }
 
   const mesaObj = scope.mesas.find(m=>m.id===mesaId);
   const mesaNombre = mesaObj ? mesaObj.nombre : 'Mesa '+mesaId;
-  scope.transacciones.unshift({mesaId, mesaNombre, total, hora, fecha, ts,
+  scope.transacciones.unshift({mesaId, mesaNombre, total, hora, fecha, ts, metodoPago:pago,
     detalle: detalle||'Cuenta completa', orden:[...orden]});
 
+  let liberada = false;
   if (!cobradoParcial) {
     scope.mesas = scope.mesas.map(m=>m.id===mesaId?{...m,orden:[],estado:'libre',cobrado:0}:m);
+    liberada = true;
   } else {
-    scope.mesas = scope.mesas.map(m=>m.id===mesaId?{...m,cobrado:(m.cobrado||0)+total}:m);
+    // Cobro parcial: las líneas pagadas SALEN de la orden viva para que no
+    // se puedan volver a cobrar ni sigan reservando inventario.
+    scope.mesas = scope.mesas.map(m => {
+      if (m.id !== mesaId) return m;
+      const pagadas = orden.map(o => ({ k: claveLinea(o), q: o.qty }));
+      const restante = m.orden.map(l => {
+        const k = claveLinea(l);
+        const p = pagadas.find(x => x.k === k && x.q > 0);
+        if (!p) return l;
+        const usar = Math.min(p.q, l.qty);
+        p.q = parseFloat((p.q - usar).toFixed(3));
+        const q = parseFloat((l.qty - usar).toFixed(3));
+        return q > 0 ? { ...l, qty: q, enviadas: Math.min(l.enviadas || 0, q) } : null;
+      }).filter(Boolean);
+      if (!restante.length) {
+        liberada = true;
+        return { ...m, orden: [], estado: 'libre', cobrado: 0 };
+      }
+      return { ...m, orden: restante, cobrado: (m.cobrado||0) + total };
+    });
   }
-  return { ok:true, total };
+  return { ok:true, total, faltantes, liberada };
+}
+
+// ─── Rutas compartidas por rubros y sucursales ────────────────────
+// Comandas, caja, métodos de pago, módulos y kardex. Devuelve
+// {status, data, guardar?} si la ruta le corresponde, o null si no.
+// Se llama al final del bloque de rutas porque consume el body de la petición.
+async function rutasComunes(scope, method, subPath, req) {
+  const body = async () => { try { return await readBody(req); } catch(e) { return {}; } };
+
+  // ── Comandas (pantalla de cocina) ──
+  if (method==='GET' && subPath==='/comandas') {
+    return { status:200, data: scope.comandas||[], guardar:false };
+  }
+  if (method==='POST' && subPath==='/comandas') {
+    const b = await body();
+    const c = nuevaComanda(scope, b.origen||'Mostrador', b.mesaId||0, b.items);
+    if (!c) return { status:400, data:{error:'La comanda no tiene ítems'}, guardar:false };
+    return { status:201, data:c };
+  }
+  if (method==='POST' && subPath==='/comandas/limpiar') {
+    scope.comandas = (scope.comandas||[]).filter(c=>c.estado!=='listo');
+    return { status:200, data:{ok:true} };
+  }
+  const comMatch = subPath.match(/^\/comandas\/(\d+)$/);
+  if (comMatch) {
+    const id = parseInt(comMatch[1]);
+    if (method==='PUT') {
+      const b = await body();
+      const validos = ['pendiente','preparando','listo'];
+      scope.comandas = (scope.comandas||[]).map(c=>c.id===id
+        ? {...c, estado: validos.includes(b.estado)?b.estado:c.estado}
+        : c);
+      return { status:200, data:(scope.comandas||[]).find(c=>c.id===id)||{} };
+    }
+    if (method==='DELETE') {
+      scope.comandas = (scope.comandas||[]).filter(c=>c.id!==id);
+      return { status:200, data:{ok:true} };
+    }
+  }
+
+  // ── Caja: abrir / cerrar turno ──
+  if (method==='POST' && subPath==='/caja/abrir') {
+    const b = await body();
+    if (!scope.caja) scope.caja = defaultCaja();
+    if (scope.caja.abierta) return { status:400, data:{error:'Caja ya está abierta'}, guardar:false };
+    scope.caja.abierta = true;
+    scope.caja.inicial = Math.max(0, parseFloat(b.inicial)||0);
+    scope.caja.fechaApertura = Date.now();
+    scope.caja.fechaCierre = null;
+    return { status:200, data:scope.caja };
+  }
+  if (method==='POST' && subPath==='/caja/cerrar') {
+    const b = await body();
+    if (!scope.caja || !scope.caja.abierta) return { status:400, data:{error:'Caja no está abierta'}, guardar:false };
+    const apertura = scope.caja.fechaApertura || 0;
+    const txTurno = scope.transacciones.filter(t=>t.ts>=apertura);
+    const esEfectivo = t => (t.metodoPago||'efectivo')==='efectivo';
+    const ventasEfectivo = txTurno.filter(esEfectivo).reduce((s,t)=>s+t.total,0);
+    const ventasTarjeta  = txTurno.filter(t=>!esEfectivo(t)).reduce((s,t)=>s+t.total,0);
+    const esperado = scope.caja.inicial + ventasEfectivo;
+    const contado  = parseFloat(b.contado)||0;
+    const cierre = {
+      inicial: scope.caja.inicial,
+      contado, esperado,
+      diferencia: parseFloat((contado - esperado).toFixed(2)),
+      ventasEfectivo, ventasTarjeta,
+      fechaApertura: apertura,
+      fechaCierre: Date.now(),
+    };
+    scope.caja.historial = [cierre, ...(scope.caja.historial||[])].slice(0,50);
+    scope.caja.ultimoCierre = cierre;
+    scope.caja.abierta = false;
+    scope.caja.fechaCierre = cierre.fechaCierre;
+    return { status:200, data:cierre };
+  }
+  // Alias del paquete de la nube: fija el fondo sin abrir turno
+  if (method==='PUT' && subPath==='/caja-inicial') {
+    const b = await body();
+    if (!scope.caja) scope.caja = defaultCaja();
+    scope.caja.inicial = Math.max(0, parseFloat(b.inicial)||0);
+    scope.caja.nota = (b.nota||'').slice(0,120);
+    return { status:200, data:scope.caja };
+  }
+
+  // ── Métodos de pago ──
+  if (method==='PUT' && subPath==='/metodos-pago') {
+    const b = await body();
+    if (!Array.isArray(b.metodos)) return { status:400, data:{error:'metodos debe ser array'}, guardar:false };
+    const validos = b.metodos.filter(m => METODOS_PAGO_DEFAULT.includes(m));
+    if (!validos.includes('efectivo')) validos.unshift('efectivo');
+    scope.metodosPago = validos;
+    return { status:200, data:{ok:true, metodosPago: scope.metodosPago} };
+  }
+
+  // ── Módulos opcionales ──
+  if (method==='PUT' && subPath==='/modulos') {
+    const b = await body();
+    if (!scope.modulos) scope.modulos = defaultModulos();
+    if ('inventarioAvanzado' in b) scope.modulos.inventarioAvanzado = !!b.inventarioAvanzado;
+    if ('cocina' in b)             scope.modulos.cocina             = !!b.cocina;
+    // Al encender el inventario avanzado, sembrar la receta de un solo insumo
+    // a partir del consumo simple que ya tenía cada ítem.
+    if (scope.modulos.inventarioAvanzado) {
+      scope.menu.forEach(m => {
+        if (!Array.isArray(m.receta) || !m.receta.length) {
+          m.receta = m.invId ? [{ invId: m.invId, cantidad: factorDe(m) }] : [];
+        }
+      });
+    }
+    return { status:200, data:{ok:true, modulos: scope.modulos} };
+  }
+
+  // ── Kardex de inventario ──
+  if (method==='GET' && subPath==='/movimientos') {
+    return { status:200, data: scope.movimientos||[], guardar:false };
+  }
+  const movMatch = subPath.match(/^\/inventario\/(\d+)\/movimiento$/);
+  if (method==='POST' && movMatch) {
+    const b = await body();
+    const inv = scope.inventario.find(i=>i.id===parseInt(movMatch[1]));
+    if (!inv) return { status:404, data:{error:'Insumo no encontrado'}, guardar:false };
+    const tipos = ['entrada','merma','ajuste'];
+    if (!tipos.includes(b.tipo)) return { status:400, data:{error:'tipo debe ser entrada, merma o ajuste'}, guardar:false };
+    const cant = parseFloat(b.cantidad);
+    if (!isFinite(cant)) return { status:400, data:{error:'cantidad inválida'}, guardar:false };
+    if (b.costoUnit != null) {
+      const c = parseFloat(b.costoUnit);
+      if (isFinite(c) && c >= 0) inv.costo = c;
+    }
+    // entrada suma, merma resta, ajuste fija la existencia al valor dado
+    let delta;
+    if (b.tipo === 'entrada')     delta =  Math.abs(cant);
+    else if (b.tipo === 'merma')  delta = -Math.abs(cant);
+    else                          delta =  parseFloat((Math.max(0, cant) - inv.stock).toFixed(3));
+    inv.stock = Math.max(0, parseFloat((inv.stock + delta).toFixed(3)));
+    const mov = registrarMovimiento(scope, inv, b.tipo, delta, b.motivo, b.ref);
+    return { status:201, data:{ ok:true, movimiento:mov, insumo:inv } };
+  }
+
+  return null;
 }
 
 // ─── Servidor ────────────────────────────────────────────────────
@@ -411,8 +795,12 @@ const server = http.createServer(async (req, res) => {
     if (method==='GET' && subPath==='/menu') return json(res,200,rubro.menu);
     if (method==='POST' && subPath==='/menu') {
       const b=await readBody(req);
+      normalizarMenuBody(b, rubro.inventario);
       const item={id:rubro._nextMenuId++, nombre:b.nombre||'Ítem', precio:Number(b.precio)||0,
-        emoji:b.emoji||'🍽', invId:b.invId||null, unidad:b.unidad||'u'};
+        emoji:b.emoji||'🍽', invId:b.invId||null, unidad:b.unidad||'u',
+        consumo:(b.consumo!=null?b.consumo:1),
+        receta:b.receta||[],
+        ingredientes:b.ingredientes||[]};
       rubro.menu.push(item); save(); return json(res,201,item);
     }
     const menuMatch=subPath.match(/^\/menu\/(\d+)$/);
@@ -420,6 +808,7 @@ const server = http.createServer(async (req, res) => {
       const id=parseInt(menuMatch[1]);
       if (method==='PUT') {
         const b=await readBody(req);
+        normalizarMenuBody(b, rubro.inventario);
         rubro.menu=rubro.menu.map(m=>m.id===id?{...m,...b,id}:m);
         save(); return json(res,200,rubro.menu.find(m=>m.id===id));
       }
@@ -434,7 +823,8 @@ const server = http.createServer(async (req, res) => {
     if (method==='POST' && subPath==='/inventario') {
       const b=await readBody(req);
       const item={id:rubro._nextInvId++, nombre:b.nombre||'Producto',
-        stock:parseFloat(b.stock)||0, min:parseFloat(b.min)||2, unidad:b.unidad||'u'};
+        stock:parseFloat(b.stock)||0, min:parseFloat(b.min)||2, unidad:b.unidad||'u',
+        costo:parseFloat(b.costo)||0};
       rubro.inventario.push(item); save(); return json(res,201,item);
     }
     const invMatch=subPath.match(/^\/inventario\/(\d+)$/);
@@ -475,8 +865,8 @@ const server = http.createServer(async (req, res) => {
 
     // ── Cobrar ──
     if (method==='POST' && subPath==='/cobrar') {
-      const { mesaId, orden, detalle, cobradoParcial, mostrador } = await readBody(req);
-      const result = procesarCobro(rubro, scopeKey, orden, mesaId, detalle, cobradoParcial, mostrador);
+      const { mesaId, orden, detalle, cobradoParcial, mostrador, metodoPago } = await readBody(req);
+      const result = procesarCobro(rubro, scopeKey, orden, mesaId, detalle, cobradoParcial, mostrador, metodoPago);
       save();
       return json(res, 200, result);
     }
@@ -488,6 +878,14 @@ const server = http.createServer(async (req, res) => {
       rubro.transacciones = rubro.transacciones.filter(t=>t.ts!==ts);
       save();
       return json(res, 200, {ok:true});
+    }
+
+    // Comandas, caja, métodos de pago, módulos y kardex — idénticos para
+    // rubros y sucursales. Va al final: consume el body de la petición.
+    const comun = await rutasComunes(rubro, method, subPath, req);
+    if (comun) {
+      if (comun.guardar !== false) save();
+      return json(res, comun.status, comun.data);
     }
 
     res.writeHead(404); return res.end('Not found');
@@ -507,20 +905,24 @@ const server = http.createServer(async (req, res) => {
   if (method==='GET' && subPath==='/menu') return json(res,200,suc.menu);
   if (method==='POST' && subPath==='/menu') {
     const b=await readBody(req);
-    const item={id:suc._nextMenuId++,nombre:b.nombre||'Ítem',precio:Number(b.precio)||0,emoji:b.emoji||'🍽',invId:b.invId||null};
+    normalizarMenuBody(b, suc.inventario);
+    const item={id:suc._nextMenuId++,nombre:b.nombre||'Ítem',precio:Number(b.precio)||0,emoji:b.emoji||'🍽',
+      invId:b.invId||null,unidad:b.unidad||'u',consumo:(b.consumo!=null?b.consumo:1),
+      receta:b.receta||[],ingredientes:b.ingredientes||[]};
     suc.menu.push(item); save(); return json(res,201,item);
   }
   const menuMatchLeg=subPath.match(/^\/menu\/(\d+)$/);
   if (menuMatchLeg) {
     const id=parseInt(menuMatchLeg[1]);
-    if (method==='PUT') { const b=await readBody(req); suc.menu=suc.menu.map(m=>m.id===id?{...m,...b,id}:m); save(); return json(res,200,suc.menu.find(m=>m.id===id)); }
+    if (method==='PUT') { const b=await readBody(req); normalizarMenuBody(b, suc.inventario); suc.menu=suc.menu.map(m=>m.id===id?{...m,...b,id}:m); save(); return json(res,200,suc.menu.find(m=>m.id===id)); }
     if (method==='DELETE') { suc.menu=suc.menu.filter(m=>m.id!==id); save(); return json(res,200,{ok:true}); }
   }
 
   if (method==='GET' && subPath==='/inventario') return json(res,200,suc.inventario);
   if (method==='POST' && subPath==='/inventario') {
     const b=await readBody(req);
-    const item={id:suc._nextInvId++,nombre:b.nombre||'Producto',stock:Number(b.stock)||0,min:Number(b.min)||2};
+    const item={id:suc._nextInvId++,nombre:b.nombre||'Producto',stock:parseFloat(b.stock)||0,
+      min:parseFloat(b.min)||2,unidad:b.unidad||'u',costo:parseFloat(b.costo)||0};
     suc.inventario.push(item); save(); return json(res,201,item);
   }
   const invMatchLeg=subPath.match(/^\/inventario\/(\d+)$/);
@@ -544,8 +946,8 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (method==='POST' && subPath==='/cobrar') {
-    const { mesaId, orden, detalle, cobradoParcial, mostrador } = await readBody(req);
-    const result = procesarCobro(suc, 'suc:'+sucId, orden, mesaId, detalle, cobradoParcial, mostrador);
+    const { mesaId, orden, detalle, cobradoParcial, mostrador, metodoPago } = await readBody(req);
+    const result = procesarCobro(suc, 'suc:'+sucId, orden, mesaId, detalle, cobradoParcial, mostrador, metodoPago);
     save();
     return json(res, 200, result);
   }
@@ -556,6 +958,14 @@ const server = http.createServer(async (req, res) => {
     suc.transacciones = suc.transacciones.filter(t => t.ts !== ts);
     save();
     return json(res, 200, {ok:true});
+  }
+
+  // Comandas, caja, métodos de pago, módulos y kardex — mismo manejador que
+  // los rubros. Va al final: consume el body de la petición.
+  const comunLeg = await rutasComunes(suc, method, subPath, req);
+  if (comunLeg) {
+    if (comunLeg.guardar !== false) save();
+    return json(res, comunLeg.status, comunLeg.data);
   }
 
   res.writeHead(404); res.end('Not found');

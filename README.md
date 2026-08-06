@@ -18,7 +18,72 @@ El branding (nombre comercial, moneda, etc.) se configura vía variables de ento
 | `DATA_FILE`       | `./data.json`  | `/data/data.json` (Railway volume) |
 | `PORT`            | `3000`         | (Railway lo inyecta)       |
 
+### Soporte técnico
+
+Los datos de contacto que ve el cliente en **Admin → Soporte técnico**:
+
+| Variable            | Default                    | Ejemplo                |
+| ------------------- | -------------------------- | ---------------------- |
+| `SUPPORT_NAME`      | `AA Projects`              | `AA Projects`          |
+| `SUPPORT_WHATSAPP`  | (vacío)                    | `50255551234` (solo dígitos, con código de país) |
+| `SUPPORT_PHONE`     | (vacío)                    | `+502 5555 1234`       |
+| `SUPPORT_EMAIL`     | (vacío)                    | `soporte@aaprojects.gt`|
+| `SUPPORT_HOURS`     | `Lun a Sáb · 8:00 – 18:00` | `24/7`                 |
+| `APP_VERSION`       | `1.1.0`                    | `1.1.0`                |
+
+Si no se configura ninguno, la sección explica cómo definirlos en vez de mostrar
+contactos vacíos. El botón de WhatsApp abre el chat con un mensaje ya redactado
+que incluye el rubro y la versión.
+
 El nombre y ciudad de cada sucursal se editan desde el panel **Admin** en la app.
+
+---
+
+## Caja inicial y cuadre
+
+El administrador define el **fondo de caja** en **Admin → Caja inicial**: el
+efectivo con el que abre el turno. La pestaña **Caja** calcula entonces:
+
+```
+fondo inicial  +  ventas del día  =  efectivo esperado
+```
+
+y al escribir el **conteo físico** muestra el sobrante o faltante. Es el cuadre
+que se entrega junto con el POS.
+
+## Variantes y pantalla de cocina
+
+Cada ítem del menú puede declarar sus **ingredientes quitables** (en *Menú*:
+`cebolla, cilantro, picante`). Al tomar la orden, el botón **✎ Variantes** de
+cada línea abre un panel donde se desmarca lo que el cliente no quiere y se
+puede dejar una nota libre («bien cocido», «para llevar»).
+
+Dos líneas del mismo producto con distintas exclusiones **no se suman**: en el
+ticket aparecen separadas, y al cobrar por persona cada una va por su lado.
+
+En **Mesas**, el botón *🍳 Enviar a cocina* manda solo lo que todavía no se
+mandó — las líneas pendientes llevan un punto ámbar. En **Mostrador** la
+comanda se genera automáticamente al cobrar.
+
+La pestaña **Cocina** muestra tres columnas —*Por preparar → En preparación →
+Listos*— con el tiempo de espera de cada comanda (verde, ámbar a los 10 min,
+rojo a los 20) y las exclusiones resaltadas como `SIN CEBOLLA`, que es lo que
+al cocinero le importa ver de un golpe. En celular se cambia de columna con las
+pestañas de arriba. Se actualiza en vivo por SSE: lo que se manda desde la
+tablet aparece en la pantalla de cocina sin recargar.
+
+Está habilitada en los rubros que preparan a la orden (taquería, cafetería,
+pizzería, pupusería, marisquería, crepería, heladería y pollería).
+
+## Consumo de inventario
+
+Cada ítem del menú puede vincularse a un producto de inventario y define
+**cuánto descuenta por venta** (campo *Consumo*, en **Menú**). Ejemplo: si un
+taco lleva `0.15 kg` de carne, 4 tacos descuentan `0.6 kg` — no 4 kg.
+
+Ítems distintos que apuntan al mismo insumo (americano, capuchino y latte sobre
+el mismo café) comparten existencias: lo que reserva uno deja de estar
+disponible para los otros, tanto en Mesas como en Mostrador.
 
 ---
 
@@ -112,7 +177,7 @@ Para que las sucursales / dispositivos se conecten desde cualquier lugar con int
 ### Opción B — Render (gratis con sleep)
 
 1. [render.com](https://render.com) → `New Web Service`
-2. Conecta repo o sube archivos
+2. Conecta repo o sube archivoss
 3. `Build Command`: (vacío)
 4. `Start Command`: `node server.js`
 5. Plan Free (se duerme tras 15 min sin uso; despierta en 30 seg)
